@@ -1,5 +1,7 @@
 <template>
-  test
+  <div>
+    <div>Marion</div>
+  </div>
 </template>
 
 <script>
