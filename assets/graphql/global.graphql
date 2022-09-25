@@ -1,0 +1,20 @@
+query Global {
+  global {
+    linkDonations
+    linkInstagram
+    navLinks {
+      ... on PageHomeRecord {
+        _modelApiKey
+        homeTitle(locale: fr)
+      }
+      ... on PageInfosContactRecord {
+        infosContactTitle
+        _modelApiKey
+      }
+      ... on PagePortfolioRecord {
+        portfolioTitle
+        _modelApiKey
+      }
+    }
+  }
+}

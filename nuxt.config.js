@@ -1,4 +1,29 @@
+let api, apiToken, ssr
+
+if (process.env.BRANCH) {
+  api =
+    process.env.BRANCH === 'staging'
+      ? process.env.API_URL_STAGING
+      : process.env.API_URL_PROD
+  apiToken =
+    process.env.BRANCH === 'staging'
+      ? process.env.GRAPHQL_TOKEN_STAGING
+      : process.env.GRAPHQL_TOKEN_PROD
+  ssr = !(process.env.BRANCH === 'preview') // csr on preview for live preview
+} else {
+  api = process.env.API_URL_STAGING
+  apiToken = process.env.GRAPHQL_TOKEN_STAGING
+  ssr = true
+}
+
+console.log('BRANCH : ', process.env.BRANCH)
+console.log('SSR : ', ssr)
+console.log('API : ', api)
+
 export default {
+  target: 'static',
+  ssr,
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'marion-huguet',
@@ -17,8 +42,14 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['@/assets/scss/main.scss'],
 
+  styleResources: {
+    scss: ['@/assets/scss/main.scss'],
+  },
+
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    '@/plugins/query.js',
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -33,14 +64,27 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/style-resources',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseUrl: api,
+    headers: {
+      Authorization: apiToken,
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    extractCSS: true,
+    // transpile: ['gsap', 'swiper'],
+    extend(config) {
+      config.module.rules.push({
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        loader: 'graphql-tag/loader',
+      })
+    },
+  },
 }
