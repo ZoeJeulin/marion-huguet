@@ -1,3 +1,7 @@
+* {
+  color: $beige
+}
+
 ::selection {
   background-color: $beige;
   color: $blue3;
@@ -8,44 +12,42 @@
   font-family: 'Bulgeria', serif;
   line-height: 1.25;
   text-transform: uppercase;
-  color: $beige
 }
 
-.t-h-1 {
+.t-h1 {
   @extend %t-h;
-  @include fluid-type($breakpoint-xs, $breakpoint-xl, 44px, 160px);
+  @include fluid-type($xs, $xl, 44px, 160px);
 }
 
-.t-h-2 {
+.t-h2 {
   @extend %t-h;
-  @include fluid-type($breakpoint-xs, $breakpoint-xl, 36px, 64px);
+  @include fluid-type($xs, $xl, 36px, 64px);
 }
 
-.t-h-3 {
+.t-h3 {
   @extend %t-h;
-  @include fluid-type($breakpoint-xs, $breakpoint-xl, 24px, 36px);
+  @include fluid-type($xs, $xl, 24px, 36px);
 }
 
 %t-body,
 .t-body{
   font-family: 'Playfair Display', serif;
   line-height: 1.31;
-  color: $beige
 }
 
 .t-body-1 {
   @extend %t-body;
-  @include fluid-type($breakpoint-xs, $breakpoint-xl, 16px, 22px);
+  @include fluid-type($xs, $xl, 16px, 22px);
 }
 
 .t-body-2 {
   @extend %t-body;
-  @include fluid-type($breakpoint-xs, $breakpoint-xl, 12px, 16px);
+  @include fluid-type($xs, $xl, 12px, 16px);
 }
 
 .t-body-3 {
   @extend %t-body;
-  @include fluid-type($breakpoint-xs, $breakpoint-xl, 10px, 14px);
+  @include fluid-type($xs, $xl, 10px, 14px);
   line-height: 1.35;
 }
 
@@ -53,19 +55,18 @@
 .t-cta{
   font-family: 'Playfair Display', serif;
   text-transform: uppercase;
-  color: $beige
 }
 
 .t-cta-1 {
   @extend %t-cta;
-  @include fluid-type($breakpoint-xs, $breakpoint-xl, 20px, 24px);
+  @include fluid-type($xs, $xl, 20px, 24px);
   line-height: 1.33;
   font-weight: 700;
 }
 
 .t-cta-2 {
   @extend %t-cta;
-  @include fluid-type($breakpoint-xs, $breakpoint-xl, 14px, 16px);
+  @include fluid-type($xs, $xl, 14px, 16px);
   line-height: 1.33;
 }
 

@@ -28,7 +28,7 @@ export default {
   head: {
     title: 'marion-huguet',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'fr',
     },
     meta: [
       { charset: 'utf-8' },
@@ -65,6 +65,8 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
+    '@nuxtjs/i18n',
+    '@nuxtjs/svg'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -73,6 +75,23 @@ export default {
     headers: {
       Authorization: apiToken,
     },
+  },
+
+  // https://i18n.nuxtjs.org/
+  i18n: {
+    locales: ['fr', 'en'],
+    defaultLocale: 'fr',
+    vueI18n: {
+      fallbackLocale: 'fr',
+      messages: {
+        fr: {
+          welcome: 'Bienvenue'
+        },
+        en: {
+          welcome: 'Welcome'
+        }
+      }
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

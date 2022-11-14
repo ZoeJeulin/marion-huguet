@@ -1,18 +1,22 @@
 // https://css-tricks.com/snippets/sass/mixin-manage-breakpoints/
 
-$breakpoint-xs: 320px;
-$breakpoint-sm: 640px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 1024px;
-$breakpoint-xl: 1280px;
+$xs: 320px;
+$sm: 640px;
+$md: 768px;
+$lg: 1024px;
+$xl: 1280px;
+
+$breakpoints: (
+  'xs': $xs,
+  'sm': $sm,
+  'md': $md,
+  'lg': $lg,
+  'xl': $xl,
+);
 
 @mixin below($breakpoint) {
-  @if $breakpoint != null {
-    @media (max-width: $breakpoint) {
-      @content;
-    }
-  } @else {
-    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
-        + "Please make sure it is defined in `$breakpoints` map.";
+  $size: map-get($breakpoints, $breakpoint);
+  @media only screen and (max-width: $size) {
+    @content;
   }
 }
