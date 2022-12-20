@@ -1,0 +1,9 @@
+query InfosContact($locale: SiteLocale!) {
+  page: pageInfosContact(locale: $locale) {
+    pageTitle
+    infosTitle
+    infosText
+    contactTitle
+    contactText
+  }
+}

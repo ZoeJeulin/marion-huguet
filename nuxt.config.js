@@ -58,6 +58,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
+    '@nuxt/image',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -66,7 +67,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
     '@nuxtjs/i18n',
-    '@nuxtjs/svg'
+    '@nuxtjs/svg',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -92,6 +93,13 @@ export default {
         }
       }
     }
+  },
+
+  image: {
+    provider: 'imgix',
+    imgix: {
+      baseURL: '',
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

@@ -1,19 +1,35 @@
-query Global {
-  global {
-    linkDonations
-    linkInstagram
+#import "./fragments/responsiveImage.graphql"
+
+query Global($locale: SiteLocale!) {
+  global(locale: $locale) {
+    donationsLabel
+    donationsLink
     navLinks {
       ... on PageHomeRecord {
         _modelApiKey
-        homeTitle(locale: fr)
+        slug
+        pageTitle
       }
       ... on PageInfosContactRecord {
-        infosContactTitle
         _modelApiKey
+        slug
+        pageTitle
       }
       ... on PagePortfolioRecord {
-        portfolioTitle
         _modelApiKey
+        slug
+        pageTitle
+      }
+    }
+    instagramLabel
+    instagramLink
+    copyright
+    creditLabel
+    creditLink
+    bgImg {
+      url
+      responsiveImage {
+        ...ResponsiveImage
       }
     }
   }
