@@ -1,7 +1,7 @@
 #import "./fragments/responsiveImage.graphql"
 
-query Global($locale: SiteLocale!) {
-  global(locale: $locale) {
+query Global {
+  global {
     donationsLabel
     donationsLink
     navLinks {

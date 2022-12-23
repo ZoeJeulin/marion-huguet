@@ -1,5 +1,5 @@
-query InfosContact($locale: SiteLocale!) {
-  page: pageInfosContact(locale: $locale) {
+query InfosContact {
+  page: pageInfosContact {
     pageTitle
     infosTitle
     infosText

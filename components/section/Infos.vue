@@ -31,14 +31,44 @@ export default {
   display: flex;
   width: 60%;
 
+  @include below('sm') {
+    display: block;
+    width: 100%;
+  }
+
   .infos-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     writing-mode: vertical-lr;
     -webkit-writing-mode: vertical-lr;
     transform: rotate(180deg);
+    text-align: center;
+    margin: 40px 0;
+
+    @include below('sm') {
+      writing-mode: horizontal-tb;
+      -webkit-writing-mode: horizontal-tb;
+      transform: none;
+      text-align: left;
+      margin: 0 0 10px 0;
+    }
+
+    .star:first-of-type {
+      @include below('sm') {
+        display: none;
+      }
+    }
   }
 
   .infos-text {
     padding-left: 60px;
+    margin: 40px 40px 40px 0;
+
+    @include below('sm') {
+      padding-left: 0;
+      margin: 0;
+    }
   }
 }
 </style>
