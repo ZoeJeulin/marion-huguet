@@ -1,21 +1,20 @@
 <template>
-  <div>
-    <section-intro />
-    <section-category />
-    <section-shop />
-    <section-support />
-    <!-- <div class="t-h1">Titre h1</div>
-    <div class="t-h2">Titre h2</div>
-    <div class="t-h3">Titre h3</div>
-    <div class="t-body-1">Body 1</div>
-    <div class="t-body-2">Body 2</div>
-    <div class="t-body-3">Body 3</div>
-    <div class="t-cta-1">CTA 1</div>
-    <div class="t-cta-2">CTA 2</div> -->
+  <div class="home">
+    <section-intro :intro-text="page.introText" class="section" />
+    <component
+      :is="getComponent(section._modelApiKey)"
+      v-for="(section, index) in page.sections"
+      :key="`section-${section.id}`"
+      :index="index"
+      :section="section"
+      class="section"
+    />
   </div>
 </template>
 
 <script>
+import PageHomeQuery from '~/assets/graphql/pages/home.graphql'
+
 export default {
   name: 'Home',
   nuxtI18n: {
@@ -24,5 +23,31 @@ export default {
       en: '/',
     },
   },
+  async asyncData(context) {
+    const { page } = await context.$query(context.app.$axios, PageHomeQuery, {
+      locale: context.app.i18n.locale,
+    })
+
+    return { page }
+  },
+  methods: {
+    getComponent(section) {
+      return section.toString().replace('_', '-')
+    },
+  },
 }
 </script>
+
+<style lang="scss">
+.home {
+  .section {
+    + .section {
+      margin-top: 80px;
+
+      @include below('sm') {
+        margin-top: 10px;
+      }
+    }
+  }
+}
+</style>

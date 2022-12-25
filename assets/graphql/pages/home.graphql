@@ -1,0 +1,14 @@
+#import "../fragments/sectionCategory.graphql"
+#import "../fragments/sectionShop.graphql"
+#import "../fragments/sectionSupport.graphql"
+
+query Home {
+  page: pageHome {
+    introText
+    sections {
+      ...SectionCategory
+      ...SectionShop
+      ...SectionSupport
+    }
+  }
+}

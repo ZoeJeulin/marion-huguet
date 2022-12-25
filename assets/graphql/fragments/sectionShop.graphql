@@ -1,0 +1,14 @@
+#import "./responsiveImage.graphql"
+
+fragment SectionShop on SectionShopRecord {
+  _modelApiKey
+  id
+  title
+  description
+  images {
+    responsiveImage {
+      ...ResponsiveImage
+    }
+  }
+  btnLabel
+}

@@ -2,14 +2,11 @@
   <div class="home-shop">
     <h1 class="shop-title t-h2">
       <ui-icon name="etoile" class="star" />
-      <span>Boutique</span>
+      <span>{{ section.title }}</span>
       <ui-icon name="etoile" class="star" />
     </h1>
     <div class="shop-desc t-body-1">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo amet
-      doloribus cum deserunt dolorem alias totam voluptatibus nisi eos
-      quibusdam, ab magni saepe laudantium aperiam impedit sed consequatur eum
-      quis.
+      {{ section.description }}
     </div>
     <div class="shop-images">
       <img
@@ -19,13 +16,24 @@
         alt="categroy image"
       />
     </div>
-    <ui-link label="Découvrir" />
+    <ui-link :label="section.btnLabel" />
     <ui-frame :desktop-corners="[2, 3]" :mobile-corners="[1, 2, 3, 4]" />
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    index: {
+      type: Number,
+      default: 1,
+    },
+    section: {
+      type: Object,
+      default: () => {},
+    },
+  },
+}
 </script>
 
 <style lang="scss">

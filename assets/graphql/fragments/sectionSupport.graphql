@@ -1,0 +1,8 @@
+fragment SectionSupport on SectionSupportRecord {
+  _modelApiKey
+  id
+  title
+  description
+  btnLabel
+  feedInstagram
+}

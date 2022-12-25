@@ -1,13 +1,14 @@
 <template>
-  <div class="home-category">
-    <div class="category-img" :class="{ right: index % 2 == 1 }">
-      <img src="https://source.unsplash.com/random" alt="category image" />
+  <div class="home-support">
+    <div class="support-insta">
+      <img src="https://source.unsplash.com/random" alt="feed insta" />
+      <ui-link label="En voir plus" />
     </div>
-    <div class="category-wrapper">
+    <div class="support-wrapper">
       <ui-icon name="etoile" class="star" />
-      <div class="category-content">
-        <h2 class="category-title t-h2">{{ section.title }}</h2>
-        <div class="category-desc t-body-1">
+      <div class="support-content">
+        <h2 class="support-title t-h2">{{ section.title }}</h2>
+        <div class="support-desc t-body-1">
           {{ section.description }}
         </div>
         <ui-link :label="section.btnLabel" />
@@ -35,7 +36,7 @@ export default {
 </script>
 
 <style lang="scss">
-.home-category {
+.home-support {
   position: relative;
   padding: 40px;
   display: flex;
@@ -46,34 +47,30 @@ export default {
     padding: 0 10px;
   }
 
-  .category-img {
+  .support-insta {
     width: 30%;
     align-self: center;
-
-    &.right {
-      order: 2;
-    }
 
     @include below('sm') {
       width: 50%;
     }
   }
 
-  .category-wrapper {
+  .support-wrapper {
     width: 50%;
 
     @include below('sm') {
       width: 100%;
     }
 
-    .category-content {
+    .support-content {
       padding: 100px 0;
 
-      .category-title {
+      .support-title {
         margin-bottom: 20px;
       }
 
-      .category-desc {
+      .support-desc {
         margin-bottom: 40px;
       }
     }

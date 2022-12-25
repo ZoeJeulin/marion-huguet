@@ -3,21 +3,22 @@
     <div class="intro-content">
       <h1 class="intro-title t-h1">Marion Huguet</h1>
       <div class="intro-desc t-body-1">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed velit
-        id dui pharetra aliquet. In id massa ut velit vehicula egestas ac sit
-        amet libero. Vivamus volutpat libero eget interdum efficitur. Nam eget
-        hendrerit neque. In tristique lacus id lacinia volutpat. Donec vel
-        dictum magna, vitae elementum risus. Fusce consequat dolor id arcu
-        rutrum, id maximus ante ullamcorper. Nulla tincidunt dapibus orci, ac
-        pretium quam vehicula non.
+        {{ introText }}
       </div>
     </div>
-    <ui-frame :desktop-corners="[1, 3, 4]" />
+    <ui-frame :desktop-corners="[1, 2, 3, 4]" />
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    introText: {
+      type: String,
+      default: '',
+    },
+  },
+}
 </script>
 
 <style lang="scss">

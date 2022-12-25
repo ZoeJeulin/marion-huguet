@@ -1,0 +1,20 @@
+#import "./responsiveImage.graphql"
+
+fragment SectionCategory on SectionCategoryRecord {
+  _modelApiKey
+  id
+  title
+  description
+  works {
+    id
+    workTitle
+    workDate
+    workDescription
+    workImages {
+      responsiveImage {
+        ...ResponsiveImage
+      }
+    }
+  }
+  btnLabel
+}
