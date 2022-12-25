@@ -29,7 +29,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: Inter, Arial, sans-serif;
-
   background: $blue1;
+
+  #main {
+    padding: 40px;
+
+    @include below('sm') {
+      padding: 40px 20px;
+    }
+  }
 }
 </style>
