@@ -26,9 +26,13 @@ export default {
   p {
     position: relative;
     display: inline;
-    padding: 0 30px;
+    padding: 0 20px;
     background: $blue1;
     z-index: 2;
+
+    @include below('sm') {
+      padding: 0 10px;
+    }
   }
 
   &::before,

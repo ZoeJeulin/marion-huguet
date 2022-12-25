@@ -30,12 +30,22 @@ export default {
     height: 1px;
     width: 75px;
     top: 10px;
+
+    @include below('sm') {
+      width: 40px;
+      top: 5px;
+    }
   }
 
   .corner-vertical {
     height: 75px;
     width: 1px;
     left: 10px;
+
+    @include below('sm') {
+      height: 40px;
+      left: 5px;
+    }
   }
 }
 </style>
