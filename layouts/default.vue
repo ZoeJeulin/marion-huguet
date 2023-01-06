@@ -10,6 +10,11 @@
 </template>
 
 <script>
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
 export default {}
 </script>
 
@@ -18,6 +23,7 @@ html {
   width: 100%;
   min-height: 100vh;
   height: -webkit-fill-available;
+  scroll-behavior: smooth;
 }
 
 body {

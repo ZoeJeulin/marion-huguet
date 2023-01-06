@@ -38,6 +38,7 @@ export default {
 .home-category {
   position: relative;
   padding: 40px;
+  min-height: calc(100vh - 30px);
   display: flex;
   justify-content: space-between;
 

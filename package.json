@@ -19,6 +19,7 @@
     "core-js": "^3.19.3",
     "graphql": "^16.6.0",
     "graphql-tag": "^2.12.6",
+    "gsap": "npm:@gsap/member",
     "node-sass": "^7.0.3",
     "nuxt": "^2.15.8",
     "sass-loader": "^10.1.1",
