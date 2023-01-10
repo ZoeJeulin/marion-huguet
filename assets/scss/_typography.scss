@@ -16,7 +16,7 @@
 
 .t-h1 {
   @extend %t-h;
-  @include fluid-type($xs, $xl, 44px, 160px);
+  @include fluid-type($xs, $xl, 44px, 180px);
 }
 
 .t-h2 {

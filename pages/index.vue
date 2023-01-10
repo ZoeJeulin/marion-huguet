@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <section-intro :intro-text="page.introText" class="section" />
+    <section-home-intro :intro-text="page.introText" class="section" />
     <div class="sections">
       <ui-side-nav :sections="page.sections" />
       <component
@@ -55,7 +55,10 @@ export default {
   },
   methods: {
     getComponent(section) {
-      return section.toString().replace('_', '-')
+      return section
+        .toString()
+        .replace('_', '-')
+        .replace('section', 'section-home')
     },
   },
 }
