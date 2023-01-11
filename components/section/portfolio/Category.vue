@@ -40,13 +40,23 @@ export default {
     writing-mode: vertical-rl;
     -webkit-writing-mode: vertical-rl;
     margin: 5vh 0;
-    @include fluid-type($xs, $xl, 44px, 90px);
+    @include fluid-type($xs, $xl, 36px, 90px);
+
+    @include below('sm') {
+      margin-top: 0;
+      margin-right: -20px !important;
+    }
   }
 
   .category-works {
     order: 1;
     width: 90%;
     position: relative;
+
+    @include below('sm') {
+      display: flex;
+      flex-direction: column;
+    }
 
     &:before {
       content: '';
@@ -59,6 +69,10 @@ export default {
       height: 100%;
       width: 1px;
       background: $white;
+
+      @include below('sm') {
+        display: none;
+      }
     }
   }
 }

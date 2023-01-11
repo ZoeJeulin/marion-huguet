@@ -1,6 +1,9 @@
 <template>
   <div class="portfolio">
-    <h1 class="title t-h1">{{ page.pageTitle }}</h1>
+    <h1 class="title t-h1">
+      {{ page.pageTitle }}
+      <ui-icon name="etoile" class="star" />
+    </h1>
     <div class="categories">
       <ui-side-nav :sections="page.portfolioCategories" />
       <!-- <div class="bird-wrapper">
@@ -81,16 +84,32 @@ export default {
 
 <style lang="scss">
 .portfolio {
+  @include below('sm') {
+    margin-right: -25px;
+  }
   .title {
     margin-top: 50vh;
     position: relative;
     z-index: 3;
     text-shadow: 2px 2px 20px rgba($blue2, 0.25);
+
+    @include below('sm') {
+      margin-top: 0;
+      margin-right: 25px;
+      text-shadow: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 
   .categories {
     position: relative;
     padding-bottom: 140px;
+
+    @include below('sm') {
+      padding-bottom: 40px;
+    }
 
     .bird-wrapper {
       width: 90%;
@@ -106,6 +125,10 @@ export default {
 
     .categories-list {
       margin-top: -15vh;
+
+      @include below('sm') {
+        margin-top: 60px;
+      }
     }
   }
 }

@@ -6,6 +6,10 @@
         :src="work.workImages[0].responsiveImage.src"
         :alt="work.workTitle"
       />
+      <ui-frame
+        :desktop-corners="index % 2 == 0 ? [3] : [4]"
+        :mobile-corners="index % 2 == 0 ? [3] : [4]"
+      />
     </div>
     <div class="work-overlay">
       <div class="work-content">
@@ -17,11 +21,6 @@
         <!-- <span class="t-cta-2">En savoir plus</span> -->
       </div>
     </div>
-
-    <ui-frame
-      :desktop-corners="index % 2 == 0 ? [3] : [4]"
-      :mobile-corners="index % 2 == 0 ? [3] : [4]"
-    />
   </li>
 </template>
 
@@ -45,7 +44,16 @@ export default {
   position: relative;
   width: 35%;
   margin: -10% auto;
-  padding-bottom: 50px;
+
+  @include below('sm') {
+    width: 100%;
+    margin: 0;
+    display: flex;
+  }
+
+  + .ui-work-card {
+    margin-top: 80px;
+  }
 
   &:hover {
     .work-img-wrapper:before {
@@ -59,6 +67,10 @@ export default {
 
   &:first-of-type {
     margin-top: 0;
+
+    @include below('sm') {
+      margin-top: 80px;
+    }
   }
 
   &:last-of-type {
@@ -67,26 +79,77 @@ export default {
 
   &.-left {
     transform: translateX(-60%);
-    padding-left: 50px;
+
+    @include below('sm') {
+      transform: none;
+      align-self: flex-end;
+    }
+
+    .work-img-wrapper {
+      padding-left: 50px;
+
+      &:before {
+        left: 50px;
+      }
+
+      @include below('sm') {
+        padding-left: 20px;
+        order: 2;
+      }
+    }
+
+    .work-overlay {
+      padding-left: 70px;
+
+      @include below('sm') {
+        padding-left: 0;
+        order: 1;
+      }
+    }
   }
 
   &.-right {
     transform: translateX(60%);
-    padding-right: 50px;
+
+    @include below('sm') {
+      transform: none;
+    }
+
+    .work-img-wrapper {
+      padding-right: 50px;
+
+      &:before {
+        right: 50px;
+      }
+
+      @include below('sm') {
+        padding-right: 20px;
+      }
+    }
 
     .work-overlay {
       padding-right: 70px;
+
+      @include below('sm') {
+        padding-right: 0;
+      }
     }
   }
 
   .work-img-wrapper {
     position: relative;
+    padding-bottom: 50px;
+
+    @include below('sm') {
+      width: 75%;
+      padding-bottom: 20px;
+    }
 
     &:before {
       content: '';
       position: absolute;
       top: 0;
-      bottom: 0;
+      bottom: 50px;
       left: 0;
       right: 0;
       background: linear-gradient(
@@ -96,6 +159,10 @@ export default {
       );
       opacity: 0;
       transition: opacity 0.3s ease-out;
+
+      @include below('sm') {
+        display: none;
+      }
     }
   }
 
@@ -107,9 +174,25 @@ export default {
     padding: 20px;
     opacity: 0;
     transition: opacity 0.3s ease-out;
+    z-index: 2;
+
+    @include below('sm') {
+      position: relative;
+      width: 25%;
+      justify-content: start;
+      flex-direction: column;
+      bottom: auto;
+      padding: 0;
+      opacity: 1;
+      transition: none;
+    }
 
     .work-content {
       width: 70%;
+
+      @include below('sm') {
+        width: 100%;
+      }
 
       .work-desc {
         overflow: hidden;
@@ -124,6 +207,11 @@ export default {
     .work-cta {
       width: 28%;
       align-self: flex-end;
+
+      @include below('sm') {
+        width: 100%;
+        align-self: flex-start;
+      }
     }
   }
 }
