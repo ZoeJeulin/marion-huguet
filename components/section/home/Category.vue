@@ -1,7 +1,10 @@
 <template>
   <div class="home-category">
     <div class="category-img" :class="{ right: index % 2 == 1 }">
-      <img src="https://source.unsplash.com/random" alt="category image" />
+      <nuxt-picture
+        src="https://source.unsplash.com/random"
+        alt="category image"
+      />
     </div>
     <div class="category-wrapper">
       <ui-icon name="etoile" class="star" />

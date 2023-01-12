@@ -1,8 +1,9 @@
 <template>
   <li class="ui-work-card" :class="index % 2 == 1 ? '-left' : '-right'">
     <div class="work-img-wrapper">
-      <img
+      <nuxt-picture
         class="work-img"
+        :img-attrs="{ class: 'work-img' }"
         :src="work.workImages[0].responsiveImage.src"
         :alt="work.workTitle"
       />

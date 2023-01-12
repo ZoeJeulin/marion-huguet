@@ -70,12 +70,10 @@ export default {
     position: relative;
 
     .section {
-      + .section {
-        margin-top: 80px;
+      margin-top: 80px;
 
-        @include below('sm') {
-          margin-top: 10px;
-        }
+      @include below('sm') {
+        margin-top: 10px;
       }
     }
   }

@@ -9,11 +9,11 @@
       {{ section.description }}
     </div>
     <div class="shop-images">
-      <img
+      <nuxt-picture
         v-for="i in 3"
         :key="i"
         src="https://source.unsplash.com/random"
-        alt="categroy image"
+        alt="category image"
       />
     </div>
     <ui-link :label="section.btnLabel" />
@@ -83,7 +83,7 @@ export default {
       margin-bottom: 40px;
     }
 
-    img {
+    picture {
       width: 20%;
 
       @include below('sm') {
