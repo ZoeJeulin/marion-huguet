@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { mapState } from 'vuex'
 import PageInfosContactQuery from '~/assets/graphql/pages/infosContact.graphql'
 
@@ -44,6 +46,19 @@ export default {
       global: (state) => state.global,
     }),
   },
+  mounted() {
+    const mqInfosContact = gsap.matchMedia()
+
+    mqInfosContact.add('(min-width: 641px)', () => {
+      ScrollTrigger.create({
+        trigger: '.infos-contact',
+        start: 'top top',
+        endTrigger: 'footer',
+        end: 'top bottom',
+        pin: '.whale',
+      })
+    })
+  },
 }
 </script>
 
@@ -58,8 +73,13 @@ export default {
 
   .whale {
     position: absolute;
-    top: 0;
+    top: -40px;
     right: -50%;
+
+    img {
+      height: 105vh;
+      max-width: fit-content;
+    }
   }
 }
 </style>

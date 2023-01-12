@@ -45,6 +45,9 @@ export default {
 
 <style lang="scss">
 footer {
+  position: relative;
+  z-index: 5;
+
   .footer-top {
     background: $blue2;
     padding: 30px 40px;
