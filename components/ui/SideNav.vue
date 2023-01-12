@@ -67,10 +67,10 @@ export default {
       &::after {
         content: '';
         position: absolute;
-        bottom: -74px;
+        bottom: -75px;
         left: 9px;
         width: 1px;
-        height: 75px;
+        height: 76px;
         background: $white;
       }
     }
@@ -87,6 +87,7 @@ export default {
       margin-left: 10px;
       opacity: 0;
       pointer-events: none;
+      box-shadow: 4px 4px 20px rgba($blue2, 0.5);
       background: $blue1;
 
       transition: opacity 0.2s ease-out, background 0.2s ease-out,

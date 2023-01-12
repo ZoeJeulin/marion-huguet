@@ -48,19 +48,32 @@ export default {
     return { page }
   },
   mounted() {
+    const mqPortoflio = gsap.matchMedia()
+
     const categories = this.$el.querySelectorAll('.category')
     categories.forEach((cat) => {
-      ScrollTrigger.create({
-        trigger: cat,
-        start: 'top top',
-        end: 'bottom bottom',
-        pin: cat.querySelector('.category-title'),
-        markers: true,
+      mqPortoflio.add('(min-width: 641px)', () => {
+        ScrollTrigger.create({
+          trigger: cat,
+          start: 'top top',
+          end: 'bottom bottom',
+          pin: cat.querySelector('.category-title'),
+        })
+      })
+
+      mqPortoflio.add('(max-width: 640px)', () => {
+        gsap.to(cat.querySelector('.category-title'), {
+          yPercent: 75,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: cat,
+            scrub: true,
+          },
+        })
       })
     })
 
-    const mq = gsap.matchMedia()
-    mq.add('(min-width: 641px)', () => {
+    mqPortoflio.add('(min-width: 641px)', () => {
       ScrollTrigger.create({
         trigger: '.categories',
         start: 'top top',
@@ -84,9 +97,6 @@ export default {
 
 <style lang="scss">
 .portfolio {
-  @include below('sm') {
-    margin-right: -25px;
-  }
   .title {
     margin-top: 50vh;
     position: relative;
@@ -101,6 +111,14 @@ export default {
       justify-content: space-between;
       align-items: center;
     }
+
+    .star {
+      display: none;
+
+      @include below('sm') {
+        display: inline-block;
+      }
+    }
   }
 
   .categories {
@@ -109,6 +127,7 @@ export default {
 
     @include below('sm') {
       padding-bottom: 40px;
+      margin-top: 60px;
     }
 
     .bird-wrapper {
@@ -127,7 +146,7 @@ export default {
       margin-top: -15vh;
 
       @include below('sm') {
-        margin-top: 60px;
+        margin-top: 0;
       }
     }
   }

@@ -13,6 +13,7 @@
     </div>
     <div class="work-overlay">
       <div class="work-content">
+        <div class="work-category t-body-3">{{ category }}</div>
         <div class="work-title t-h3">{{ work.workTitle }}</div>
         <div class="work-desc t-body-2">{{ work.workDescription }}</div>
       </div>
@@ -31,6 +32,10 @@ export default {
       type: Object,
       default: () => {},
     },
+    category: {
+      type: String,
+      default: '',
+    },
     index: {
       type: Number,
       default: 1,
@@ -42,17 +47,19 @@ export default {
 <style lang="scss">
 .ui-work-card {
   position: relative;
-  width: 35%;
+  width: 40%;
   margin: -10% auto;
 
   @include below('sm') {
-    width: 100%;
+    width: 75%;
     margin: 0;
     display: flex;
   }
 
   + .ui-work-card {
-    margin-top: 80px;
+    @include below('sm') {
+      margin-top: 80px;
+    }
   }
 
   &:hover {
@@ -68,8 +75,15 @@ export default {
   &:first-of-type {
     margin-top: 0;
 
-    @include below('sm') {
-      margin-top: 80px;
+    &.-left .work-img-wrapper:before,
+    &.-right .work-img-wrapper:before {
+      @include below('sm') {
+        background: linear-gradient(
+          180deg,
+          rgba($blue2, 0.3) 0%,
+          rgba($blue2, 0) 100%
+        );
+      }
     }
   }
 
@@ -83,18 +97,27 @@ export default {
     @include below('sm') {
       transform: none;
       align-self: flex-end;
+      justify-content: flex-end;
     }
 
     .work-img-wrapper {
       padding-left: 50px;
 
-      &:before {
-        left: 50px;
-      }
-
       @include below('sm') {
         padding-left: 20px;
-        order: 2;
+      }
+
+      &:before {
+        left: 50px;
+
+        @include below('sm') {
+          left: 20px;
+          background: linear-gradient(
+            90deg,
+            rgba($blue2, 0.3) 0%,
+            rgba($blue2, 0) 100%
+          );
+        }
       }
     }
 
@@ -103,7 +126,14 @@ export default {
 
       @include below('sm') {
         padding-left: 0;
-        order: 1;
+        left: 0;
+        transform: translateX(calc(-100% + 40px));
+      }
+
+      .work-content {
+        @include below('sm') {
+          text-align: right;
+        }
       }
     }
   }
@@ -118,12 +148,21 @@ export default {
     .work-img-wrapper {
       padding-right: 50px;
 
-      &:before {
-        right: 50px;
-      }
-
       @include below('sm') {
         padding-right: 20px;
+      }
+
+      &:before {
+        right: 50px;
+
+        @include below('sm') {
+          right: 20px;
+          background: linear-gradient(
+            90deg,
+            rgba($blue2, 0) 0%,
+            rgba($blue2, 0.3) 100%
+          );
+        }
       }
     }
 
@@ -132,6 +171,8 @@ export default {
 
       @include below('sm') {
         padding-right: 0;
+        right: 0;
+        transform: translateX(calc(100% - 40px));
       }
     }
   }
@@ -141,7 +182,6 @@ export default {
     padding-bottom: 50px;
 
     @include below('sm') {
-      width: 75%;
       padding-bottom: 20px;
     }
 
@@ -161,7 +201,9 @@ export default {
       transition: opacity 0.3s ease-out;
 
       @include below('sm') {
-        display: none;
+        bottom: 20px;
+        opacity: 1;
+        transition: none;
       }
     }
   }
@@ -177,10 +219,10 @@ export default {
     z-index: 2;
 
     @include below('sm') {
-      position: relative;
-      width: 25%;
+      width: 45%;
       justify-content: start;
       flex-direction: column;
+      top: 20px;
       bottom: auto;
       padding: 0;
       opacity: 1;
@@ -192,6 +234,16 @@ export default {
 
       @include below('sm') {
         width: 100%;
+      }
+
+      .work-category {
+        display: none;
+
+        @include below('sm') {
+          display: block;
+          margin-bottom: 10px;
+          text-transform: uppercase;
+        }
       }
 
       .work-desc {
