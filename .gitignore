@@ -92,5 +92,4 @@ sw.*
 # local npmrc
 /.npmrc
 
-# Local Netlify folder
-.netlify
+
