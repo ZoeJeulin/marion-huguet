@@ -1,13 +1,13 @@
 <template>
   <div class="home-category">
-    <div class="category-img" :class="{ right: index % 2 == 1 }">
-      <nuxt-picture
-        src="https://source.unsplash.com/random"
-        alt="category image"
-      />
-    </div>
-    <div class="category-wrapper">
-      <ui-icon name="etoile" class="star" />
+    <ui-blob
+      class="category-img"
+      :class="{ '-right': index % 2 == 1 }"
+      :index="index"
+      :path-name="`path-${section.title.toLowerCase().replace(/[\W_]+/g, '-')}`"
+    />
+    <div class="category-wrapper" :class="{ '-right': index % 2 == 1 }">
+      <ui-icon name="etoile" class="star -desktop" />
       <div class="category-content">
         <h2 class="category-title t-h2">{{ section.title }}</h2>
         <div class="category-desc t-body-1">
@@ -16,8 +16,9 @@
         <ui-link :label="section.btnLabel" />
       </div>
 
-      <ui-icon name="etoile" class="star" />
+      <ui-icon name="etoile" class="star -desktop" />
     </div>
+    <ui-icon name="etoile" class="star -mobile" />
     <ui-frame :desktop-corners="[2, 3]" :mobile-corners="[1, 2, 3, 4]" />
   </div>
 </template>
@@ -48,23 +49,41 @@ export default {
   @include below('sm') {
     flex-direction: column;
     padding: 0 10px;
+    min-height: auto;
+    justify-content: center;
   }
 
   .category-img {
-    width: 30%;
-    align-self: center;
+    width: 40%;
 
-    &.right {
+    &.-right {
       order: 2;
+
+      @include below('sm') {
+        left: -10%;
+      }
     }
 
     @include below('sm') {
-      width: 50%;
+      width: 66%;
+      position: absolute;
+      top: 20%;
+      right: -10%;
     }
   }
 
   .category-wrapper {
-    width: 50%;
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 2;
+
+    &.-right {
+      @include below('sm') {
+        text-align: right;
+      }
+    }
 
     @include below('sm') {
       width: 100%;
@@ -81,10 +100,29 @@ export default {
         margin-bottom: 40px;
       }
     }
+  }
 
-    .star {
+  .star {
+    margin: auto;
+
+    &.-desktop {
       display: block;
-      margin: auto;
+      @include below('sm') {
+        display: none;
+      }
+    }
+
+    &.-mobile {
+      display: none;
+
+      @include below('sm') {
+        display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transform: translateY(50%);
+      }
     }
   }
 }

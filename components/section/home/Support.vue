@@ -12,7 +12,7 @@
       <ui-link label="En voir plus" />
     </div>
     <div class="support-wrapper">
-      <ui-icon name="etoile" class="star" />
+      <ui-icon name="etoile" class="star -desktop" />
       <div class="support-content">
         <h2 class="support-title t-h2">{{ section.title }}</h2>
         <div class="support-desc t-body-1">
@@ -21,8 +21,10 @@
         <ui-link :label="section.btnLabel" />
       </div>
 
-      <ui-icon name="etoile" class="star" />
+      <ui-icon name="etoile" class="star -desktop" />
     </div>
+
+    <ui-icon name="etoile" class="star -mobile" />
     <ui-frame :desktop-corners="[2, 3]" :mobile-corners="[1, 2, 3, 4]" />
   </div>
 </template>
@@ -81,10 +83,29 @@ export default {
         margin-bottom: 40px;
       }
     }
+  }
 
-    .star {
+  .star {
+    margin: auto;
+
+    &.-desktop {
       display: block;
-      margin: auto;
+      @include below('sm') {
+        display: none;
+      }
+    }
+
+    &.-mobile {
+      display: none;
+
+      @include below('sm') {
+        display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transform: translateY(50%);
+      }
     }
   }
 }

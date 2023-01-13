@@ -9,14 +9,16 @@
       {{ section.description }}
     </div>
     <div class="shop-images">
-      <nuxt-picture
+      <ui-blob
         v-for="i in 3"
-        :key="i"
-        src="https://source.unsplash.com/random"
-        alt="category image"
+        :key="`shop-img-${i}`"
+        class="shop-img"
+        :index="i"
+        :path-name="`path-shop-${i}`"
       />
     </div>
     <ui-link :label="section.btnLabel" />
+    <ui-icon name="etoile" class="star -mobile" />
     <ui-frame :desktop-corners="[2, 3]" :mobile-corners="[1, 2, 3, 4]" />
   </div>
 </template>
@@ -83,11 +85,34 @@ export default {
       margin-bottom: 40px;
     }
 
-    picture {
-      width: 20%;
+    .shop-img {
+      width: 30%;
 
       @include below('sm') {
         width: 30%;
+      }
+    }
+  }
+  .star {
+    margin: auto;
+
+    &.-desktop {
+      display: block;
+      @include below('sm') {
+        display: none;
+      }
+    }
+
+    &.-mobile {
+      display: none;
+
+      @include below('sm') {
+        display: block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transform: translateY(50%);
       }
     }
   }

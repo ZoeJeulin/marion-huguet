@@ -6,6 +6,7 @@
         {{ introText }}
       </div>
     </div>
+    <ui-icon name="etoile" class="star -mobile" />
     <ui-frame :desktop-corners="[1, 2, 3, 4]" />
   </div>
 </template>
@@ -44,6 +45,20 @@ export default {
       @include below('sm') {
         margin-bottom: 20px;
       }
+    }
+  }
+
+  .star {
+    display: none;
+
+    @include below('sm') {
+      display: block;
+      margin: auto;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transform: translateY(50%);
     }
   }
 }

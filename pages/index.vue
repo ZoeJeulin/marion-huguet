@@ -52,6 +52,22 @@ export default {
         pin: '.ui-side-nav',
       })
     })
+
+    const categories = this.$el.querySelectorAll('.home-category')
+    categories.forEach((cat) => {
+      mq.add('(max-width: 640px)', () => {
+        gsap.to(cat.querySelector('.img-wrapper'), {
+          yPercent: 50,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: cat,
+            start: 'top center',
+            end: 'bottom center',
+            scrub: true,
+          },
+        })
+      })
+    })
   },
   methods: {
     getComponent(section) {
@@ -74,6 +90,7 @@ export default {
 
       @include below('sm') {
         margin-top: 10px;
+        min-height: 75vh;
       }
     }
   }
