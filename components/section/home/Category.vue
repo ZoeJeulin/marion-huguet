@@ -68,7 +68,7 @@ export default {
     @include below('sm') {
       width: 66%;
       position: absolute;
-      top: 20%;
+      top: 2%;
       right: -5%;
     }
   }

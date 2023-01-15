@@ -57,7 +57,7 @@ export default {
     categories.forEach((cat) => {
       mq.add('(max-width: 640px)', () => {
         gsap.to(cat.querySelector('.img-wrapper'), {
-          yPercent: 50,
+          yPercent: 25,
           ease: 'none',
           scrollTrigger: {
             trigger: cat,

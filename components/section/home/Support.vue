@@ -1,13 +1,13 @@
 <template>
   <div class="home-support">
     <div class="support-insta">
-      <ul>
-        <!-- <li v-for="post in section.feedInstagram" :key="`post-${post.id}`">
+      <!-- <ul>
+        <li v-for="post in section.feedInstagram" :key="`post-${post.id}`">
           <a :href="post.permalink">
             <nuxt-picture :src="`${post.permalink}media/?size=l`" :alt="post.caption" />
           </a>
-        </li> -->
-      </ul>
+        </li>
+      </ul> -->
       <nuxt-picture src="https://source.unsplash.com/random" alt="feed insta" />
       <ui-link label="En voir plus" />
     </div>
@@ -52,8 +52,9 @@ export default {
   justify-content: space-between;
 
   @include below('sm') {
-    flex-direction: column;
     padding: 0 10px;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .support-insta {
@@ -62,6 +63,7 @@ export default {
 
     @include below('sm') {
       width: 50%;
+      order: 2;
     }
   }
 
@@ -70,10 +72,15 @@ export default {
 
     @include below('sm') {
       width: 100%;
+      order: 1;
     }
 
     .support-content {
       padding: 100px 0;
+
+      @include below('sm') {
+        padding: 0;
+      }
 
       .support-title {
         margin-bottom: 20px;

@@ -57,7 +57,7 @@ export default {
 <style lang="scss">
 .home-shop {
   position: relative;
-  padding: 40px;
+  padding: 120px 40px;
   text-align: center;
 
   @include below('sm') {
@@ -88,7 +88,7 @@ export default {
   }
 
   .shop-desc {
-    margin-bottom: 80px;
+    margin-bottom: 60px;
 
     @include below('sm') {
       margin-bottom: 10px;
@@ -98,7 +98,11 @@ export default {
   .shop-images {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 80px;
+    margin-bottom: 180px;
+
+    @include below('sm') {
+      margin-bottom: 80px;
+    }
 
     .shop-img {
       width: 30%;
@@ -108,11 +112,19 @@ export default {
       }
 
       &:first-of-type {
-        transform: translate(-10%, 40px);
+        transform: translateY(25%);
+
+        @include below('sm') {
+          transform: translate(-10%, 40px);
+        }
       }
 
       &:last-of-type {
-        transform: translateY(40px);
+        transform: translateY(25%);
+
+        @include below('sm') {
+          transform: translateY(40px);
+        }
       }
     }
   }
