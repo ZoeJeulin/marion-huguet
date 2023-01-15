@@ -5,6 +5,7 @@
       :class="{ '-right': index % 2 == 1 }"
       :index="index"
       :path-name="`path-${section.title.toLowerCase().replace(/[\W_]+/g, '-')}`"
+      :scale-mobile="0.45"
     />
     <div class="category-wrapper" :class="{ '-right': index % 2 == 1 }">
       <ui-icon name="etoile" class="star -desktop" />
@@ -68,7 +69,7 @@ export default {
       width: 66%;
       position: absolute;
       top: 20%;
-      right: -10%;
+      right: -5%;
     }
   }
 

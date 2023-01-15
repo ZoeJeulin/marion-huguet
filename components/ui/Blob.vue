@@ -16,13 +16,13 @@
         <path
           v-else-if="index % 3 == 1"
           class="path-2"
-          d="M453.5,308Q428,376,369.5,417Q311,458,240,458Q169,458,115.5,413.5Q62,369,33,304.5Q4,240,32.5,175Q61,110,116.5,70Q172,30,239.5,31.5Q307,33,368.5,67.5Q430,102,454.5,171Q479,240,453.5,308Z"
+          d="M448.5,306Q421,372,365,412.5Q309,453,238.5,457Q168,461,114,415.5Q60,370,36.5,305Q13,240,31,170.5Q49,101,110,65Q171,29,241.5,24Q312,19,369.5,61.5Q427,104,451.5,172Q476,240,448.5,306Z"
         />
 
         <path
           v-else
           class="path-3"
-          d="M448.5,306Q421,372,365,412.5Q309,453,238.5,457Q168,461,114,415.5Q60,370,36.5,305Q13,240,31,170.5Q49,101,110,65Q171,29,241.5,24Q312,19,369.5,61.5Q427,104,451.5,172Q476,240,448.5,306Z"
+          d="M453.5,308Q428,376,369.5,417Q311,458,240,458Q169,458,115.5,413.5Q62,369,33,304.5Q4,240,32.5,175Q61,110,116.5,70Q172,30,239.5,31.5Q307,33,368.5,67.5Q430,102,454.5,171Q479,240,453.5,308Z"
         />
       </clipPath>
     </svg>
@@ -49,17 +49,13 @@ export default {
       type: String,
       default: 'path',
     },
-    /* width: {
-      type: String,
-      default: '480',
-    },
     scale: {
       type: Number,
       default: 1,
-    }, */
-    widthMobile: {
+    },
+    scaleMobile: {
       type: Number,
-      default: 390 / 2,
+      default: 1,
     },
   },
   mounted() {
@@ -68,12 +64,17 @@ export default {
 
     mqCategoryHome.add('(max-width: 640px)', () => {
       gsap.set(svgPath, {
-        scale: this.widthMobile / 480,
+        scale: this.scaleMobile,
+      })
+    })
+
+    mqCategoryHome.add('(min-width: 641px)', () => {
+      gsap.set(svgPath, {
+        scale: this.scale,
       })
     })
 
     gsap.set(svgPath, {
-      scale: this.scale,
       transformOrigin: '50% 50%',
     })
 

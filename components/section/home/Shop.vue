@@ -13,8 +13,11 @@
         v-for="i in 3"
         :key="`shop-img-${i}`"
         class="shop-img"
+        :style="`width:${blobW}px`"
         :index="i"
         :path-name="`path-shop-${i}`"
+        :scale="0.85"
+        :scale-mobile="0.18"
       />
     </div>
     <ui-link :label="section.btnLabel" />
@@ -35,6 +38,19 @@ export default {
       default: () => {},
     },
   },
+  data() {
+    return {
+      blobW: 380,
+      blobScale: 1,
+      w: 1440,
+    }
+  },
+  mounted() {
+    this.w = window.innerWidth
+    this.blobW = this.$el.querySelector('.shop-images').scrollWidth / 3
+    if (this.w > 640) this.blobW -= 20
+    this.blobScale = (this.blobW * 3) / this.w
+  },
 }
 </script>
 
@@ -46,6 +62,9 @@ export default {
 
   @include below('sm') {
     padding: 40px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .shop-title {
@@ -72,7 +91,7 @@ export default {
     margin-bottom: 80px;
 
     @include below('sm') {
-      margin-bottom: 40px;
+      margin-bottom: 10px;
     }
   }
 
@@ -81,15 +100,19 @@ export default {
     justify-content: space-between;
     margin-bottom: 80px;
 
-    @include below('sm') {
-      margin-bottom: 40px;
-    }
-
     .shop-img {
       width: 30%;
 
       @include below('sm') {
         width: 30%;
+      }
+
+      &:first-of-type {
+        transform: translate(-10%, 40px);
+      }
+
+      &:last-of-type {
+        transform: translateY(40px);
       }
     }
   }
