@@ -1,5 +1,10 @@
 <template>
   <div class="home">
+    <Particles
+      id="tsparticles"
+      :options="options"
+      :particles-init="particlesInit"
+    />
     <section-home-intro :intro-text="page.introText" class="section" />
     <div class="sections">
       <ui-side-nav :sections="page.sections" />
@@ -19,22 +24,50 @@
 <script>
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { loadFull } from 'tsparticles'
 import PageHomeQuery from '~/assets/graphql/pages/home.graphql'
 
 export default {
   name: 'Home',
-  nuxtI18n: {
-    paths: {
-      fr: '/',
-      en: '/',
-    },
-  },
   async asyncData(context) {
     const { page } = await context.$query(context.app.$axios, PageHomeQuery, {
       locale: context.app.i18n.locale,
     })
 
     return { page }
+  },
+  data() {
+    return {
+      options: {
+        fullScreen: {
+          enable: true,
+          zIndex: -1,
+        },
+        particles: {
+          color: {
+            value: '#fff',
+          },
+          move: {
+            enable: true,
+            speed: 0.5,
+            direction: 'top',
+          },
+          opacity: {
+            value: 0.15,
+          },
+          size: {
+            value: 2,
+          },
+          wobble: {
+            enable: true,
+            speed: {
+              angle: 20,
+              move: 5,
+            },
+          },
+        },
+      },
+    }
   },
   mounted() {
     /* const appId = '711878503910367'
@@ -75,6 +108,15 @@ export default {
         .toString()
         .replace('_', '-')
         .replace('section', 'section-home')
+    },
+    particlesInit: async (engine) => {
+      await loadFull(engine)
+    },
+  },
+  nuxtI18n: {
+    paths: {
+      fr: '/',
+      en: '/',
     },
   },
 }
