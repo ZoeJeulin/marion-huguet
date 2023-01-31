@@ -10,12 +10,37 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 
 gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(MotionPathPlugin)
 
-export default {}
+export default {
+  beforeMount() {
+    this.resize()
+    window.addEventListener('resize', this.resize)
+  },
+  mounted() {
+    window.addEventListener('resize', this.resize)
+    this.resize()
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.resize)
+  },
+  methods: {
+    ...mapMutations('layout', ['SET_WINDOW_SIZE']),
+    resize() {
+      clearTimeout(this.resizeDebounce)
+      this.resizeDebounce = setTimeout(() => {
+        this.SET_WINDOW_SIZE()
+        this.$nuxt.$emit('WINDOW:RESIZE')
+      }, 100)
+    },
+  },
+}
 </script>
 
 <style lang="scss">
