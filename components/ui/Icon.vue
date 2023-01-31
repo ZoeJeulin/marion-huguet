@@ -28,6 +28,19 @@ export default {
 
   &.star {
     width: 30px;
+    transform: rotate(0);
+
+    transition: transform 0.3s ease-out;
+
+    &:hover {
+      &:nth-of-type(2n) {
+        transform: rotate(-40deg);
+      }
+
+      &:nth-of-type(2n + 1) {
+        transform: rotate(40deg);
+      }
+    }
   }
 
   svg {
