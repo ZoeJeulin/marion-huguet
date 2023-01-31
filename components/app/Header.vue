@@ -35,6 +35,7 @@ export default {
   padding: 45px 40px;
   border-bottom: 1px solid $beige;
   background: $blue1;
+  box-shadow: 0 20px 30px rgba($color: $blue2, $alpha: 0.3);
 
   .nav-item + .nav-item {
     margin-left: 60px;

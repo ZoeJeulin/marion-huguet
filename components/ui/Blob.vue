@@ -98,7 +98,6 @@ export default {
     top: 0;
     bottom: 0;
     margin: auto;
-    transform-origin: 50% 50%;
     object-fit: cover;
   }
 }
