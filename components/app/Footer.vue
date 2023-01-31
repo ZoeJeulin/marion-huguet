@@ -5,11 +5,15 @@
         <ui-icon name="typo" />
       </div>
       <div class="footer-links">
-        <ul>
-          <li class="t-cta-2">Accueil</li>
-          <li class="t-cta-2">Portfolio</li>
-          <li class="t-cta-2">Infos & Contact</li>
-          <li class="t-cta-2">Boutique</li>
+        <ul class="links-list">
+          <nuxt-link
+            v-for="(link, id) in global.navLinks"
+            :key="id"
+            :to="localePath({ name: link.slug ? link.slug : '/' })"
+            class="t-cta-2 link-item"
+          >
+            {{ link.pageTitle }}
+          </nuxt-link>
         </ul>
       </div>
       <div class="footer-insta">
@@ -60,8 +64,9 @@ footer {
     }
 
     .footer-links {
-      ul {
-        li:not(:last-child) {
+      .links-list {
+        .link-item:not(:last-child) {
+          display: block;
           margin-bottom: 20px;
 
           @include below('sm') {
