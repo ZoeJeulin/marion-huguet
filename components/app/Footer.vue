@@ -1,28 +1,30 @@
 <template>
   <footer>
     <div class="footer-top">
-      <div>
+      <div class="footer-typo-wrapper">
         <ui-icon name="typo" />
       </div>
-      <div class="footer-links">
-        <ul class="links-list">
-          <nuxt-link
-            v-for="(link, id) in global.navLinks"
-            :key="id"
-            :to="localePath({ name: link.slug ? link.slug : '/' })"
-            class="t-cta-2 link-item"
-          >
-            {{ link.pageTitle }}
-          </nuxt-link>
-        </ul>
-      </div>
-      <div class="footer-insta">
-        <a :href="global.instagramLink">{{ global.instagramLabel }}</a>
-      </div>
-      <div class="footer-donation">
-        <a class="t-cta-2" :href="global.donationsLink">{{
-          global.donationsLabel
-        }}</a>
+      <div class="footer-content-wrapper">
+        <div class="footer-links">
+          <ul class="links-list">
+            <nuxt-link
+              v-for="(link, id) in global.navLinks"
+              :key="id"
+              :to="localePath({ name: link.slug ? link.slug : '/' })"
+              class="t-cta-2 link-item"
+            >
+              {{ link.pageTitle }}
+            </nuxt-link>
+          </ul>
+        </div>
+        <div class="footer-insta">
+          <a :href="global.instagramLink">{{ global.instagramLabel }}</a>
+        </div>
+        <div class="footer-donation">
+          <a class="t-cta-2" :href="global.donationsLink">{{
+            global.donationsLabel
+          }}</a>
+        </div>
       </div>
     </div>
     <div class="footer-bottom t-body-3">
@@ -63,32 +65,50 @@ footer {
       padding: 20px;
     }
 
-    .footer-links {
-      .links-list {
-        .link-item:not(:last-child) {
-          display: block;
-          margin-bottom: 20px;
+    .footer-content-wrapper {
+      display: flex;
+      justify-content: space-between;
+      width: 60%;
 
-          @include below('sm') {
-            margin-bottom: 15px;
+      @include below('sm') {
+        flex-direction: column;
+      }
+
+      .footer-links {
+        @include below('sm') {
+          margin-top: 20px;
+        }
+        .links-list {
+          .link-item {
+            width: fit-content;
+
+            &:not(:last-child) {
+              display: block;
+              margin-bottom: 20px;
+
+              @include below('sm') {
+                margin-bottom: 15px;
+              }
+            }
           }
         }
       }
-    }
 
-    .footer-insta {
-      align-self: center;
+      .footer-insta {
+        align-self: center;
 
-      @include below('sm') {
-        align-self: flex-start;
+        @include below('sm') {
+          display: none;
+        }
       }
-    }
 
-    .footer-donation {
-      align-self: center;
+      .footer-donation {
+        align-self: center;
 
-      @include below('sm') {
-        align-self: flex-start;
+        @include below('sm') {
+          align-self: flex-start;
+          margin-top: 15px;
+        }
       }
     }
   }

@@ -172,7 +172,6 @@ export default {
           scrub: 3,
           endTrigger: supportSection,
           once: true,
-          markers: true,
         },
         transformOrigin: '50% 50%',
         ease: 'none',
@@ -197,7 +196,6 @@ export default {
           start: 'top top',
           end: 'bottom top',
           scrub: true,
-          markers: true,
         },
       })
 

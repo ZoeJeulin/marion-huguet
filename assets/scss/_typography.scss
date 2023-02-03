@@ -68,5 +68,6 @@
   @extend %t-cta;
   @include fluid-type($xs, $xl, 14px, 16px);
   line-height: 1.33;
+  font-weight: 600;
 }
 
