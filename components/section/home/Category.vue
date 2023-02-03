@@ -108,6 +108,7 @@ export default {
 
     &.-desktop {
       display: block;
+
       @include below('sm') {
         display: none;
       }
@@ -122,7 +123,7 @@ export default {
         left: 0;
         right: 0;
         bottom: 0;
-        transform: translateY(50%);
+        transform: translateY(100%);
       }
     }
   }
