@@ -66,7 +66,7 @@ body {
     padding: 40px;
 
     @include below('sm') {
-      padding: 40px 20px;
+      padding: 100px 20px 40px;
     }
   }
 }

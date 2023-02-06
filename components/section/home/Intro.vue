@@ -31,12 +31,10 @@ export default {
   position: relative;
   padding: 40px;
   display: flex;
-  overflow: hidden;
 
   @include below('sm') {
     padding: 0;
     flex-direction: column;
-    overflow: visible;
   }
 
   .intro-content {
@@ -67,6 +65,7 @@ export default {
     .bird {
       position: absolute;
       width: 20%;
+      height: fit-content;
 
       &:nth-of-type(1) {
         top: 20%;

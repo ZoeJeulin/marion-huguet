@@ -81,9 +81,9 @@ footer {
         .links-list {
           .link-item {
             width: fit-content;
+            display: block;
 
             &:not(:last-child) {
-              display: block;
               margin-bottom: 20px;
 
               @include below('sm') {
