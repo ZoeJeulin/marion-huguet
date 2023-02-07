@@ -64,6 +64,7 @@ body {
 
   #main {
     padding: 40px;
+    overflow: hidden;
 
     @include below('sm') {
       padding: 100px 20px 40px;

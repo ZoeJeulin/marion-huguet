@@ -233,9 +233,6 @@ export default {
       })
     })
   },
-  beforeDestroy() {
-    this.tl.kill()
-  },
   methods: {
     getComponent(section) {
       return section

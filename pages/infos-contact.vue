@@ -76,6 +76,10 @@ export default {
     top: -40px;
     right: -50%;
 
+    @include below('sm') {
+      display: none;
+    }
+
     img {
       height: 105vh;
       max-width: fit-content;

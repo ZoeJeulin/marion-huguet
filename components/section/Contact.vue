@@ -91,12 +91,12 @@ export default {
   position: relative;
   display: flex;
   width: 70%;
-  margin-top: 120px;
+  margin-top: 180px;
 
   @include below('sm') {
     display: block;
     width: 100%;
-    margin-top: 60px;
+    margin-top: 80px;
   }
 
   .contact-title {
