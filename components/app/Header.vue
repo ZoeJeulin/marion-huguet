@@ -26,7 +26,7 @@
           :key="id"
           :to="localePath({ name: link.slug ? link.slug : '/' })"
           class="t-cta-1 nav-item"
-          @click="toggleMenu"
+          @click.native="toggleMenu"
         >
           {{ link.pageTitle }}
         </nuxt-link>
@@ -34,6 +34,7 @@
           :href="global.donationsLink"
           target="_blank"
           class="t-cta-1 nav-item"
+          @click="toggleMenu"
           >{{ global.donationsLabel }}</a
         >
       </ul>
@@ -59,6 +60,7 @@ export default {
   mounted() {
     this.isMobile = window.innerWidth <= 640
   },
+
   methods: {
     toggleMenu() {
       this.$el.querySelector('.header-panel').classList.toggle('-show')
@@ -80,7 +82,11 @@ export default {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid $beige;
-    padding: 45px 40px;
+    padding: 30px 40px;
+    height: 90px;
+    position: fixed;
+    width: 100%;
+    z-index: 5;
 
     .nav-item + .nav-item {
       margin-left: 60px;

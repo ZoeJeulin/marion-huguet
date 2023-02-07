@@ -82,7 +82,7 @@ export default {
     writing-mode: vertical-rl;
     -webkit-writing-mode: vertical-rl;
     white-space: normal;
-    margin: 5vh 0;
+    margin: calc(90px + 5vh) 0 5vh;
     @include fluid-type($xs, $xl, 36px, 90px);
 
     @include below('sm') {

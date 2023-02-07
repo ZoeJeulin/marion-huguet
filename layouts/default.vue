@@ -3,6 +3,11 @@
   <div>
     <app-header />
     <div id="main">
+      <Particles
+        id="tsparticles"
+        :options="options"
+        :particles-init="particlesInit"
+      />
       <nuxt />
     </div>
     <app-footer />
@@ -14,11 +19,45 @@ import { mapMutations } from 'vuex'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
+import { loadFull } from 'tsparticles'
 
 gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(MotionPathPlugin)
 
 export default {
+  data() {
+    return {
+      options: {
+        fullScreen: {
+          enable: true,
+          zIndex: -1,
+        },
+        particles: {
+          color: {
+            value: '#fff',
+          },
+          move: {
+            enable: true,
+            speed: 0.5,
+            direction: 'top',
+          },
+          opacity: {
+            value: 0.15,
+          },
+          size: {
+            value: 2,
+          },
+          wobble: {
+            enable: true,
+            speed: {
+              angle: 20,
+              move: 5,
+            },
+          },
+        },
+      },
+    }
+  },
   beforeMount() {
     this.resize()
     window.addEventListener('resize', this.resize)
@@ -29,6 +68,11 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.resize)
+    console.log('leave')
+    this.$el.querySelector('.header-panel').classList.remove('-show')
+    if (document.body.style.overflow === 'hidden') {
+      document.body.style.overflow = ''
+    }
   },
   methods: {
     ...mapMutations('layout', ['SET_WINDOW_SIZE']),
@@ -38,6 +82,9 @@ export default {
         this.SET_WINDOW_SIZE()
         this.$nuxt.$emit('WINDOW:RESIZE')
       }, 100)
+    },
+    particlesInit: async (engine) => {
+      await loadFull(engine)
     },
   },
 }
@@ -63,7 +110,7 @@ body {
   background: $blue1;
 
   #main {
-    padding: 40px;
+    padding: 160px 40px 40px 40px;
     overflow: hidden;
 
     @include below('sm') {

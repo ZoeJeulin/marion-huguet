@@ -1,10 +1,10 @@
 <template>
   <div class="home">
-    <Particles
+    <!-- <Particles
       id="tsparticles"
       :options="options"
       :particles-init="particlesInit"
-    />
+    /> -->
     <section-home-intro :intro-text="page.introText" class="section" />
     <div class="sections">
       <ui-side-nav :sections="page.sections" />
@@ -25,7 +25,7 @@
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
-import { loadFull } from 'tsparticles'
+// import { loadFull } from 'tsparticles'
 import PageHomeQuery from '~/assets/graphql/pages/home.graphql'
 
 export default {
@@ -37,7 +37,7 @@ export default {
 
     return { page }
   },
-  data() {
+  /* data() {
     return {
       options: {
         fullScreen: {
@@ -69,7 +69,7 @@ export default {
         },
       },
     }
-  },
+  }, */
   mounted() {
     /* const appId = '711878503910367'
     const redUri = 'https://httpstat.us/200'
@@ -240,9 +240,9 @@ export default {
         .replace('_', '-')
         .replace('section', 'section-home')
     },
-    particlesInit: async (engine) => {
+    /* particlesInit: async (engine) => {
       await loadFull(engine)
-    },
+    }, */
   },
   nuxtI18n: {
     paths: {
