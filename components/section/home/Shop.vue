@@ -59,6 +59,7 @@ export default {
   position: relative;
   padding: 120px 40px;
   text-align: center;
+  min-height: calc(100vh - 30px);
 
   @include below('sm') {
     padding: 40px 10px;

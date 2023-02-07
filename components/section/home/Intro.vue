@@ -7,7 +7,12 @@
       </div>
     </div>
     <div class="intro-birds">
-      <ui-icon v-for="i in 3" :key="`bird-img-${i}`" name="bird" class="bird" />
+      <ui-icon
+        v-for="i in 3"
+        :key="`bird-intro-${i}`"
+        name="bird"
+        class="bird"
+      />
     </div>
     <ui-icon name="etoile" class="star -mobile" />
     <ui-frame :desktop-corners="[1, 2, 3, 4]" />

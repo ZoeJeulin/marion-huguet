@@ -153,7 +153,7 @@ export default {
           shopSection,
           supportSection,
           [0.6, 1],
-          [0.75, 0.5]
+          [0.8, 0.3]
         )
       )
 
@@ -232,6 +232,9 @@ export default {
         })
       })
     })
+  },
+  beforeDestroy() {
+    this.tl.kill()
   },
   methods: {
     getComponent(section) {

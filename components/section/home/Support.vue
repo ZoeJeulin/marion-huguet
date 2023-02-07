@@ -23,6 +23,8 @@
 
       <ui-icon name="etoile" class="star -desktop" />
     </div>
+    <ui-icon name="bird" class="support-bird" />
+    <ui-icon name="bird" class="support-bird" />
 
     <ui-icon name="etoile" class="star -mobile" />
     <ui-frame :desktop-corners="[2, 3]" :mobile-corners="[1, 2, 3, 4]" />
@@ -50,6 +52,7 @@ export default {
   padding: 40px;
   display: flex;
   justify-content: space-between;
+  min-height: calc(100vh - 30px);
 
   @include below('sm') {
     padding: 0 10px;
@@ -69,6 +72,9 @@ export default {
 
   .support-wrapper {
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     @include below('sm') {
       width: 100%;
@@ -89,6 +95,27 @@ export default {
       .support-desc {
         margin-bottom: 40px;
       }
+    }
+  }
+
+  .support-bird {
+    position: absolute;
+    width: 6%;
+
+    @include below('sm') {
+      display: none;
+    }
+
+    &:nth-of-type(1) {
+      right: 6%;
+      top: 15%;
+      transform: rotate(180deg);
+    }
+
+    &:nth-of-type(2) {
+      right: 10%;
+      top: 30%;
+      transform: rotate(290deg);
     }
   }
 
