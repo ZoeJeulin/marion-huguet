@@ -12,6 +12,7 @@
         ref="formContainer"
         name="Formulaire de contact"
         method="post"
+        novalidate
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         @submit.prevent="submitForm"
