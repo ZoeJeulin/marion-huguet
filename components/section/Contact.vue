@@ -18,6 +18,7 @@
       >
         <input name="bot-field" type="hidden" />
         <input type="hidden" name="formulaire" value="Formulaire de contact" />
+        <input type="hidden" name="form-name" value="Formulaire de contact" />
 
         <div class="field">
           <label for="nom" class="t-body-1">Nom</label>
