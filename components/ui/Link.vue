@@ -1,9 +1,12 @@
 <template>
-  <div class="ui-link">
+  <nuxt-link :to="localePath({ name: path, hash: hash })" class="ui-link">
+    <span class="line-left"></span>
     <p class="t-cta-1">
       {{ label }}
     </p>
-  </div>
+    <span class="line-right"></span>
+    <span class="arrow"></span>
+  </nuxt-link>
 </template>
 
 <script>
@@ -11,7 +14,15 @@ export default {
   props: {
     label: {
       type: String,
-      default: null,
+      default: '',
+    },
+    path: {
+      type: String,
+      default: '/',
+    },
+    hash: {
+      type: String,
+      default: '',
     },
   },
 }
@@ -20,40 +31,88 @@ export default {
 <style lang="scss">
 .ui-link {
   position: relative;
-  width: -webkit-fill-available;
+  width: fit-content;
   text-align: center;
+  display: flex;
+  align-items: center;
+  margin: auto;
+
+  &:hover {
+    p {
+      transform: translateX(-20px);
+      transition: transform 0.3s ease-out;
+    }
+    .arrow {
+      opacity: 1;
+      transition: opacity 0.15s 0.25s ease-out;
+    }
+    .line-left {
+      transform: translateX(-20px) scaleX(0);
+      transition: transform 0.3s ease-out;
+    }
+    .line-right {
+      transform: translateX(-20px) scaleX(0.5);
+      transition: transform 0.3s ease-out;
+    }
+  }
 
   p {
+    cursor: pointer;
     position: relative;
-    display: inline;
-    padding: 0 20px;
-    background: $blue1;
+    display: inline-block;
+    padding: 0 15px;
     z-index: 2;
+    white-space: nowrap;
+    transform: translateX(0);
+    transition: transform 0.3s 0.05s ease-in;
 
     @include below('sm') {
       padding: 0 10px;
     }
   }
 
-  &::before,
-  &::after {
-    content: '';
+  .arrow {
     position: absolute;
+    width: 8px;
+    height: 8px;
+    top: 10%;
+    bottom: 10%;
+    right: 70px;
+    margin: auto;
+    display: inline-block;
+    padding: 4px;
+    border: solid $beige;
+    border-width: 0 1px 1px 0;
+    transform: rotate(-45deg);
+    opacity: 0;
+
+    transition: opacity 0.15s ease-in;
+
+    @include below('sm') {
+      right: 45px;
+    }
+  }
+
+  .line-left,
+  .line-right {
     height: 1px;
     background: $beige;
-    width: 100%;
-    top: 0;
-    bottom: 0;
-    margin: auto;
+    width: 100px;
     z-index: 1;
+    transform: translateX(0) scaleX(1);
+    transition: transform 0.3s 0.05s ease-in;
+
+    @include below('sm') {
+      width: 50px;
+    }
   }
 
-  &::before {
-    left: 0;
+  .line-left {
+    transform-origin: center right;
   }
 
-  &::after {
-    right: 0;
+  .line-right {
+    transform-origin: center left;
   }
 }
 </style>

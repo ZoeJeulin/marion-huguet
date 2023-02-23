@@ -8,7 +8,11 @@
           </a>
         </li>
       </ul> -->
-      <nuxt-picture src="https://source.unsplash.com/random" alt="feed insta" />
+      <nuxt-picture
+        src="https://source.unsplash.com/random"
+        alt="feed insta"
+        class="support-feed"
+      />
       <ui-link label="En voir plus" />
     </div>
     <div class="support-wrapper">
@@ -55,7 +59,7 @@ export default {
   min-height: calc(100vh - 30px);
 
   @include below('sm') {
-    padding: 0 10px;
+    padding: 60px 10px;
     flex-direction: column;
     justify-content: center;
   }
@@ -65,8 +69,17 @@ export default {
     align-self: center;
 
     @include below('sm') {
-      width: 50%;
+      margin-top: 40px;
+      width: 100%;
       order: 2;
+    }
+
+    .support-feed {
+      margin-bottom: 80px;
+
+      @include below('sm') {
+        margin-bottom: 40px;
+      }
     }
   }
 
@@ -93,7 +106,11 @@ export default {
       }
 
       .support-desc {
-        margin-bottom: 40px;
+        margin-bottom: 80px;
+
+        @include below('sm') {
+          margin-bottom: 40px;
+        }
       }
     }
   }

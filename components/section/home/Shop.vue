@@ -20,7 +20,7 @@
         :scale-mobile="0.18"
       />
     </div>
-    <ui-link :label="section.btnLabel" />
+    <ui-link :label="section.btnLabel" path="boutique" />
     <ui-icon name="etoile" class="star -mobile" />
     <ui-frame :desktop-corners="[2, 3]" :mobile-corners="[1, 2, 3, 4]" />
   </div>
@@ -62,7 +62,7 @@ export default {
   min-height: calc(100vh - 30px);
 
   @include below('sm') {
-    padding: 40px 10px;
+    padding: 60px 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -102,7 +102,7 @@ export default {
     margin-bottom: 180px;
 
     @include below('sm') {
-      margin-bottom: 80px;
+      margin-bottom: 40px;
     }
 
     .shop-img {

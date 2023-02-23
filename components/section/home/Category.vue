@@ -14,7 +14,11 @@
         <div class="category-desc t-body-1">
           {{ section.description }}
         </div>
-        <ui-link :label="section.btnLabel" />
+        <ui-link
+          :label="section.btnLabel"
+          path="portfolio"
+          :hash="`#${section.title.toLowerCase().replace(/[\W_]+/g, '-')}`"
+        />
       </div>
 
       <ui-icon name="etoile" class="star -desktop" />
@@ -49,7 +53,7 @@ export default {
 
   @include below('sm') {
     flex-direction: column;
-    padding: 0 10px;
+    padding: 60px 10px;
     min-height: auto;
     justify-content: center;
   }
@@ -98,7 +102,11 @@ export default {
       }
 
       .category-desc {
-        margin-bottom: 40px;
+        margin-bottom: 80px;
+
+        @include below('sm') {
+          margin-bottom: 40px;
+        }
       }
     }
   }
