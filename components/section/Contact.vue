@@ -14,6 +14,7 @@
         method="post"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
+        @submit.prevent="submitForm"
       >
         <input name="bot-field" type="hidden" />
         <input type="hidden" name="formulaire" value="Formulaire de contact" />
@@ -58,7 +59,7 @@
           >
         </div>
         <div class="btn-wrapper">
-          <button class="t-cta-1" @click.prevent="submitForm">Envoyer</button>
+          <button class="t-cta-1" type="submit">Envoyer</button>
         </div>
       </form>
       <div class="form-confirmation -hide">
