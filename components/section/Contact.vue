@@ -16,20 +16,20 @@
         data-netlify-honeypot="bot-field"
       >
         <input name="bot-field" type="hidden" />
-        <input type="hidden" name="subject" value="Formulaire de contact" />
+        <input type="hidden" name="formulaire" value="Formulaire de contact" />
 
         <div class="field">
-          <label for="name" class="t-body-1">Nom</label>
-          <input type="text" name="name" required />
-          <span v-if="error.name" class="required t-body-3"
+          <label for="nom" class="t-body-1">Nom</label>
+          <input type="text" name="nom" required />
+          <span v-if="error.nom" class="required t-body-3"
             >Ce champ est obligatoire</span
           >
         </div>
 
         <div class="field">
-          <label for="firstname" class="t-body-1">Prénom</label>
-          <input type="text" name="firstname" required />
-          <span v-if="error.firstname" class="required t-body-3"
+          <label for="prenom" class="t-body-1">Prénom</label>
+          <input type="text" name="prenom" required />
+          <span v-if="error.prenom" class="required t-body-3"
             >Ce champ est obligatoire</span
           >
         </div>
@@ -43,9 +43,9 @@
         </div>
 
         <div class="field">
-          <label for="subject" class="t-body-1">Sujet</label>
-          <input type="text" name="subject" required />
-          <span v-if="error.subject" class="required t-body-3"
+          <label for="sujet" class="t-body-1">Sujet</label>
+          <input type="text" name="sujet" required />
+          <span v-if="error.sujet" class="required t-body-3"
             >Ce champ est obligatoire</span
           >
         </div>
@@ -102,10 +102,10 @@ export default {
     return {
       isValid: false,
       error: {
-        name: false,
-        firstname: false,
+        nom: false,
+        prenom: false,
         email: false,
-        subject: false,
+        sujet: false,
         message: false,
       },
     }
@@ -135,10 +135,10 @@ export default {
     validateForm() {
       this.isValid = true
       this.error = {
-        name: false,
-        firstname: false,
+        nom: false,
+        prenom: false,
         email: false,
-        subject: false,
+        sujet: false,
         message: false,
       }
 
