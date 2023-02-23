@@ -5,5 +5,7 @@ query InfosContact {
     infosText
     contactTitle
     contactText
+    contactConfirmationText
+    contactConfirmationSubtext
   }
 }

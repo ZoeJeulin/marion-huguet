@@ -63,7 +63,7 @@ export default {
 
   .infos-text {
     padding-left: 60px;
-    margin: 40px 40px 40px 0;
+    margin: 60px 60px 60px 0;
 
     @include below('sm') {
       padding-left: 0;

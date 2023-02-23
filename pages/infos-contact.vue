@@ -12,6 +12,8 @@
     <section-contact
       :contact-title="page.contactTitle"
       :contact-text="page.contactText"
+      :contact-confirmation-text="page.contactConfirmationText"
+      :contact-confirmation-subtext="page.contactConfirmationSubtext"
     />
   </div>
 </template>
@@ -68,7 +70,7 @@ export default {
   padding: 80px 40px;
 
   @include below('sm') {
-    padding: 40px 20px;
+    padding: 0 0 40px;
   }
 
   .whale {

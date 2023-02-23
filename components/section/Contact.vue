@@ -17,54 +17,61 @@
       >
         <input name="bot-field" type="hidden" />
         <input type="hidden" name="subject" value="Formulaire de contact" />
-        <!-- <input
-          type="hidden"
-          name="form-name"
-          value="Contact - Faire affaire avec Morneau"
-        /> -->
 
         <div class="field">
-          <label for="nom" class="t-body-1"> Nom </label>
-          <input type="text" name="nom" required />
-          <!-- <span v-if="error.name" class="required t-body-4">{{
-            $t('form.required')
-          }}</span> -->
+          <label for="name" class="t-body-1">Nom</label>
+          <input type="text" name="name" required />
+          <span v-if="error.name" class="required t-body-3"
+            >Ce champ est obligatoire</span
+          >
         </div>
 
         <div class="field">
-          <label for="prenom" class="t-body-1">Prénom</label>
-          <input type="text" name="prenom" required />
-          <!-- <span v-if="error.job" class="required t-body-4">{{
-            $t('form.required')
-          }}</span> -->
+          <label for="firstname" class="t-body-1">Prénom</label>
+          <input type="text" name="firstname" required />
+          <span v-if="error.firstname" class="required t-body-3"
+            >Ce champ est obligatoire</span
+          >
         </div>
 
         <div class="field">
           <label for="email" class="t-body-1">Adresse mail</label>
           <input type="email" name="email" required />
-          <!-- <span v-if="error.email" class="required t-body-4">{{
-            $t('form.required')
-          }}</span> -->
+          <span v-if="error.email" class="required t-body-3"
+            >Ce champ est obligatoire</span
+          >
         </div>
 
         <div class="field">
-          <label for="sujet" class="t-body-1">Sujet</label>
-          <input type="text" name="sujet" required />
-          <!-- <span v-if="error.company" class="required t-body-4">{{
-            $t('form.required')
-          }}</span> -->
+          <label for="subject" class="t-body-1">Sujet</label>
+          <input type="text" name="subject" required />
+          <span v-if="error.subject" class="required t-body-3"
+            >Ce champ est obligatoire</span
+          >
         </div>
 
         <div class="field -big">
           <label for="message" class="t-body-1"> Message </label>
           <textarea name="message"></textarea>
+          <span v-if="error.message" class="required t-body-3"
+            >Ce champ est obligatoire</span
+          >
         </div>
-
-        <!-- <button class="t-cta-1" @click.prevent="submitFormBusiness">
-          {{ $t('form.submit') }}
-        </button> -->
-        <!-- <ui-link label="Envoyer" /> -->
+        <div class="btn-wrapper">
+          <button class="t-cta-1" @click.prevent="submitForm">Envoyer</button>
+        </div>
       </form>
+      <div class="form-confirmation -hide">
+        <h2 class="confirmation-title t-body-1">
+          {{ contactConfirmationText }}
+        </h2>
+        <div class="confirmation-subtitle t-body-2">
+          {{ contactConfirmationSubtext }}
+        </div>
+        <button class="confirmation-btn t-cta-1" @click="reloadPage">
+          Envoyer un autre message
+        </button>
+      </div>
     </div>
 
     <ui-frame :desktop-corners="[2, 3]" />
@@ -81,6 +88,94 @@ export default {
     contactText: {
       type: String,
       required: true,
+    },
+    contactConfirmationText: {
+      type: String,
+      required: true,
+    },
+    contactConfirmationSubtext: {
+      type: String,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      isValid: false,
+      error: {
+        name: false,
+        firstname: false,
+        email: false,
+        subject: false,
+        message: false,
+      },
+    }
+  },
+  mounted() {
+    document
+      .getElementById('form-contact')
+      .querySelectorAll('input:not([type=hidden]), textarea')
+      .forEach((input) => {
+        input.addEventListener('change', () => {
+          this.checkValue(input)
+        })
+        input.addEventListener('focus', () => {
+          input.parentElement.classList.add('-active')
+        })
+        input.addEventListener('blur', () => {
+          input.parentElement.classList.remove('-active')
+        })
+      })
+  },
+  methods: {
+    checkValue(input) {
+      input.value
+        ? (this.error[input.name] = false)
+        : (this.error[input.name] = true)
+    },
+    validateForm() {
+      this.isValid = true
+      this.error = {
+        name: false,
+        firstname: false,
+        email: false,
+        subject: false,
+        message: false,
+      }
+
+      document
+        .getElementById('form-contact')
+        .querySelectorAll('input:not([type=hidden]), textarea')
+        .forEach((input) => {
+          if (input.value === '') {
+            this.isValid = false
+            this.error[input.name] = true
+          }
+        })
+      return this.isValid
+    },
+    submitForm() {
+      const isValid = this.validateForm()
+
+      if (isValid) {
+        this.contactForm = document.getElementById('form-contact')
+        this.formData = new FormData(this.contactForm)
+
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(this.formData).toString(),
+        })
+          .then(() => {
+            document.getElementById('form-contact').classList.add('-hide')
+            document
+              .querySelector('.form-confirmation')
+              .classList.remove('-hide')
+          })
+          .catch((error) => alert(error))
+      }
+    },
+    reloadPage() {
+      window.location.reload()
     },
   },
 }
@@ -126,11 +221,15 @@ export default {
 
   .contact-content {
     padding-left: 60px;
-    margin: 40px 40px 40px 0;
+    margin: 60px 60px 60px 0;
 
     @include below('sm') {
       padding-left: 0;
       margin: 0;
+    }
+
+    .-hide {
+      display: none;
     }
 
     form {
@@ -152,6 +251,12 @@ export default {
           width: 100%;
         }
 
+        &.-active {
+          label {
+            transform: translateY(-5px) scale(0.8);
+          }
+        }
+
         &.-big {
           flex-grow: 2;
         }
@@ -164,6 +269,12 @@ export default {
           }
         }
 
+        label {
+          transform: translateY(5px) scale(1);
+          transform-origin: bottom left;
+          transition: transform 0.2s ease-out;
+        }
+
         input,
         textarea {
           z-index: 1;
@@ -172,14 +283,45 @@ export default {
           background: transparent;
           outline: none;
           height: 30px;
-          font-family: inherit;
-          font-size: inherit;
+          font-family: 'Playfair Display', serif;
+          font-size: 18;
         }
 
         textarea {
-          resize: vertical;
-          height: 90px;
+          resize: none;
+          overflow-y: auto;
+          height: 120px;
         }
+
+        .required {
+          margin-top: 5px;
+          font-style: italic;
+          opacity: 0.8;
+        }
+      }
+
+      .btn-wrapper {
+        width: 100%;
+        margin-top: 40px;
+        text-align: center;
+
+        button {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .form-confirmation {
+      margin-top: 60px;
+      text-align: center;
+
+      .confirmation-title {
+        margin-bottom: 10px;
+      }
+
+      .confirmation-btn {
+        margin-top: 60px;
+        cursor: pointer;
       }
     }
   }
