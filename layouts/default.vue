@@ -68,11 +68,6 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.resize)
-    console.log('leave')
-    this.$el.querySelector('.header-panel').classList.remove('-show')
-    if (document.body.style.overflow === 'hidden') {
-      document.body.style.overflow = ''
-    }
   },
   methods: {
     ...mapMutations('layout', ['SET_WINDOW_SIZE']),
