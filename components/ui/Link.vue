@@ -83,10 +83,11 @@ export default {
     z-index: 2;
     white-space: nowrap;
     transform: translateX(0);
-    transition: transform 0.3s 0.05s ease-in;
+    transition: transform 0.3s 0.05s ease-out;
 
     @include below('sm') {
       padding: 0 10px;
+      white-space: normal;
     }
   }
 
@@ -105,7 +106,7 @@ export default {
     transform: rotate(-45deg);
     opacity: 0;
 
-    transition: opacity 0.15s ease-in;
+    transition: opacity 0.15s ease-out;
 
     @include below('sm') {
       right: 45px;
@@ -119,7 +120,7 @@ export default {
     width: 100px;
     z-index: 1;
     transform: translateX(0) scaleX(1);
-    transition: transform 0.3s 0.05s ease-in;
+    transition: transform 0.3s 0.05s ease-out;
 
     @include below('sm') {
       width: 50px;

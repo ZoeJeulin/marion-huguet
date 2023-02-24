@@ -1,18 +1,22 @@
 <template>
   <header v-if="!isMobile" class="header -desktop">
-    <ul>
-      <nuxt-link
-        v-for="(link, id) in global.navLinks"
-        :key="id"
-        :to="localePath({ name: link.slug ? link.slug : '/' })"
-        class="t-cta-1 nav-item"
-      >
-        {{ link.pageTitle }}
-      </nuxt-link>
+    <ul class="nav-list">
+      <li v-for="(link, id) in global.navLinks" :key="id" class="nav-item">
+        <ui-icon name="etoile" class="star" />
+        <nuxt-link
+          :to="localePath({ name: link.slug ? link.slug : '/' })"
+          class="t-cta-1"
+        >
+          {{ link.pageTitle }}
+        </nuxt-link>
+      </li>
     </ul>
-    <a :href="global.donationsLink" target="_blank" class="t-cta-1">{{
-      global.donationsLabel
-    }}</a>
+    <div class="nav-item -right">
+      <ui-icon name="etoile" class="star" />
+      <a :href="global.donationsLink" target="_blank" class="t-cta-1">{{
+        global.donationsLabel
+      }}</a>
+    </div>
   </header>
   <header v-else class="header -mobile">
     <div class="header-nav">
@@ -21,22 +25,24 @@
     </div>
     <div class="header-panel">
       <ul class="nav-list">
-        <nuxt-link
-          v-for="(link, id) in global.navLinks"
-          :key="id"
-          :to="localePath({ name: link.slug ? link.slug : '/' })"
-          class="t-cta-1 nav-item"
-          @click.native="toggleMenu"
-        >
-          {{ link.pageTitle }}
-        </nuxt-link>
-        <a
-          :href="global.donationsLink"
-          target="_blank"
-          class="t-cta-1 nav-item"
-          @click="toggleMenu"
-          >{{ global.donationsLabel }}</a
-        >
+        <li v-for="(link, id) in global.navLinks" :key="id" class="nav-item">
+          <nuxt-link
+            :to="localePath({ name: link.slug ? link.slug : '/' })"
+            class="t-cta-1"
+            @click.native="toggleMenu"
+          >
+            {{ link.pageTitle }}
+          </nuxt-link>
+        </li>
+        <li class="nav-item">
+          <a
+            :href="global.donationsLink"
+            target="_blank"
+            class="t-cta-1"
+            @click="toggleMenu"
+            >{{ global.donationsLabel }}</a
+          >
+        </li>
       </ul>
       <ui-icon name="bird" class="bird" />
     </div>
@@ -88,8 +94,65 @@ export default {
     width: 100%;
     z-index: 5;
 
-    .nav-item + .nav-item {
-      margin-left: 60px;
+    .nav-item {
+      display: inline;
+      flex-direction: column;
+      position: relative;
+
+      &:hover {
+        &::before {
+          transform: scaleX(1);
+        }
+
+        .star {
+          opacity: 1;
+          transform: rotate(-45deg);
+        }
+      }
+
+      + .nav-item {
+        margin-left: 60px;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: -6px;
+        height: 1px;
+        background: $beige;
+        width: calc(100% - 5px);
+        z-index: 1;
+        transform: scaleX(0);
+        transform-origin: center left;
+        transition: transform 0.3s ease-out;
+
+        @include below('sm') {
+          width: 50px;
+        }
+      }
+
+      .star {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        top: -25px;
+        width: 15px;
+        min-width: 15px;
+        opacity: 0;
+        transform: rotate(0deg);
+        transition: opacity 0.1s ease-out, transform 0.3s ease-out;
+      }
+
+      &.-right {
+        &::before {
+          width: 100%;
+        }
+
+        .star {
+          top: -15px;
+        }
+      }
     }
   }
 

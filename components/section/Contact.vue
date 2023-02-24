@@ -236,9 +236,19 @@ export default {
       margin: 0 0 10px 0;
     }
 
-    .star:first-of-type {
-      @include below('sm') {
-        display: none;
+    .star {
+      &:first-of-type {
+        margin-bottom: 40px;
+        @include below('sm') {
+          display: none;
+        }
+      }
+      &:last-of-type {
+        margin-top: 40px;
+        @include below('sm') {
+          margin-top: 0;
+          margin-left: 20px;
+        }
       }
     }
   }

@@ -28,6 +28,7 @@ export default {
 
   &.star {
     width: 30px;
+    min-width: 30px;
     transform: rotate(0);
 
     transition: transform 0.3s ease-out;
