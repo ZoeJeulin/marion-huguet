@@ -1,17 +1,26 @@
 <template>
-  <nuxt-link :to="localePath({ name: path, hash: hash })" class="ui-link">
+  <component
+    :is="type"
+    v-bind="getProps"
+    :to="localePath({ name: path, hash: hash })"
+    class="ui-link"
+  >
     <span class="line-left"></span>
     <p class="t-cta-1">
       {{ label }}
     </p>
     <span class="line-right"></span>
     <span class="arrow"></span>
-  </nuxt-link>
+  </component>
 </template>
 
 <script>
 export default {
   props: {
+    type: {
+      type: String,
+      default: 'nuxt-link',
+    },
     label: {
       type: String,
       default: '',
@@ -23,6 +32,16 @@ export default {
     hash: {
       type: String,
       default: '',
+    },
+  },
+  computed: {
+    getProps() {
+      if (this.type == null) {
+        return {
+          to: this.localePath({ name: this.path, hash: this.hash }),
+        }
+      }
+      return null
     },
   },
 }

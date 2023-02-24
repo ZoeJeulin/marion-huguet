@@ -40,7 +40,7 @@
           <label for="email" class="t-body-1">Adresse mail</label>
           <input type="email" name="email" required />
           <span v-if="error.email" class="required t-body-3"
-            >Ce champ est obligatoire</span
+            >Une adresse mail valide est obligatoire</span
           >
         </div>
 
@@ -60,7 +60,12 @@
           >
         </div>
         <div class="btn-wrapper">
-          <button class="t-cta-1" @click.prevent="submitForm">Envoyer</button>
+          <ui-link
+            class="t-cta-1"
+            type="button"
+            label="Envoyer"
+            @click.native.prevent="submitForm"
+          />
         </div>
       </form>
       <div class="form-confirmation -hide">
@@ -70,9 +75,12 @@
         <div class="confirmation-subtitle t-body-2">
           {{ contactConfirmationSubtext }}
         </div>
-        <button class="confirmation-btn t-cta-1" @click="reloadPage">
-          Envoyer un autre message
-        </button>
+        <ui-link
+          class="confirmation-btn t-cta-1"
+          type="button"
+          label="Envoyer un autre message"
+          @click.native="reloadPage"
+        />
       </div>
     </div>
 
@@ -129,10 +137,21 @@ export default {
       })
   },
   methods: {
+    emailIsValid(email) {
+      return email
+        .toLowerCase()
+        .match(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        )
+    },
     checkValue(input) {
       input.value
         ? (this.error[input.name] = false)
         : (this.error[input.name] = true)
+
+      if (input.type === 'email' && !this.emailIsValid(input.value)) {
+        this.error[input.name] = true
+      }
     },
     validateForm() {
       this.isValid = true
@@ -148,7 +167,10 @@ export default {
         .getElementById('form-contact')
         .querySelectorAll('input:not([type=hidden]), textarea')
         .forEach((input) => {
-          if (input.value === '') {
+          if (
+            input.value === '' ||
+            (input.type === 'email' && !this.emailIsValid(input.value))
+          ) {
             this.isValid = false
             this.error[input.name] = true
           }
@@ -245,6 +267,7 @@ export default {
       }
 
       .field {
+        position: relative;
         display: flex;
         flex-direction: column;
         width: 45%;
@@ -255,7 +278,7 @@ export default {
 
         &.-active {
           label {
-            transform: translateY(-5px) scale(0.8);
+            transform: translateY(-10px) scale(0.8);
           }
         }
 
@@ -264,7 +287,7 @@ export default {
         }
 
         &:not(:last-child) {
-          margin-bottom: 40px;
+          margin-bottom: 60px;
 
           @include below('sm') {
             margin-bottom: 20px;
@@ -272,7 +295,7 @@ export default {
         }
 
         label {
-          transform: translateY(5px) scale(1);
+          transform: translateY(0px) scale(1);
           transform-origin: bottom left;
           transition: transform 0.2s ease-out;
         }
@@ -287,6 +310,7 @@ export default {
           height: 30px;
           font-family: 'Playfair Display', serif;
           font-size: 18;
+          line-height: 1.2;
         }
 
         textarea {
@@ -296,6 +320,9 @@ export default {
         }
 
         .required {
+          position: absolute;
+          bottom: -20px;
+          left: 0;
           margin-top: 5px;
           font-style: italic;
           opacity: 0.8;
