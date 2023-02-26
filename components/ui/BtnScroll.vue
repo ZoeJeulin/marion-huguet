@@ -61,6 +61,17 @@ export default {
 <style lang="scss">
 .ui-btn-scroll {
   cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: calc(100vh - 30px);
+  transform: translateX(-50%) translateY(-100%);
+
+  @include below('sm') {
+    position: initial;
+    left: initial;
+    top: initial;
+    transform: none;
+  }
 
   svg {
     height: 40px;

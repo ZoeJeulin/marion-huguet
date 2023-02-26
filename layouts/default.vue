@@ -1,6 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div>
+    <ui-transition ref="transition" />
     <app-header />
     <div id="main">
       <Particles
@@ -65,6 +66,28 @@ export default {
   mounted() {
     window.addEventListener('resize', this.resize)
     this.resize()
+
+    const shouldIgnoreTransition = (from, to) => {
+      const fromName = from.name
+      const toName = to.name
+
+      if (!fromName || !toName) {
+        return false
+      }
+
+      return fromName.startsWith(toName) || toName.startsWith(fromName)
+    }
+
+    this.$router.beforeEach((to, from, callback) => {
+      if (shouldIgnoreTransition(from, to)) {
+        callback()
+      } else {
+        this.$refs.transition.show().then(callback)
+      }
+    })
+    this.$router.afterEach((to, from, callback) => {
+      this.$refs.transition.hide()
+    })
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.resize)
@@ -91,6 +114,15 @@ html {
   min-height: 100vh;
   height: -webkit-fill-available;
   scroll-behavior: smooth;
+
+  .page-enter-active,
+  .page-leave-active {
+    transition: opacity 0.3s ease-out;
+  }
+  .page-enter,
+  .page-leave-to {
+    opacity: 0;
+  }
 }
 
 body {

@@ -92,7 +92,7 @@ export default {
     height: 90px;
     position: fixed;
     width: 100%;
-    z-index: 5;
+    z-index: 15;
 
     .nav-item {
       display: inline;

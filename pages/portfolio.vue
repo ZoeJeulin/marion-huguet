@@ -6,6 +6,7 @@
     </h1>
     <div class="categories">
       <ui-side-nav :sections="page.portfolioCategories" />
+      <ui-btn-scroll class="-portfolio" />
       <!-- <div class="bird-wrapper">
         <ui-icon name="bird" class="bird" />
       </div> -->
@@ -16,8 +17,7 @@
           :key="`category-item-${category.id}`"
           :category="category"
           :first-index="getFirstIndex(index)"
-        >
-        </section-portfolio-category>
+        />
       </ul>
     </div>
   </div>
@@ -81,6 +81,14 @@ export default {
         end: 'top bottom',
         pin: '.ui-side-nav',
       })
+
+      ScrollTrigger.create({
+        trigger: '.categories',
+        start: 'top top',
+        endTrigger: 'footer',
+        end: 'top bottom',
+        pin: '.ui-btn-scroll.-portfolio',
+      })
     })
   },
   methods: {
@@ -128,6 +136,12 @@ export default {
     @include below('sm') {
       padding-bottom: 40px;
       margin-top: 60px;
+    }
+
+    .ui-btn-scroll {
+      @include below('sm') {
+        display: none;
+      }
     }
 
     .bird-wrapper {
