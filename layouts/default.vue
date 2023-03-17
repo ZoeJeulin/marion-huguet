@@ -1,9 +1,9 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div>
-    <ui-transition ref="transition" />
-    <app-header />
-    <div id="main">
+    <ui-transition v-if="$route.path !== '/'" ref="transition" />
+    <app-header v-if="$route.path !== '/'" />
+    <div id="main-default">
       <Particles
         id="tsparticles"
         :options="options"
@@ -11,7 +11,7 @@
       />
       <nuxt />
     </div>
-    <app-footer />
+    <app-footer v-if="$route.path !== '/'" />
   </div>
 </template>
 
@@ -79,14 +79,17 @@ export default {
     }
 
     this.$router.beforeEach((to, from, callback) => {
-      if (shouldIgnoreTransition(from, to)) {
+      if (shouldIgnoreTransition(from, to) || this.$route.path === '/') {
         callback()
       } else {
         this.$refs.transition.show().then(callback)
       }
     })
+
     this.$router.afterEach((to, from, callback) => {
-      this.$refs.transition.hide()
+      if (from.path !== '/') {
+        this.$refs.transition.hide()
+      }
     })
   },
   beforeDestroy() {
@@ -136,7 +139,7 @@ body {
   font-family: Inter, Arial, sans-serif;
   background: $blue1;
 
-  #main {
+  #main-default {
     padding: 160px 40px 40px 40px;
     overflow: hidden;
 

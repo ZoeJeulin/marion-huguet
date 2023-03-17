@@ -4,7 +4,7 @@
       <li v-for="(link, id) in global.navLinks" :key="id" class="nav-item">
         <ui-icon name="etoile" class="star" />
         <nuxt-link
-          :to="localePath({ name: link.slug ? link.slug : '/' })"
+          :to="localePath({ name: link.slug ? link.slug : 'home' })"
           class="t-cta-1"
         >
           {{ link.pageTitle }}

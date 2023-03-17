@@ -65,6 +65,7 @@ export default {
   left: 0;
   top: calc(100vh - 30px);
   transform: translateX(-50%) translateY(-100%);
+  z-index: 11;
 
   @include below('sm') {
     position: initial;

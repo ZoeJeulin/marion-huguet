@@ -213,8 +213,8 @@ export default {
   },
   nuxtI18n: {
     paths: {
-      fr: '/',
-      en: '/',
+      fr: '/accueil',
+      en: '/home',
     },
   },
 }
