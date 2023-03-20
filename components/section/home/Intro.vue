@@ -1,7 +1,12 @@
 <template>
   <div class="section-intro">
     <div class="intro-content">
-      <h1 class="intro-title t-h1">Marion Huguet</h1>
+      <client-only>
+        <div class="intro-lottie">
+          <div ref="anim"></div>
+        </div>
+      </client-only>
+      <h1 class="sr-only">Marion Huguet</h1>
       <div class="intro-desc t-body-1">
         {{ introText }}
       </div>
@@ -20,12 +25,28 @@
 </template>
 
 <script>
+import lottie from 'lottie-web'
+
 export default {
   props: {
     introText: {
       type: String,
       default: '',
     },
+  },
+  mounted() {
+    setTimeout(async () => {
+      if (this.$refs.anim) {
+        const { default: data } = await import('@/assets/lottie/typo.json')
+        this.lottie = lottie.loadAnimation({
+          container: this.$refs.anim,
+          renderer: 'svg',
+          loop: false,
+          autoplay: true,
+          animationData: data,
+        })
+      }
+    }, 0)
   },
 }
 </script>
@@ -49,11 +70,11 @@ export default {
       width: 100%;
     }
 
-    .intro-title {
-      margin-bottom: 60px;
+    .intro-desc {
+      margin-top: 60px;
 
       @include below('sm') {
-        margin-bottom: 20px;
+        margin-top: 20px;
       }
     }
   }
