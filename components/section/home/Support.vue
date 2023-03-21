@@ -27,8 +27,10 @@
 
       <ui-icon name="etoile" class="star -desktop" />
     </div>
-    <ui-icon name="bird" class="support-bird" />
-    <ui-icon name="bird" class="support-bird" />
+    <!-- <ui-icon name="bird" class="support-bird" />
+    <ui-icon name="bird" class="support-bird" /> -->
+    <img src="~/assets/img/bird2.png" alt="bird" class="support-bird" />
+    <img src="~/assets/img/bird1.png" alt="bird" class="support-bird" />
 
     <ui-icon name="etoile" class="star -mobile" />
     <ui-frame :desktop-corners="[2, 3]" :mobile-corners="[1, 2, 3, 4]" />
@@ -117,7 +119,7 @@ export default {
 
   .support-bird {
     position: absolute;
-    width: 6%;
+    width: 5%;
 
     @include below('sm') {
       display: none;
@@ -126,13 +128,13 @@ export default {
     &:nth-of-type(1) {
       right: 6%;
       top: 15%;
-      transform: rotate(180deg);
+      transform: rotate(300deg);
     }
 
     &:nth-of-type(2) {
       right: 10%;
       top: 30%;
-      transform: rotate(290deg);
+      transform: rotate(25deg);
     }
   }
 

@@ -12,12 +12,15 @@
       </div>
     </div>
     <div class="intro-birds">
-      <ui-icon
+      <!-- <ui-icon
         v-for="i in 3"
         :key="`bird-intro-${i}`"
-        name="bird"
+        name="bird1"
         class="bird"
-      />
+      /> -->
+      <img src="~/assets/img/bird1.png" alt="bird" class="bird" />
+      <img src="~/assets/img/bird2.png" alt="bird" class="bird" />
+      <img src="~/assets/img/bird3.png" alt="bird" class="bird" />
     </div>
     <ui-icon name="etoile" class="star -mobile" />
     <ui-frame :desktop-corners="[1, 2, 3, 4]" />
@@ -70,6 +73,15 @@ export default {
       width: 100%;
     }
 
+    .intro-lottie {
+      width: 100%;
+      height: 510px;
+
+      @include below('sm') {
+        height: auto;
+      }
+    }
+
     .intro-desc {
       margin-top: 60px;
 
@@ -90,41 +102,42 @@ export default {
 
     .bird {
       position: absolute;
-      width: 20%;
+      width: 18%;
       height: fit-content;
 
       &:nth-of-type(1) {
-        top: 20%;
-        left: 20%;
-        transform: rotate(180deg);
+        top: 25%;
+        left: 35%;
+        transform: rotate(-70deg);
 
         @include below('sm') {
           left: 30%;
-          transform: rotate(70deg);
+          transform: rotate(190deg);
         }
       }
 
       &:nth-of-type(2) {
         top: 0;
         bottom: 0;
-        right: 20%;
+        right: 15%;
         margin: auto;
-        transform: rotate(45deg);
+        transform: rotate(80deg);
 
         @include below('sm') {
-          right: 30%;
-          transform: rotate(0deg);
+          right: 25%;
+          transform: rotate(95deg);
         }
       }
 
       &:nth-of-type(3) {
-        bottom: 20%;
-        left: 20%;
-        transform: rotate(150deg);
+        bottom: 25%;
+        left: 35%;
+        transform: rotate(10deg);
 
         @include below('sm') {
-          left: 30%;
-          transform: rotate(180deg);
+          bottom: 15%;
+          left: 35%;
+          transform: rotate(-65deg);
         }
       }
     }

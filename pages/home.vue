@@ -77,7 +77,7 @@ export default {
           bird,
           introSection,
           [0.5, 0.5],
-          [0.75, 1]
+          [0.8, 1]
         )
       )
 
@@ -86,7 +86,7 @@ export default {
           MotionPathPlugin.getRelativePosition(
             i === 0 ? introSection : catSections[i - 1],
             blobs[i],
-            i === 0 ? [0.75, 1] : [0.5, 1],
+            i === 0 ? [0.8, 1] : [0.5, 1],
             [0.5, 0.5]
           )
         )
@@ -123,7 +123,7 @@ export default {
           shopSection,
           supportSection,
           [0.6, 1],
-          [0.8, 0.3]
+          [0.8, 0.5]
         )
       )
 
@@ -131,7 +131,7 @@ export default {
         motionPath: {
           path: anchorPoints,
           alignOrigin: [0.5, 0.5],
-          autoRotate: 295,
+          autoRotate: 55,
           curviness: 1,
           relative: true,
         },
@@ -160,7 +160,7 @@ export default {
       )
 
       gsap.to(bird1, {
-        rotate: 20,
+        rotate: -230,
         scrollTrigger: {
           trigger: '.section-intro',
           start: 'top top',
@@ -170,7 +170,7 @@ export default {
       })
 
       gsap.to(bird2, {
-        rotate: 45,
+        rotate: 165,
         scrollTrigger: {
           trigger: '.section-intro',
           start: 'top top',
@@ -180,7 +180,7 @@ export default {
       })
 
       gsap.to(bird3, {
-        rotate: 15,
+        rotate: -240,
         scrollTrigger: {
           trigger: '.section-intro',
           start: 'top top',
