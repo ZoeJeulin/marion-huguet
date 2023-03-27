@@ -1,17 +1,12 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div>
-    <ui-transition ref="transition" />
-    <app-header />
-    <div id="main-default">
-      <Particles
-        id="tsparticles"
-        :options="options"
-        :particles-init="particlesInit"
-      />
-      <nuxt />
-    </div>
-    <app-footer />
+  <div id="main-splash">
+    <Particles
+      id="tsparticles"
+      :options="options"
+      :particles-init="particlesInit"
+    />
+    <nuxt />
   </div>
 </template>
 
@@ -78,39 +73,10 @@ export default {
     window.addEventListener('resize', this.resize)
     this.resize()
 
-    gsap.from(document.querySelector('.header'), {
-      yPercent: -100,
-      ease: 'ease-out',
-      duration: 1,
-    })
-
-    gsap.from(document.querySelector('.footer'), {
-      yPercent: 100,
-      ease: 'ease-out',
-      duration: 1,
-    })
-
-    const shouldIgnoreTransition = (from, to) => {
-      const fromName = from.name
-      const toName = to.name
-
-      if (!fromName || !toName) {
-        return false
-      }
-
-      return fromName.startsWith(toName) || toName.startsWith(fromName)
-    }
-
     this.$router.beforeEach((to, from, callback) => {
-      if (shouldIgnoreTransition(from, to)) {
-        callback()
-      } else {
-        this.$refs.transition.show().then(callback)
-      }
-    })
-
-    this.$router.afterEach((to, from, callback) => {
-      this.$refs.transition.hide()
+      gsap
+        .to('.splash', { y: '-100vh', duration: 0.75, ease: 'ease-out' })
+        .then(callback)
     })
   },
   beforeDestroy() {

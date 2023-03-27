@@ -2,18 +2,11 @@
   <div class="splash">
     <ui-icon class="typo" name="typo" />
     <ui-icon class="whale" name="whale" />
-    <ui-link
-      class="link"
-      label="Plonger dans mon univers"
-      path="/"
-      @click.native="translateUp"
-    />
+    <ui-link class="link" label="Plonger dans mon univers" path="home" />
   </div>
 </template>
 
 <script>
-import { gsap } from 'gsap'
-
 export default {
   nuxtI18n: {
     paths: {
@@ -21,12 +14,7 @@ export default {
       en: '/',
     },
   },
-  methods: {
-    translateUp() {
-      gsap.to('.splash', { y: '-100vh', duration: 0.75 })
-      this.$router.push({ path: 'accueil' })
-    },
-  },
+  layout: 'splash',
 }
 </script>
 
