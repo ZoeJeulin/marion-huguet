@@ -89,6 +89,8 @@
 </template>
 
 <script>
+import { gsap } from 'gsap'
+
 export default {
   props: {
     contactTitle: {
@@ -121,6 +123,101 @@ export default {
     }
   },
   mounted() {
+    const mq = gsap.matchMedia()
+    mq.add('(min-width: 641px)', () => {
+      gsap.from('.contact-title', {
+        opacity: 0,
+        x: 30,
+        duration: 0.5,
+        delay: 0.3,
+        ease: 'ease-out',
+        scrollTrigger: {
+          trigger: '.contact-content',
+          start: 'top 95%',
+          markers: true,
+        },
+      })
+
+      this.$el.querySelectorAll('.ui-frame .frame-corner').forEach((corner) => {
+        gsap.from(corner.querySelector('.corner-vertical'), {
+          scaleY: 0,
+          duration: 0.2,
+          delay: 0.6,
+          ease: 'ease-out',
+          scrollTrigger: {
+            trigger: '.contact-content',
+            start: 'top 95%',
+            markers: true,
+          },
+        })
+        gsap.from(corner.querySelector('.corner-horizontal'), {
+          scaleX: 0,
+          duration: 0.2,
+          delay: 0.8,
+          ease: 'ease-out',
+          scrollTrigger: {
+            trigger: '.contact-content',
+            start: 'top 95%',
+            markers: true,
+          },
+        })
+      })
+
+      gsap.from('.contact-content', {
+        opacity: 0,
+        y: 30,
+        duration: 0.5,
+        delay: 0.6,
+        ease: 'ease-out',
+        scrollTrigger: {
+          trigger: '.contact-content',
+          start: 'top 95%',
+          markers: true,
+        },
+      })
+    })
+
+    mq.add('(max-width: 640px)', () => {
+      gsap.from('.contact-title', {
+        opacity: 0,
+        y: 15,
+        duration: 0.3,
+        delay: 0.3,
+        ease: 'ease-out',
+        scrollTrigger: {
+          trigger: '.contact-content',
+          start: 'top 95%',
+          markers: true,
+        },
+      })
+
+      gsap.from('.contact-text', {
+        opacity: 0,
+        y: 15,
+        duration: 0.3,
+        delay: 0.5,
+        ease: 'ease-out',
+        scrollTrigger: {
+          trigger: '.contact-content',
+          start: 'top 95%',
+          markers: true,
+        },
+      })
+
+      gsap.from('#form-contact', {
+        opacity: 0,
+        y: 15,
+        duration: 0.3,
+        delay: 0.7,
+        ease: 'ease-out',
+        scrollTrigger: {
+          trigger: '.contact-content',
+          start: 'top 95%',
+          markers: true,
+        },
+      })
+    })
+
     document
       .getElementById('form-contact')
       .querySelectorAll('input:not([type=hidden]), textarea')

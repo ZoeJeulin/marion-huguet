@@ -27,7 +27,7 @@
       <ul class="nav-list">
         <li v-for="(link, id) in global.navLinks" :key="id" class="nav-item">
           <nuxt-link
-            :to="localePath({ name: link.slug ? link.slug : '/' })"
+            :to="localePath({ name: link.slug ? link.slug : 'home' })"
             class="t-cta-1"
             @click.native="toggleMenu"
           >

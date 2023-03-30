@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import { gsap } from 'gsap'
+
 export default {
   props: {
     infosTitle: {
@@ -21,6 +23,59 @@ export default {
       type: String,
       required: true,
     },
+  },
+  mounted() {
+    const mq = gsap.matchMedia()
+    mq.add('(min-width: 641px)', () => {
+      this.$el.querySelectorAll('.ui-frame .frame-corner').forEach((corner) => {
+        gsap.from(corner.querySelector('.corner-vertical'), {
+          scaleY: 0,
+          duration: 0.2,
+          delay: 0.6,
+          ease: 'ease-out',
+        })
+        gsap.from(corner.querySelector('.corner-horizontal'), {
+          scaleX: 0,
+          duration: 0.2,
+          delay: 0.8,
+          ease: 'ease-out',
+        })
+      })
+
+      gsap.from('.infos-title', {
+        opacity: 0,
+        x: 30,
+        duration: 0.5,
+        delay: 0.3,
+        ease: 'ease-out',
+      })
+
+      gsap.from('.infos-text', {
+        opacity: 0,
+        y: 30,
+        duration: 0.5,
+        delay: 0.6,
+        ease: 'ease-out',
+      })
+    })
+
+    mq.add('(max-width: 640px)', () => {
+      gsap.from('.infos-title', {
+        opacity: 0,
+        y: 15,
+        duration: 0.3,
+        delay: 0.3,
+        ease: 'ease-out',
+      })
+
+      gsap.from('.infos-text', {
+        opacity: 0,
+        y: 15,
+        duration: 0.3,
+        delay: 0.5,
+        ease: 'ease-out',
+      })
+    })
   },
 }
 </script>
