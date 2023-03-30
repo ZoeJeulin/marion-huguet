@@ -3,7 +3,6 @@
     <section-home-intro :intro-text="page.introText" class="section" />
     <div class="sections">
       <ui-side-nav :sections="page.sections" />
-      <ui-btn-scroll class="-home" />
       <component
         :is="getComponent(section._modelApiKey)"
         v-for="(section, index) in page.sections"
@@ -52,14 +51,6 @@ export default {
         endTrigger: 'footer',
         end: 'top bottom',
         pin: '.ui-side-nav',
-      })
-
-      ScrollTrigger.create({
-        trigger: '.sections',
-        start: 'top top',
-        endTrigger: 'footer',
-        end: 'top bottom',
-        pin: '.ui-btn-scroll.-home',
       })
 
       // BIRD PATH

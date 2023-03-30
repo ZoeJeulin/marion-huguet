@@ -15,6 +15,7 @@
 
       <span class="nav-title t-body-2">{{ section.title }}</span>
     </a>
+    <ui-btn-scroll />
   </div>
 </template>
 

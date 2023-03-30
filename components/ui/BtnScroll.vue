@@ -62,9 +62,9 @@ export default {
 .ui-btn-scroll {
   cursor: pointer;
   position: absolute;
-  left: 0;
-  top: calc(100vh - 30px);
-  transform: translateX(-50%) translateY(-100%);
+  left: 10px;
+  bottom: calc(50% - 50vh + 5px);
+  transform: translateX(-50%) translateY(-50%);
   z-index: 11;
 
   @include below('sm') {

@@ -6,10 +6,7 @@
     </h1>
     <div class="categories">
       <ui-side-nav :sections="page.portfolioCategories" />
-      <ui-btn-scroll class="-portfolio" />
-      <!-- <div class="bird-wrapper">
-        <ui-icon name="bird" class="bird" />
-      </div> -->
+      <!-- <ui-btn-scroll class="-portfolio" /> -->
       <ul class="categories-list">
         <section-portfolio-category
           v-for="(category, index) in page.portfolioCategories"
@@ -80,14 +77,6 @@ export default {
         endTrigger: 'footer',
         end: 'top bottom',
         pin: '.ui-side-nav',
-      })
-
-      ScrollTrigger.create({
-        trigger: '.categories',
-        start: 'top top',
-        endTrigger: 'footer',
-        end: 'top bottom',
-        pin: '.ui-btn-scroll.-portfolio',
       })
     })
   },
