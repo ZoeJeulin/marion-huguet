@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer class="footer">
     <div class="footer-top">
       <div class="footer-typo-wrapper">
         <ui-icon name="typo" />

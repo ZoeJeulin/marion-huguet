@@ -47,5 +47,41 @@ export default {
       left: 5px;
     }
   }
+
+  &.corner-1 {
+    .corner-horizontal {
+      transform-origin: center left;
+    }
+    .corner-vertical {
+      transform-origin: bottom center;
+    }
+  }
+
+  &.corner-2 {
+    .corner-horizontal {
+      transform-origin: center left;
+    }
+    .corner-vertical {
+      transform-origin: bottom center;
+    }
+  }
+
+  &.corner-3 {
+    .corner-horizontal {
+      transform-origin: center left;
+    }
+    .corner-vertical {
+      transform-origin: bottom center;
+    }
+  }
+
+  &.corner-4 {
+    .corner-horizontal {
+      transform-origin: center left;
+    }
+    .corner-vertical {
+      transform-origin: bottom center;
+    }
+  }
 }
 </style>

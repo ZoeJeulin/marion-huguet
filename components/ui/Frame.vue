@@ -3,6 +3,7 @@
     <ui-corner
       v-for="index in 4"
       :key="index"
+      :position="index"
       class="frame-corner"
       :class="{
         '-desktop': displayDesktopCorner(index),
@@ -43,6 +44,7 @@ export default {
 
     &.-desktop {
       display: block;
+
       @include below('sm') {
         display: none;
       }

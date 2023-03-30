@@ -20,13 +20,16 @@
         :scale-mobile="0.18"
       />
     </div>
-    <ui-link :label="section.btnLabel" path="boutique" />
+    <!-- <ui-link class="shop-link" :label="section.btnLabel" path="boutique" /> -->
+    <div class="shop-link t-cta-1">A venir prochainement</div>
     <ui-icon name="etoile" class="star -mobile" />
     <ui-frame :desktop-corners="[2, 3]" :mobile-corners="[1, 2, 3, 4]" />
   </div>
 </template>
 
 <script>
+import { gsap } from 'gsap'
+
 export default {
   props: {
     index: {
@@ -50,6 +53,76 @@ export default {
     this.blobW = this.$el.querySelector('.shop-images').scrollWidth / 3
     if (this.w > 640) this.blobW -= 20
     this.blobScale = (this.blobW * 3) / this.w
+
+    this.$el.querySelectorAll('.ui-frame .frame-corner').forEach((corner) => {
+      gsap.from(corner.querySelector('.corner-vertical'), {
+        scaleY: 0,
+        duration: 0.2,
+        ease: 'ease-out',
+      })
+      gsap.from(corner.querySelector('.corner-horizontal'), {
+        scaleX: 0,
+        duration: 0.2,
+        ease: 'ease-out',
+      })
+    })
+
+    gsap.from('.shop-title', {
+      opacity: 0,
+      y: 30,
+      duration: 0.5,
+      ease: 'ease-out',
+      scrollTrigger: {
+        trigger: '.shop-title',
+        start: 'top 85%',
+      },
+    })
+
+    gsap.from('.shop-desc', {
+      opacity: 0,
+      y: 30,
+      duration: 0.5,
+      delay: 0.2,
+      ease: 'ease-out',
+      scrollTrigger: {
+        trigger: '.shop-title',
+        start: 'top 85%',
+      },
+    })
+
+    gsap.from('.shop-img', {
+      opacity: 0,
+      duration: 0.5,
+      ease: 'ease-out',
+      scrollTrigger: {
+        trigger: '.shop-title',
+        start: 'top 85%',
+      },
+      stagger: 0.3,
+    })
+
+    gsap.from('.shop-img', {
+      y: 150,
+      duration: 3,
+      ease: 'ease-out',
+      scrollTrigger: {
+        trigger: '.shop-title',
+        start: 'top 85%',
+      },
+      stagger: 0.3,
+    })
+
+    gsap.from('.shop-link', {
+      opacity: 0,
+      y: 30,
+      duration: 0.5,
+      delay: 0.5,
+      ease: 'ease-out',
+      scrollTrigger: {
+        trigger: '.shop-title',
+        start: 'top 85%',
+      },
+    })
   },
 }
 </script>

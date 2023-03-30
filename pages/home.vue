@@ -39,12 +39,13 @@ export default {
     window.open(url, '_blank').focus() */
     // const w = window.innerWidth
 
-    const tl = gsap.timeline()
+    const tlBird = gsap.timeline()
 
     const catSections = this.$el.querySelectorAll('.sections .home-category')
 
     const mq = gsap.matchMedia()
     mq.add('(min-width: 641px)', () => {
+      // PIN NAV + SCROLL BTN
       ScrollTrigger.create({
         trigger: '.sections',
         start: 'top top',
@@ -61,6 +62,7 @@ export default {
         pin: '.ui-btn-scroll.-home',
       })
 
+      // BIRD PATH
       const bird = this.$el.querySelector(
         '.section-intro .intro-birds .bird:last-of-type'
       )
@@ -127,7 +129,7 @@ export default {
         )
       )
 
-      tl.to(bird, {
+      tlBird.to(bird, {
         motionPath: {
           path: anchorPoints,
           alignOrigin: [0.5, 0.5],
@@ -145,6 +147,100 @@ export default {
         },
         transformOrigin: '50% 50%',
         ease: 'none',
+      })
+
+      // ANIMS
+      catSections.forEach((cat) => {
+        // const catTitle = cat.querySelector('.category-title')
+        cat.querySelectorAll('.ui-frame .frame-corner').forEach((corner) => {
+          gsap.from(corner.querySelector('.corner-vertical'), {
+            scaleY: 0,
+            duration: 0.2,
+            ease: 'ease-out',
+            scrollTrigger: cat,
+          })
+          gsap.from(corner.querySelector('.corner-horizontal'), {
+            scaleX: 0,
+            duration: 0.2,
+            ease: 'ease-out',
+            scrollTrigger: cat,
+          })
+        })
+
+        gsap.from(cat.querySelector('.category-title'), {
+          opacity: 0,
+          y: 30,
+          duration: 0.5,
+          ease: 'ease-out',
+          scrollTrigger: {
+            trigger: cat.querySelector('.category-title'),
+            start: 'top 85%',
+          },
+        })
+
+        gsap.from(cat.querySelector('.category-desc'), {
+          opacity: 0,
+          y: 30,
+          duration: 0.5,
+          delay: 0.2,
+          ease: 'ease-out',
+          scrollTrigger: {
+            trigger: cat.querySelector('.category-title'),
+            start: 'top 85%',
+          },
+        })
+
+        gsap.from(cat.querySelector('.category-link'), {
+          opacity: 0,
+          y: 10,
+          duration: 0.3,
+          delay: 0.5,
+          ease: 'ease-out',
+          scrollTrigger: {
+            trigger: cat.querySelector('.category-title'),
+            start: 'top 85%',
+          },
+        })
+
+        gsap.from(cat.querySelector('.category-img'), {
+          opacity: 0,
+          duration: 0.5,
+          ease: 'ease-out',
+          scrollTrigger: {
+            trigger: cat.querySelector('.category-title'),
+            start: 'top 85%',
+          },
+        })
+
+        gsap.from(cat.querySelector('.category-img'), {
+          y: 150,
+          duration: 3,
+          ease: 'ease-out',
+          scrollTrigger: {
+            trigger: cat.querySelector('.category-title'),
+            start: 'top 85%',
+          },
+        })
+
+        gsap.fromTo(
+          cat.querySelector('.category-img'),
+          {
+            x: 0,
+          },
+          {
+            x: Math.PI * 3,
+            duration: 3,
+            modifiers: {
+              x(x) {
+                return Math.sin(parseFloat(x)) * 5 + 'px'
+              },
+            },
+            scrollTrigger: {
+              trigger: cat.querySelector('.category-title'),
+              start: 'top 85%',
+            },
+          }
+        )
       })
     })
 
@@ -166,6 +262,7 @@ export default {
           start: 'top top',
           end: 'bottom top',
           scrub: true,
+          markers: true,
         },
       })
 

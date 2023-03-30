@@ -13,7 +13,7 @@
         alt="feed insta"
         class="support-feed"
       />
-      <ui-link label="En voir plus" />
+      <ui-link class="support-link" label="En voir plus" />
     </div>
     <div class="support-wrapper">
       <ui-icon name="etoile" class="star -desktop" />
@@ -22,13 +22,11 @@
         <div class="support-desc t-body-1">
           {{ section.description }}
         </div>
-        <ui-link :label="section.btnLabel" />
+        <ui-link class="support-link" :label="section.btnLabel" />
       </div>
 
       <ui-icon name="etoile" class="star -desktop" />
     </div>
-    <!-- <ui-icon name="bird" class="support-bird" />
-    <ui-icon name="bird" class="support-bird" /> -->
     <img src="~/assets/img/bird2.png" alt="bird" class="support-bird" />
     <img src="~/assets/img/bird1.png" alt="bird" class="support-bird" />
 
@@ -38,6 +36,8 @@
 </template>
 
 <script>
+import { gsap } from 'gsap'
+
 export default {
   props: {
     index: {
@@ -48,6 +48,55 @@ export default {
       type: Object,
       default: () => {},
     },
+  },
+  mounted() {
+    this.$el.querySelectorAll('.ui-frame .frame-corner').forEach((corner) => {
+      gsap.from(corner.querySelector('.corner-vertical'), {
+        scaleY: 0,
+        duration: 0.2,
+        ease: 'ease-out',
+      })
+      gsap.from(corner.querySelector('.corner-horizontal'), {
+        scaleX: 0,
+        duration: 0.2,
+        ease: 'ease-out',
+      })
+    })
+
+    gsap.from('.support-title', {
+      opacity: 0,
+      y: 30,
+      duration: 0.5,
+      ease: 'ease-out',
+      scrollTrigger: {
+        trigger: '.support-title',
+        start: 'top 85%',
+      },
+    })
+
+    gsap.from('.support-desc', {
+      opacity: 0,
+      y: 30,
+      duration: 0.5,
+      delay: 0.2,
+      ease: 'ease-out',
+      scrollTrigger: {
+        trigger: '.support-title',
+        start: 'top 85%',
+      },
+    })
+
+    gsap.from('.support-link', {
+      opacity: 0,
+      y: 10,
+      duration: 0.3,
+      delay: 0.5,
+      ease: 'ease-out',
+      scrollTrigger: {
+        trigger: '.support-title',
+        start: 'top 85%',
+      },
+    })
   },
 }
 </script>

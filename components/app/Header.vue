@@ -44,7 +44,11 @@
           >
         </li>
       </ul>
-      <ui-icon name="bird" class="bird" />
+      <img
+        src="~/assets/img/bird1.png"
+        alt="Pictogramme d'oiseau"
+        class="bird"
+      />
     </div>
   </header>
 </template>

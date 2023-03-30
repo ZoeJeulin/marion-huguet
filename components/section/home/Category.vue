@@ -15,6 +15,7 @@
           {{ section.description }}
         </div>
         <ui-link
+          class="category-link"
           :label="section.btnLabel"
           path="portfolio"
           :hash="`#${section.title.toLowerCase().replace(/[\W_]+/g, '-')}`"
