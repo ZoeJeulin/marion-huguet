@@ -134,7 +134,6 @@ export default {
         scrollTrigger: {
           trigger: '.contact-content',
           start: 'top 95%',
-          markers: true,
         },
       })
 
@@ -147,7 +146,6 @@ export default {
           scrollTrigger: {
             trigger: '.contact-content',
             start: 'top 95%',
-            markers: true,
           },
         })
         gsap.from(corner.querySelector('.corner-horizontal'), {
@@ -158,7 +156,6 @@ export default {
           scrollTrigger: {
             trigger: '.contact-content',
             start: 'top 95%',
-            markers: true,
           },
         })
       })
@@ -172,7 +169,6 @@ export default {
         scrollTrigger: {
           trigger: '.contact-content',
           start: 'top 95%',
-          markers: true,
         },
       })
     })
@@ -187,7 +183,6 @@ export default {
         scrollTrigger: {
           trigger: '.contact-content',
           start: 'top 95%',
-          markers: true,
         },
       })
 
@@ -200,7 +195,6 @@ export default {
         scrollTrigger: {
           trigger: '.contact-content',
           start: 'top 95%',
-          markers: true,
         },
       })
 
@@ -213,7 +207,6 @@ export default {
         scrollTrigger: {
           trigger: '.contact-content',
           start: 'top 95%',
-          markers: true,
         },
       })
     })
