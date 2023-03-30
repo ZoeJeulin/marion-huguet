@@ -78,6 +78,26 @@ export default {
         end: 'top bottom',
         pin: '.ui-side-nav',
       })
+
+      gsap.from('.title', {
+        opacity: 0,
+        y: 80,
+        duration: 0.5,
+        ease: 'ease-out',
+      })
+
+      this.$el.querySelectorAll('.ui-work-card').forEach((card) => {
+        gsap.from(card, {
+          opacity: 0,
+          y: 80,
+          duration: 0.5,
+          ease: 'ease-out',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 85%',
+          },
+        })
+      })
     })
   },
   methods: {
@@ -114,6 +134,7 @@ export default {
 
       @include below('sm') {
         display: inline-block;
+        margin-left: 20px;
       }
     }
   }

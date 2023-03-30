@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import { gsap } from 'gsap'
+
 export default {
   props: {
     work: {
@@ -41,6 +43,22 @@ export default {
       type: Number,
       default: 1,
     },
+  },
+  mounted() {
+    this.$el.querySelectorAll('.ui-frame .frame-corner').forEach((corner) => {
+      gsap.from(corner.querySelector('.corner-vertical'), {
+        scaleY: 0,
+        duration: 0.2,
+        ease: 'ease-out',
+        scrollTrigger: corner,
+      })
+      gsap.from(corner.querySelector('.corner-horizontal'), {
+        scaleX: 0,
+        duration: 0.2,
+        ease: 'ease-out',
+        scrollTrigger: corner,
+      })
+    })
   },
 }
 </script>
