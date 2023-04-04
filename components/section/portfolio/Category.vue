@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { gsap } from 'gsap'
+// import { gsap } from 'gsap'
 
 export default {
   props: {
@@ -35,7 +35,7 @@ export default {
       default: 0,
     },
   },
-  mounted() {
+  /* mounted() {
     const mqCategory = gsap.matchMedia()
 
     const works = this.$el.querySelectorAll('.ui-work-card')
@@ -51,7 +51,7 @@ export default {
         })
       })
     })
-  },
+  }, */
 }
 </script>
 

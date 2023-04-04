@@ -58,7 +58,7 @@ export default {
         })
       })
 
-      mqPortoflio.add('(max-width: 640px)', () => {
+      /* mqPortoflio.add('(max-width: 640px)', () => {
         gsap.to(cat.querySelector('.category-title'), {
           yPercent: 75,
           ease: 'none',
@@ -67,7 +67,7 @@ export default {
             scrub: true,
           },
         })
-      })
+      }) */
     })
 
     mqPortoflio.add('(min-width: 641px)', () => {

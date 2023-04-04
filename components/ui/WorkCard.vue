@@ -98,9 +98,12 @@ export default {
     &.-right .work-img-wrapper:before {
       @include below('sm') {
         background: linear-gradient(
-          180deg,
-          rgba($blue2, 0.3) 0%,
-          rgba($blue2, 0) 100%
+          90deg,
+          rgba(4, 34, 62, 0.15) 0%,
+          rgba(4, 34, 62, 0) 12%,
+          rgba(4, 34, 62, 0) 50%,
+          rgba(4, 34, 62, 0.1) 85%,
+          rgba(4, 34, 62, 0.25) 100%
         );
       }
     }
@@ -134,7 +137,8 @@ export default {
           background: linear-gradient(
             90deg,
             rgba($blue2, 0.3) 0%,
-            rgba($blue2, 0) 100%
+            rgba($blue2, 0.15) 15%,
+            rgba($blue2, 0) 50%
           );
         }
       }
@@ -178,7 +182,8 @@ export default {
           right: 20px;
           background: linear-gradient(
             90deg,
-            rgba($blue2, 0) 0%,
+            rgba($blue2, 0) 50%,
+            rgba($blue2, 0.15) 85%,
             rgba($blue2, 0.3) 100%
           );
         }
