@@ -58,16 +58,17 @@ export default {
         })
       })
 
-      /* mqPortoflio.add('(max-width: 640px)', () => {
-        gsap.to(cat.querySelector('.category-title'), {
-          yPercent: 75,
-          ease: 'none',
+      mqPortoflio.add('(max-width: 640px)', () => {
+        gsap.from(cat.querySelector('.category-title'), {
+          x: -50,
+          duration: 0.5,
+          ease: 'ease-out',
           scrollTrigger: {
-            trigger: cat,
-            scrub: true,
+            trigger: cat.querySelector('.category-title'),
+            start: 'top 85%',
           },
         })
-      }) */
+      })
     })
 
     mqPortoflio.add('(min-width: 641px)', () => {
@@ -96,6 +97,28 @@ export default {
           scrollTrigger: {
             trigger: card,
             start: 'top 85%',
+          },
+        })
+      })
+    })
+
+    mqPortoflio.add('(max-width: 640px)', () => {
+      gsap.from('.title', {
+        opacity: 0,
+        y: 30,
+        duration: 0.5,
+        ease: 'ease-out',
+      })
+
+      this.$el.querySelectorAll('.ui-work-card').forEach((card) => {
+        gsap.from(card, {
+          opacity: 0,
+          y: 30,
+          duration: 0.5,
+          ease: 'ease-out',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 90%',
           },
         })
       })

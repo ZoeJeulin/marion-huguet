@@ -6,9 +6,7 @@
     class="ui-link"
   >
     <span class="line-left"></span>
-    <p class="t-cta-1">
-      {{ label }}
-    </p>
+    <p class="t-cta-1" v-html="label"></p>
     <span class="line-right"></span>
     <span class="arrow"></span>
   </component>

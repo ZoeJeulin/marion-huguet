@@ -13,7 +13,7 @@
               class="link-item"
             >
               <nuxt-link
-                :to="localePath({ name: link.slug ? link.slug : '/' })"
+                :to="localePath({ name: link.slug ? link.slug : 'home' })"
                 class="t-cta-2"
               >
                 {{ link.pageTitle }}
@@ -129,11 +129,19 @@ footer {
           &::before {
             transform: scaleX(1);
             transition: transform 0.15s ease-out;
+
+            @include below('sm') {
+              transform: scaleX(0);
+            }
           }
 
           &::after {
             opacity: 1;
             transition: opacity 0.15s 0.15s ease-out;
+
+            @include below('sm') {
+              opacity: 0;
+            }
           }
         }
 
@@ -153,7 +161,7 @@ footer {
           transition: transform 0.15s 0.15s ease-out;
 
           @include below('sm') {
-            width: 50px;
+            display: none;
           }
         }
 
@@ -177,7 +185,7 @@ footer {
           transition: opacity 0.15s ease-out;
 
           @include below('sm') {
-            right: 45px;
+            display: none;
           }
         }
       }
