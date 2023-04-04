@@ -9,7 +9,7 @@
       />
       <ui-frame
         :desktop-corners="index % 2 == 0 ? [3] : [4]"
-        :mobile-corners="index % 2 == 0 ? [3] : [4]"
+        :mobile-corners="index % 2 == 0 ? [2] : [1]"
       />
     </div>
     <div class="work-overlay">
@@ -18,10 +18,10 @@
         <div class="work-title t-h3">{{ work.workTitle }}</div>
         <div class="work-desc t-body-2">{{ work.workDescription }}</div>
       </div>
-      <div class="work-cta">
-        <ui-icon name="arrow" class="arrow" />
-        <!-- <span class="t-cta-2">En savoir plus</span> -->
-      </div>
+      <!-- <div class="work-cta">
+        <ui-icon name="arrow" class="arrow" /> -->
+      <!-- <span class="t-cta-2">En savoir plus</span> -->
+      <!-- </div> -->
     </div>
   </li>
 </template>
@@ -238,7 +238,7 @@ export default {
     z-index: 2;
 
     @include below('sm') {
-      width: 45%;
+      width: 55%;
       justify-content: start;
       flex-direction: column;
       top: 20px;
@@ -266,12 +266,13 @@ export default {
       }
 
       .work-desc {
-        overflow: hidden;
+        hyphens: auto;
+        /* overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
         -webkit-line-clamp: 3;
         line-clamp: 3;
-        -webkit-box-orient: vertical;
+        -webkit-box-orient: vertical; */
       }
     }
 

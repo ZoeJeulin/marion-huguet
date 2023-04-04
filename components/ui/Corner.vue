@@ -32,7 +32,7 @@ export default {
     top: 10px;
 
     @include below('sm') {
-      width: 40px;
+      width: 30px;
       top: 5px;
     }
   }
@@ -43,7 +43,7 @@ export default {
     left: 10px;
 
     @include below('sm') {
-      height: 40px;
+      height: 30px;
       left: 5px;
     }
   }

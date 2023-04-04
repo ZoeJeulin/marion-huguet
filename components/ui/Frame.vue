@@ -59,12 +59,20 @@ export default {
     &:nth-child(1) {
       top: 0;
       left: 0;
+
+      @include below('sm') {
+        top: -20px;
+      }
     }
 
     &:nth-child(2) {
       top: 0;
       right: 0;
       transform: rotate(90deg);
+
+      @include below('sm') {
+        top: -20px;
+      }
     }
 
     &:nth-child(3) {

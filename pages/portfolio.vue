@@ -89,8 +89,9 @@ export default {
       this.$el.querySelectorAll('.ui-work-card').forEach((card) => {
         gsap.from(card, {
           opacity: 0,
-          y: 80,
-          duration: 0.5,
+          y: 100,
+          duration: 0.75,
+          delay: 0.2,
           ease: 'ease-out',
           scrollTrigger: {
             trigger: card,
