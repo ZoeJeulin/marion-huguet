@@ -44,11 +44,7 @@
           >
         </li>
       </ul>
-      <img
-        src="~/assets/img/bird1.png"
-        alt="Pictogramme d'oiseau"
-        class="bird"
-      />
+      <ui-icon class="whale" name="whale" />
     </div>
   </header>
 </template>
@@ -73,6 +69,7 @@ export default {
 
   methods: {
     toggleMenu() {
+      this.$el.querySelector('.ui-burger-menu').classList.toggle('-open')
       this.$el.querySelector('.header-panel').classList.toggle('-show')
       if (document.body.style.overflow === 'hidden') {
         document.body.style.overflow = ''
@@ -179,6 +176,42 @@ export default {
       .typo {
         width: 30%;
       }
+
+      .ui-burger-menu {
+        &.-open {
+          svg {
+            .line-top {
+              transform: translateX(2px) rotate(44deg);
+              transition: transform 0.3s ease-out;
+            }
+            .line-middle {
+              opacity: 0;
+              transition: opacity 0.2s ease-out;
+            }
+            .line-bottom {
+              transform: translateX(2px) rotate(-44deg);
+              transition: transform 0.3s ease-out;
+            }
+          }
+        }
+
+        svg {
+          .line-top {
+            transform-box: fill-box;
+            transform: translateX(0) rotate(0deg);
+            transition: transform 0.3s ease-out;
+          }
+          .line-middle {
+            opacity: 1;
+            transition: opacity 0.2s ease-in;
+          }
+          .line-bottom {
+            transform-box: fill-box;
+            transform: translateX(0) rotate(0deg);
+            transition: transform 0.3s ease-out;
+          }
+        }
+      }
     }
 
     .header-panel {
@@ -186,7 +219,7 @@ export default {
       flex-direction: column;
       justify-content: space-between;
       background: $blue1;
-      padding: 40px 20px 80px;
+      padding: 40px 20px 60px;
       position: fixed;
       top: 60px;
       left: 0;
@@ -215,7 +248,7 @@ export default {
 
       .ui-icon {
         align-self: center;
-        width: 30%;
+        width: 60%;
       }
     }
   }
