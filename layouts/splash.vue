@@ -38,7 +38,7 @@ export default {
             direction: 'top',
           },
           opacity: {
-            value: 0.15,
+            value: 0.1,
           },
           shadow: {
             blur: 4,
