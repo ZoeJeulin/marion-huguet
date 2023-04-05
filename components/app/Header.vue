@@ -249,6 +249,7 @@ export default {
       .ui-icon {
         align-self: center;
         width: 60%;
+        padding-bottom: 100px;
       }
     }
   }
