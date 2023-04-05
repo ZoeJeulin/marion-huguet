@@ -167,7 +167,7 @@ export default {
     .bird {
       position: absolute;
       width: 18%;
-      height: fit-content;
+      height: auto;
 
       &:nth-of-type(1) {
         top: 25%;
