@@ -2,7 +2,13 @@
   <div class="splash">
     <ui-icon class="typo" name="typo" />
     <ui-icon class="whale" name="whale" />
-    <ui-link class="link" label="Plonger dans mon univers" path="home" />
+    <ui-link
+      v-if="isMobile"
+      class="link"
+      label="Plonger dans</br>mon univers"
+      path="home"
+    />
+    <ui-link v-else class="link" label="Plonger dans mon univers" path="home" />
   </div>
 </template>
 
@@ -15,6 +21,15 @@ export default {
     },
   },
   layout: 'splash',
+  data() {
+    return {
+      isMobile: false,
+    }
+  },
+  mounted() {
+    this.isMobile = window.innerWidth <= 640
+    document.body.style.overflow = 'hidden'
+  },
 }
 </script>
 
@@ -31,9 +46,9 @@ export default {
   transform-origin: 38% 50%;
   transform: translateY(-50%);
 
-  @include below('sm') {
-    padding: 20px;
-  }
+  /* @include below('sm') {
+    top: 30%;
+  } */
 
   .typo,
   .whale {
@@ -47,10 +62,6 @@ export default {
 
   .link {
     margin-top: 60px;
-
-    @include below('sm') {
-      width: 80%;
-    }
   }
 }
 </style>

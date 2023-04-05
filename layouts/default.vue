@@ -135,8 +135,7 @@ export default {
 <style lang="scss">
 html {
   width: 100%;
-  min-height: 100vh;
-  height: -webkit-fill-available;
+  min-height: -webkit-fill-available;
   scroll-behavior: smooth;
 
   .page-enter-active,
@@ -151,7 +150,6 @@ html {
 
 body {
   position: relative;
-  min-height: 100vh;
   min-height: -webkit-fill-available;
   -webkit-overflow-scrolling: touch;
   overflow-y: scroll;
@@ -172,6 +170,10 @@ body {
         padding: 100px 20px 40px;
       }
     }
+  }
+
+  #main-splash {
+    overflow: hidden;
   }
 }
 </style>

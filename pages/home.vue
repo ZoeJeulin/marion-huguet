@@ -32,6 +32,7 @@ export default {
     return { page }
   },
   mounted() {
+    document.body.style.overflow = ''
     /* const appId = '711878503910367'
     const redUri = 'https://httpstat.us/200'
     const url = `https://api.instagram.com/oauth/authorize?client_id=${appId}&redirect_uri=${redUri}&scope=user_profile,user_media&response_type=code`

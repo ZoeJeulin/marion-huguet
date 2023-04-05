@@ -98,41 +98,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-html {
-  width: 100%;
-  min-height: 100vh;
-  height: -webkit-fill-available;
-  scroll-behavior: smooth;
-
-  .page-enter-active,
-  .page-leave-active {
-    transition: opacity 0.3s ease-out;
-  }
-  .page-enter,
-  .page-leave-to {
-    opacity: 0;
-  }
-}
-
-body {
-  position: relative;
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
-  -webkit-overflow-scrolling: touch;
-  overflow-y: scroll;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: Inter, Arial, sans-serif;
-  background: $blue1;
-
-  #main-default {
-    padding: 160px 40px 40px 40px;
-    overflow: hidden;
-
-    @include below('sm') {
-      padding: 100px 20px 40px;
-    }
-  }
-}
-</style>
+<style lang="scss"></style>
