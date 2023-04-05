@@ -1,6 +1,6 @@
 <template>
   <span class="ui-icon" aria-hidden="true">
-    <component :is="svg"></component>
+    <component :is="require(`@/assets/svg/${name}.svg?inline`)"></component>
   </span>
 </template>
 
@@ -14,11 +14,11 @@ export default {
     },
   },
 
-  computed: {
+  /* computed: {
     svg() {
       return () => import(`@/assets/svg/${this.name}.svg?inline`)
     },
-  },
+  }, */
 }
 </script>
 

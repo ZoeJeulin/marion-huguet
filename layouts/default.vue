@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div>
+  <div class="default-wrapper">
     <ui-transition ref="transition" />
     <app-header />
     <div id="main-default">
@@ -160,12 +160,17 @@ body {
   font-family: Inter, Arial, sans-serif;
   background: $blue1;
 
-  #main-default {
-    padding: 160px 40px 40px 40px;
-    overflow: hidden;
-
+  .default-wrapper {
     @include below('sm') {
-      padding: 100px 20px 40px;
+      overflow: hidden;
+    }
+
+    #main-default {
+      padding: 160px 40px 40px 40px;
+
+      @include below('sm') {
+        padding: 100px 20px 40px;
+      }
     }
   }
 }
