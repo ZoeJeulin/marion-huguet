@@ -85,10 +85,12 @@ export default {
   position: relative;
   display: flex;
   width: 60%;
+  padding-top: 240px;
 
   @include below('sm') {
     display: block;
     width: 100%;
+    padding: 100px 20px 0;
   }
 
   .infos-title {

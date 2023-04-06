@@ -306,6 +306,7 @@ export default {
     display: block;
     width: 100%;
     margin-top: 80px;
+    padding: 0 20px;
   }
 
   .contact-title {

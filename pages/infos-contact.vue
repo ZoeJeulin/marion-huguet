@@ -3,7 +3,7 @@
     <nuxt-picture
       :src="global.bgImg.url"
       :alt="global.bgImg.alt"
-      class="whale"
+      class="whale-img"
     />
     <section-infos
       :infos-title="page.infosTitle"
@@ -23,6 +23,8 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { mapState } from 'vuex'
 import PageInfosContactQuery from '~/assets/graphql/pages/infosContact.graphql'
+
+gsap.registerPlugin(ScrollTrigger)
 
 export default {
   name: 'InfosContact',
@@ -49,17 +51,24 @@ export default {
     }),
   },
   mounted() {
+    document.body.style.overflowX = 'hidden'
+    document.querySelector('#main-default').style.padding = 0
     const mqInfosContact = gsap.matchMedia()
 
     mqInfosContact.add('(min-width: 641px)', () => {
-      ScrollTrigger.create({
-        trigger: '.infos-contact',
-        start: 'top top',
-        endTrigger: 'footer',
-        end: 'top bottom',
-        pin: '.whale',
-      })
+      setTimeout(() => {
+        this.stInfos = ScrollTrigger.create({
+          trigger: this.$el,
+          start: 'top top',
+          endTrigger: 'footer',
+          end: 'top bottom',
+          pin: '.whale-img',
+        })
+      }, 500)
     })
+  },
+  beforeDestroy() {
+    this.stInfos.kill()
   },
 }
 </script>
@@ -67,24 +76,24 @@ export default {
 <style lang="scss">
 .infos-contact {
   position: relative;
-  padding: 80px 40px;
+  padding: 0 40px 80px;
 
   @include below('sm') {
     padding: 0 0 40px;
   }
 
-  .whale {
+  .whale-img {
     position: absolute;
-    top: -40px;
     right: -50%;
+    height: 100vh !important;
 
     @include below('sm') {
       display: none;
     }
 
     img {
-      height: 105vh;
-      max-width: fit-content;
+      height: 100%;
+      object-fit: cover;
     }
   }
 }
