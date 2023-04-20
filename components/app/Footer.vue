@@ -3,6 +3,7 @@
     <div class="footer-top">
       <div class="footer-typo-wrapper">
         <ui-icon name="typo" />
+        <ui-icon class="whale" name="whale" />
       </div>
       <div class="footer-content-wrapper">
         <div class="footer-links">
@@ -65,8 +66,25 @@ footer {
     justify-content: space-between;
 
     @include below('sm') {
-      flex-direction: column;
       padding: 20px;
+    }
+
+    .footer-typo-wrapper {
+      width: 30%;
+      height: fit-content;
+      align-self: center;
+
+      @include below('sm') {
+        order: 2;
+      }
+
+      .whale {
+        display: none;
+
+        @include below('sm') {
+          display: block;
+        }
+      }
     }
 
     .footer-content-wrapper {
@@ -76,12 +94,17 @@ footer {
 
       @include below('sm') {
         flex-direction: column;
+        order: 1;
       }
 
       .footer-links {
+        height: fit-content;
+        align-self: center;
+
         @include below('sm') {
-          margin-top: 20px;
+          align-self: flex-start;
         }
+
         .links-list {
           .link-item {
             width: fit-content;
