@@ -84,7 +84,7 @@ export default {
 
   .whale-img {
     position: absolute;
-    right: -50%;
+    right: 0;
     height: 100vh !important;
 
     @include below('sm') {

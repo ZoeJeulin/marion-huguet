@@ -47,46 +47,52 @@ export default {
   mounted() {
     const mqWork = gsap.matchMedia()
 
-    mqWork.add('(min-width: 641px)', () => {
-      this.$el.querySelectorAll('.ui-frame .frame-corner').forEach((corner) => {
-        gsap.from(corner.querySelector('.corner-vertical'), {
-          scaleY: 0,
-          duration: 0.2,
-          ease: 'ease-out',
-          scrollTrigger: corner,
-        })
-        gsap.from(corner.querySelector('.corner-horizontal'), {
-          scaleX: 0,
-          duration: 0.2,
-          ease: 'ease-out',
-          scrollTrigger: corner,
-        })
+    setTimeout(() => {
+      mqWork.add('(min-width: 641px)', () => {
+        this.$el
+          .querySelectorAll('.ui-frame .frame-corner')
+          .forEach((corner) => {
+            gsap.from(corner.querySelector('.corner-vertical'), {
+              scaleY: 0,
+              duration: 0.2,
+              ease: 'ease-out',
+              scrollTrigger: corner,
+            })
+            gsap.from(corner.querySelector('.corner-horizontal'), {
+              scaleX: 0,
+              duration: 0.2,
+              ease: 'ease-out',
+              scrollTrigger: corner,
+            })
+          })
       })
-    })
 
-    mqWork.add('(max-width: 640px)', () => {
-      this.$el.querySelectorAll('.ui-frame .frame-corner').forEach((corner) => {
-        gsap.from(corner.querySelector('.corner-vertical'), {
-          scaleY: 0,
-          duration: 0.2,
-          ease: 'ease-out',
-          scrollTrigger: {
-            trigger: corner,
-            start: 'top 85%',
-          },
-        })
-        gsap.from(corner.querySelector('.corner-horizontal'), {
-          scaleX: 0,
-          duration: 0.2,
-          delay: 0.2,
-          ease: 'ease-out',
-          scrollTrigger: {
-            trigger: corner,
-            start: 'top 85%',
-          },
-        })
+      mqWork.add('(max-width: 640px)', () => {
+        this.$el
+          .querySelectorAll('.ui-frame .frame-corner')
+          .forEach((corner) => {
+            gsap.from(corner.querySelector('.corner-vertical'), {
+              scaleY: 0,
+              duration: 0.2,
+              ease: 'ease-out',
+              scrollTrigger: {
+                trigger: corner,
+                start: 'top 85%',
+              },
+            })
+            gsap.from(corner.querySelector('.corner-horizontal'), {
+              scaleX: 0,
+              duration: 0.2,
+              delay: 0.2,
+              ease: 'ease-out',
+              scrollTrigger: {
+                trigger: corner,
+                start: 'top 85%',
+              },
+            })
+          })
       })
-    })
+    }, 500)
   },
 }
 </script>

@@ -22,6 +22,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 import PageHomeQuery from '~/assets/graphql/pages/home.graphql'
 
+gsap.registerPlugin(ScrollTrigger)
+
 export default {
   name: 'Home',
   async asyncData(context) {
@@ -44,15 +46,20 @@ export default {
     const catSections = this.$el.querySelectorAll('.sections .home-category')
 
     const mq = gsap.matchMedia()
+
     mq.add('(min-width: 641px)', () => {
       // PIN NAV + SCROLL BTN
-      ScrollTrigger.create({
+      setTimeout(() => {
+        
+      this.stHome = ScrollTrigger.create({
         trigger: '.sections',
         start: 'top top',
         endTrigger: 'footer',
         end: 'top bottom',
         pin: '.ui-side-nav',
+        markers: true,
       })
+      }, 500)
 
       // BIRD PATH
       const bird = this.$el.querySelector(
@@ -236,60 +243,65 @@ export default {
       })
     })
 
-    mq.add('(max-width: 640px)', () => {
-      const bird1 = this.$el.querySelector(
-        '.section-intro .intro-birds .bird:nth-of-type(1)'
-      )
-      const bird2 = this.$el.querySelector(
-        '.section-intro .intro-birds .bird:nth-of-type(2)'
-      )
-      const bird3 = this.$el.querySelector(
-        '.section-intro .intro-birds .bird:nth-of-type(3)'
-      )
+    setTimeout(() => {
+      mq.add('(max-width: 640px)', () => {
+        const bird1 = this.$el.querySelector(
+          '.section-intro .intro-birds .bird:nth-of-type(1)'
+        )
+        const bird2 = this.$el.querySelector(
+          '.section-intro .intro-birds .bird:nth-of-type(2)'
+        )
+        const bird3 = this.$el.querySelector(
+          '.section-intro .intro-birds .bird:nth-of-type(3)'
+        )
 
-      gsap.to(bird1, {
-        rotate: -230,
-        scrollTrigger: {
-          trigger: '.section-intro',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true,
-        },
-      })
-
-      gsap.to(bird2, {
-        rotate: 165,
-        scrollTrigger: {
-          trigger: '.section-intro',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true,
-        },
-      })
-
-      gsap.to(bird3, {
-        rotate: -240,
-        scrollTrigger: {
-          trigger: '.section-intro',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true,
-        },
-      })
-
-      catSections.forEach((cat) => {
-        gsap.to(cat.querySelector('.img-wrapper'), {
-          yPercent: 25,
-          ease: 'none',
+        gsap.to(bird1, {
+          rotate: -230,
           scrollTrigger: {
-            trigger: cat,
-            start: 'top center',
-            end: 'bottom center',
+            trigger: '.section-intro',
+            start: 'top top',
+            end: 'bottom top',
             scrub: true,
           },
         })
+
+        gsap.to(bird2, {
+          rotate: 165,
+          scrollTrigger: {
+            trigger: '.section-intro',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true,
+          },
+        })
+
+        gsap.to(bird3, {
+          rotate: -240,
+          scrollTrigger: {
+            trigger: '.section-intro',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true,
+          },
+        })
+
+        catSections.forEach((cat) => {
+          gsap.to(cat.querySelector('.img-wrapper'), {
+            yPercent: 25,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: cat,
+              start: 'top center',
+              end: 'bottom center',
+              scrub: true,
+            },
+          })
+        })
       })
-    })
+    }, 500)
+  },
+  beforeDestroy() {
+    this.stHome.kill()
   },
   methods: {
     getComponent(section) {

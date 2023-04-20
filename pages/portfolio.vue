@@ -25,6 +25,8 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import PagePortfolioQuery from '~/assets/graphql/pages/portfolio.graphql'
 
+gsap.registerPlugin(ScrollTrigger)
+
 export default {
   name: 'Portfolio',
   nuxtI18n: {
@@ -49,80 +51,84 @@ export default {
 
     const categories = this.$el.querySelectorAll('.category')
     categories.forEach((cat) => {
+      setTimeout(() => {
+        mqPortoflio.add('(min-width: 641px)', () => {
+          this.stPortfolio1 = ScrollTrigger.create({
+            trigger: cat,
+            start: 'top top',
+            end: 'bottom bottom',
+            pin: cat.querySelector('.category-title'),
+          })
+        })
+
+        mqPortoflio.add('(max-width: 640px)', () => {
+          gsap.from(cat.querySelector('.category-title'), {
+            x: -50,
+            duration: 0.5,
+            ease: 'ease-out',
+            scrollTrigger: {
+              trigger: cat.querySelector('.category-title'),
+              start: 'top 85%',
+            },
+          })
+        })
+      }, 500)
+    })
+
+    setTimeout(() => {
       mqPortoflio.add('(min-width: 641px)', () => {
-        ScrollTrigger.create({
-          trigger: cat,
+        this.stPortfolio2 = ScrollTrigger.create({
+          trigger: '.categories',
           start: 'top top',
-          end: 'bottom bottom',
-          pin: cat.querySelector('.category-title'),
+          endTrigger: 'footer',
+          end: 'top bottom',
+          pin: '.ui-side-nav',
+        })
+
+        gsap.from('.title', {
+          opacity: 0,
+          y: 80,
+          duration: 0.5,
+          ease: 'ease-out',
+        })
+
+        this.$el.querySelectorAll('.ui-work-card').forEach((card) => {
+          gsap.from(card, {
+            opacity: 0,
+            y: 100,
+            duration: 0.75,
+            delay: 0.2,
+            ease: 'ease-out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+            },
+          })
         })
       })
 
       mqPortoflio.add('(max-width: 640px)', () => {
-        gsap.from(cat.querySelector('.category-title'), {
-          x: -50,
-          duration: 0.5,
-          ease: 'ease-out',
-          scrollTrigger: {
-            trigger: cat.querySelector('.category-title'),
-            start: 'top 85%',
-          },
-        })
-      })
-    })
-
-    mqPortoflio.add('(min-width: 641px)', () => {
-      ScrollTrigger.create({
-        trigger: '.categories',
-        start: 'top top',
-        endTrigger: 'footer',
-        end: 'top bottom',
-        pin: '.ui-side-nav',
-      })
-
-      gsap.from('.title', {
-        opacity: 0,
-        y: 80,
-        duration: 0.5,
-        ease: 'ease-out',
-      })
-
-      this.$el.querySelectorAll('.ui-work-card').forEach((card) => {
-        gsap.from(card, {
-          opacity: 0,
-          y: 100,
-          duration: 0.75,
-          delay: 0.2,
-          ease: 'ease-out',
-          scrollTrigger: {
-            trigger: card,
-            start: 'top 85%',
-          },
-        })
-      })
-    })
-
-    mqPortoflio.add('(max-width: 640px)', () => {
-      gsap.from('.title', {
-        opacity: 0,
-        y: 30,
-        duration: 0.5,
-        ease: 'ease-out',
-      })
-
-      this.$el.querySelectorAll('.ui-work-card').forEach((card) => {
-        gsap.from(card, {
+        gsap.from('.title', {
           opacity: 0,
           y: 30,
           duration: 0.5,
           ease: 'ease-out',
-          scrollTrigger: {
-            trigger: card,
-            start: 'top 90%',
-          },
+        })
+
+        this.$el.querySelectorAll('.ui-work-card').forEach((card) => {
+          gsap.from(card, {
+            opacity: 0,
+            y: 30,
+            duration: 0.5,
+            ease: 'ease-out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 90%',
+            },
+          })
         })
       })
-    })
+    }, 500)
   },
   methods: {
     getFirstIndex(index) {
