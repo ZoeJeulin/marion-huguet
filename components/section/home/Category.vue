@@ -61,6 +61,8 @@ export default {
 
   .category-img {
     width: 40%;
+    opacity: 0;
+    transform: translateX(0px) translateY(150px);
 
     &.-right {
       order: 2;
@@ -100,14 +102,23 @@ export default {
 
       .category-title {
         margin-bottom: 20px;
+        opacity: 0;
+        transform: translateY(30px);
       }
 
       .category-desc {
         margin-bottom: 80px;
+        opacity: 0;
+        transform: translateY(30px);
 
         @include below('sm') {
           margin-bottom: 40px;
         }
+      }
+
+      .category-link {
+        opacity: 0;
+        transform: translateY(10px);
       }
     }
   }

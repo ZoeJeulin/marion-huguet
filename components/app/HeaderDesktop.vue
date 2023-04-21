@@ -1,5 +1,5 @@
 <template>
-  <header class="header-desktop">
+  <div class="header-desktop">
     <ul class="nav-list">
       <li v-for="(link, id) in global.navLinks" :key="id" class="nav-item">
         <ui-icon name="etoile" class="star" />
@@ -17,7 +17,7 @@
         global.donationsLabel
       }}</a>
     </div>
-  </header>
+  </div>
 </template>
 
 <script>
@@ -42,6 +42,7 @@ export default {
   padding: 30px 40px;
   height: 90px;
   position: fixed;
+  top: -90px;
   width: 100%;
   z-index: 15;
 

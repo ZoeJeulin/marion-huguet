@@ -51,21 +51,21 @@ export default {
   },
   mounted() {
     this.$el.querySelectorAll('.ui-frame .frame-corner').forEach((corner) => {
-      gsap.from(corner.querySelector('.corner-vertical'), {
-        scaleY: 0,
+      gsap.to(corner.querySelector('.corner-vertical'), {
+        scaleY: 1,
         duration: 0.2,
         ease: 'ease-out',
       })
-      gsap.from(corner.querySelector('.corner-horizontal'), {
-        scaleX: 0,
+      gsap.to(corner.querySelector('.corner-horizontal'), {
+        scaleX: 1,
         duration: 0.2,
         ease: 'ease-out',
       })
     })
 
-    gsap.from('.support-title', {
-      opacity: 0,
-      y: 30,
+    gsap.to('.support-title', {
+      opacity: 1,
+      y: 0,
       duration: 0.5,
       ease: 'ease-out',
       scrollTrigger: {
@@ -74,9 +74,9 @@ export default {
       },
     })
 
-    gsap.from('.support-desc', {
-      opacity: 0,
-      y: 30,
+    gsap.to('.support-desc', {
+      opacity: 1,
+      y: 0,
       duration: 0.5,
       delay: 0.2,
       ease: 'ease-out',
@@ -86,9 +86,9 @@ export default {
       },
     })
 
-    gsap.from('.support-link', {
-      opacity: 0,
-      y: 10,
+    gsap.to('.support-link', {
+      opacity: 1,
+      y: 0,
       duration: 0.3,
       delay: 0.5,
       ease: 'ease-out',
@@ -154,14 +154,23 @@ export default {
 
       .support-title {
         margin-bottom: 20px;
+        opacity: 0;
+        transform: translateY(30px);
       }
 
       .support-desc {
         margin-bottom: 80px;
+        opacity: 0;
+        transform: translateY(30px);
 
         @include below('sm') {
           margin-bottom: 40px;
         }
+      }
+
+      .support-link {
+        opacity: 0;
+        transform: translateY(10px);
       }
     }
   }

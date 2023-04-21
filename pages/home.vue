@@ -50,15 +50,13 @@ export default {
     mq.add('(min-width: 641px)', () => {
       // PIN NAV + SCROLL BTN
       setTimeout(() => {
-        
-      this.stHome = ScrollTrigger.create({
-        trigger: '.sections',
-        start: 'top top',
-        endTrigger: 'footer',
-        end: 'top bottom',
-        pin: '.ui-side-nav',
-        markers: true,
-      })
+        this.stHome = ScrollTrigger.create({
+          trigger: '.sections',
+          start: 'top top',
+          endTrigger: 'footer',
+          end: 'top bottom',
+          pin: '.ui-side-nav',
+        })
       }, 500)
 
       // BIRD PATH
@@ -152,23 +150,23 @@ export default {
       catSections.forEach((cat) => {
         // const catTitle = cat.querySelector('.category-title')
         cat.querySelectorAll('.ui-frame .frame-corner').forEach((corner) => {
-          gsap.from(corner.querySelector('.corner-vertical'), {
-            scaleY: 0,
+          gsap.to(corner.querySelector('.corner-vertical'), {
+            scaleY: 1,
             duration: 0.2,
             ease: 'ease-out',
             scrollTrigger: cat,
           })
-          gsap.from(corner.querySelector('.corner-horizontal'), {
-            scaleX: 0,
+          gsap.to(corner.querySelector('.corner-horizontal'), {
+            scaleX: 1,
             duration: 0.2,
             ease: 'ease-out',
             scrollTrigger: cat,
           })
         })
 
-        gsap.from(cat.querySelector('.category-title'), {
-          opacity: 0,
-          y: 30,
+        gsap.to(cat.querySelector('.category-title'), {
+          opacity: 1,
+          y: 0,
           duration: 0.5,
           ease: 'ease-out',
           scrollTrigger: {
@@ -177,9 +175,9 @@ export default {
           },
         })
 
-        gsap.from(cat.querySelector('.category-desc'), {
-          opacity: 0,
-          y: 30,
+        gsap.to(cat.querySelector('.category-desc'), {
+          opacity: 1,
+          y: 0,
           duration: 0.5,
           delay: 0.2,
           ease: 'ease-out',
@@ -189,9 +187,9 @@ export default {
           },
         })
 
-        gsap.from(cat.querySelector('.category-link'), {
-          opacity: 0,
-          y: 10,
+        gsap.to(cat.querySelector('.category-link'), {
+          opacity: 1,
+          y: 0,
           duration: 0.3,
           delay: 0.5,
           ease: 'ease-out',
@@ -201,8 +199,8 @@ export default {
           },
         })
 
-        gsap.from(cat.querySelector('.category-img'), {
-          opacity: 0,
+        gsap.to(cat.querySelector('.category-img'), {
+          opacity: 1,
           duration: 0.5,
           ease: 'ease-out',
           scrollTrigger: {
@@ -211,8 +209,8 @@ export default {
           },
         })
 
-        gsap.from(cat.querySelector('.category-img'), {
-          y: 150,
+        gsap.to(cat.querySelector('.category-img'), {
+          y: 0,
           duration: 3,
           ease: 'ease-out',
           scrollTrigger: {

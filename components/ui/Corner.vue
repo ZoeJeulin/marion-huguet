@@ -30,6 +30,7 @@ export default {
     height: 1px;
     width: 75px;
     top: 10px;
+    transform: scaleX(0);
 
     @include below('sm') {
       width: 30px;
@@ -41,6 +42,7 @@ export default {
     height: 75px;
     width: 1px;
     left: 10px;
+    transform: scaleY(0);
 
     @include below('sm') {
       height: 30px;

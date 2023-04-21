@@ -52,14 +52,14 @@ export default {
         this.$el
           .querySelectorAll('.ui-frame .frame-corner')
           .forEach((corner) => {
-            gsap.from(corner.querySelector('.corner-vertical'), {
-              scaleY: 0,
+            gsap.to(corner.querySelector('.corner-vertical'), {
+              scaleY: 1,
               duration: 0.2,
               ease: 'ease-out',
               scrollTrigger: corner,
             })
-            gsap.from(corner.querySelector('.corner-horizontal'), {
-              scaleX: 0,
+            gsap.to(corner.querySelector('.corner-horizontal'), {
+              scaleX: 1,
               duration: 0.2,
               ease: 'ease-out',
               scrollTrigger: corner,
@@ -71,8 +71,8 @@ export default {
         this.$el
           .querySelectorAll('.ui-frame .frame-corner')
           .forEach((corner) => {
-            gsap.from(corner.querySelector('.corner-vertical'), {
-              scaleY: 0,
+            gsap.to(corner.querySelector('.corner-vertical'), {
+              scaleY: 1,
               duration: 0.2,
               ease: 'ease-out',
               scrollTrigger: {
@@ -80,8 +80,8 @@ export default {
                 start: 'top 85%',
               },
             })
-            gsap.from(corner.querySelector('.corner-horizontal'), {
-              scaleX: 0,
+            gsap.to(corner.querySelector('.corner-horizontal'), {
+              scaleX: 1,
               duration: 0.2,
               delay: 0.2,
               ease: 'ease-out',
@@ -102,6 +102,7 @@ export default {
   position: relative;
   width: 40%;
   margin: -10% auto;
+  opacity: 0;
 
   @include below('sm') {
     width: 75%;
@@ -148,10 +149,10 @@ export default {
   }
 
   &.-left {
-    transform: translateX(-60%);
+    transform: translateX(-60%) translateY(100px);
 
     @include below('sm') {
-      transform: none;
+      transform: translateY(30px);
       align-self: flex-end;
       justify-content: flex-end;
     }
@@ -196,10 +197,10 @@ export default {
   }
 
   &.-right {
-    transform: translateX(60%);
+    transform: translateX(60%) translateY(100px);
 
     @include below('sm') {
-      transform: none;
+      transform: translateY(30px);
     }
 
     .work-img-wrapper {

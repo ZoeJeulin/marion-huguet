@@ -125,9 +125,9 @@ export default {
   mounted() {
     const mq = gsap.matchMedia()
     mq.add('(min-width: 641px)', () => {
-      gsap.from('.contact-title', {
-        opacity: 0,
-        x: 30,
+      gsap.to('.contact-title', {
+        opacity: 1,
+        x: 0,
         duration: 0.5,
         delay: 0.3,
         ease: 'ease-out',
@@ -138,8 +138,8 @@ export default {
       })
 
       this.$el.querySelectorAll('.ui-frame .frame-corner').forEach((corner) => {
-        gsap.from(corner.querySelector('.corner-vertical'), {
-          scaleY: 0,
+        gsap.to(corner.querySelector('.corner-vertical'), {
+          scaleY: 1,
           duration: 0.2,
           delay: 0.6,
           ease: 'ease-out',
@@ -148,8 +148,8 @@ export default {
             start: 'top 95%',
           },
         })
-        gsap.from(corner.querySelector('.corner-horizontal'), {
-          scaleX: 0,
+        gsap.to(corner.querySelector('.corner-horizontal'), {
+          scaleX: 1,
           duration: 0.2,
           delay: 0.8,
           ease: 'ease-out',
@@ -160,9 +160,9 @@ export default {
         })
       })
 
-      gsap.from('.contact-content', {
-        opacity: 0,
-        y: 30,
+      gsap.to('.contact-content', {
+        opacity: 1,
+        y: 0,
         duration: 0.5,
         delay: 0.6,
         ease: 'ease-out',
@@ -174,9 +174,9 @@ export default {
     })
 
     mq.add('(max-width: 640px)', () => {
-      gsap.from('.contact-title', {
-        opacity: 0,
-        y: 15,
+      gsap.to('.contact-title', {
+        opacity: 1,
+        y: 0,
         duration: 0.3,
         delay: 0.3,
         ease: 'ease-out',
@@ -186,8 +186,8 @@ export default {
         },
       })
 
-      gsap.from('.contact-text', {
-        opacity: 0,
+      gsap.to('.contact-text', {
+        opacity: 1,
         y: 15,
         duration: 0.3,
         delay: 0.5,
@@ -198,9 +198,9 @@ export default {
         },
       })
 
-      gsap.from('#form-contact', {
-        opacity: 0,
-        y: 15,
+      gsap.to('#form-contact', {
+        opacity: 1,
+        y: 0,
         duration: 0.3,
         delay: 0.7,
         ease: 'ease-out',
@@ -315,9 +315,10 @@ export default {
     align-items: center;
     writing-mode: vertical-lr;
     -webkit-writing-mode: vertical-lr;
-    transform: rotate(180deg);
+    transform: translateX(30px) rotate(180deg);
     text-align: center;
     margin: 40px 0;
+    opacity: 0;
 
     @include below('sm') {
       writing-mode: horizontal-tb;
@@ -325,6 +326,7 @@ export default {
       transform: none;
       text-align: left;
       margin: 0 0 10px 0;
+      transform: translateY(15px);
     }
 
     .star {
@@ -347,10 +349,13 @@ export default {
   .contact-content {
     padding-left: 60px;
     margin: 60px 60px 60px 0;
+    transform: translateY(30px);
+    opacity: 0;
 
     @include below('sm') {
       padding-left: 0;
       margin: 0;
+      transform: translateY(15px);
     }
 
     .-hide {
@@ -365,6 +370,8 @@ export default {
 
       @include below('sm') {
         margin-top: 40px;
+        opacity: 0;
+        transform: translateY(15px);
       }
 
       .field {

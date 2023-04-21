@@ -77,14 +77,14 @@ export default {
     window.addEventListener('resize', this.resize)
     this.resize()
 
-    gsap.from(document.querySelector('.header'), {
-      yPercent: -100,
+    gsap.to(document.querySelector('.header-desktop'), {
+      top: 0,
       ease: 'ease-out',
       duration: 1,
     })
 
-    gsap.from(document.querySelector('.footer'), {
-      yPercent: 100,
+    gsap.to(document.querySelector('.header-nav'), {
+      top: 0,
       ease: 'ease-out',
       duration: 1,
     })

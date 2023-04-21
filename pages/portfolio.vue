@@ -62,8 +62,8 @@ export default {
         })
 
         mqPortoflio.add('(max-width: 640px)', () => {
-          gsap.from(cat.querySelector('.category-title'), {
-            x: -50,
+          gsap.to(cat.querySelector('.category-title'), {
+            x: 0,
             duration: 0.5,
             ease: 'ease-out',
             scrollTrigger: {
@@ -85,17 +85,10 @@ export default {
           pin: '.ui-side-nav',
         })
 
-        gsap.from('.title', {
-          opacity: 0,
-          y: 80,
-          duration: 0.5,
-          ease: 'ease-out',
-        })
-
         this.$el.querySelectorAll('.ui-work-card').forEach((card) => {
-          gsap.from(card, {
-            opacity: 0,
-            y: 100,
+          gsap.to(card, {
+            opacity: 1,
+            y: 0,
             duration: 0.75,
             delay: 0.2,
             ease: 'ease-out',
@@ -108,17 +101,17 @@ export default {
       })
 
       mqPortoflio.add('(max-width: 640px)', () => {
-        gsap.from('.title', {
-          opacity: 0,
-          y: 30,
+        gsap.to('.title', {
+          opacity: 1,
+          y: 0,
           duration: 0.5,
           ease: 'ease-out',
         })
 
         this.$el.querySelectorAll('.ui-work-card').forEach((card) => {
-          gsap.from(card, {
-            opacity: 0,
-            y: 30,
+          gsap.to(card, {
+            opacity: 1,
+            y: 0,
             duration: 0.5,
             ease: 'ease-out',
             scrollTrigger: {
@@ -149,6 +142,19 @@ export default {
     position: relative;
     z-index: 3;
     text-shadow: 2px 2px 20px rgba($blue2, 0.25);
+    opacity: 0;
+    animation: titlePortfolio 0.5s 1s ease-out forwards;
+
+    @keyframes titlePortfolio {
+      0% {
+        opacity: 0;
+        transform: translateY(80px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
     @include below('sm') {
       margin-top: 0;
@@ -157,6 +163,17 @@ export default {
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      @keyframes titlePortfolio {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
     }
 
     .star {

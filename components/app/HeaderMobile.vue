@@ -1,5 +1,5 @@
 <template>
-  <header class="header-mobile">
+  <div class="header-mobile">
     <div class="header-nav">
       <ui-icon class="typo" name="typo" />
       <ui-burger-menu @click.native="toggleMenu" />
@@ -27,7 +27,7 @@
       </ul>
       <ui-icon class="whale" name="whale" />
     </div>
-  </header>
+  </div>
 </template>
 
 <script>
@@ -65,7 +65,7 @@ export default {
 
   .header-nav {
     position: fixed;
-    top: 0;
+    top: -60px;
     background: $blue1;
     box-shadow: 0 20px 30px rgba($color: $blue2, $alpha: 0.3);
     height: 60px;

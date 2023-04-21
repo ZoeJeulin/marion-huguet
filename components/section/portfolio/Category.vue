@@ -83,7 +83,7 @@ export default {
     -webkit-writing-mode: vertical-rl;
     white-space: normal;
     margin: calc(90px + 5vh) 0 5vh;
-    @include fluid-type($xs, $xl, 36px, 90px);
+    @include fluid-type($xs, $xl, 36px, 78px);
 
     @include below('sm') {
       position: absolute;
@@ -94,14 +94,15 @@ export default {
     &.-left {
       @include below('sm') {
         text-align: right;
-        transform: translateX(-50%) rotate(180deg);
+        transform-origin: 25% center;
+        transform: translateX(-100px) rotate(180deg);
       }
     }
 
     &.-right {
       @include below('sm') {
         right: 0;
-        transform: translateX(50%);
+        transform: translateX(100px);
       }
     }
   }
@@ -128,6 +129,18 @@ export default {
       height: 100%;
       width: 1px;
       background: $white;
+      transform-origin: center top;
+      transform: scaleY(0);
+      animation: line 3s 1s ease-out forwards;
+
+      @keyframes line {
+        0% {
+          transform: scaleY(0);
+        }
+        100% {
+          transform: scaleY(1);
+        }
+      }
 
       @include below('sm') {
         display: none;

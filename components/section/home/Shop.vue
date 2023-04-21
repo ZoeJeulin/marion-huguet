@@ -55,21 +55,21 @@ export default {
     this.blobScale = (this.blobW * 3) / this.w
 
     this.$el.querySelectorAll('.ui-frame .frame-corner').forEach((corner) => {
-      gsap.from(corner.querySelector('.corner-vertical'), {
-        scaleY: 0,
+      gsap.to(corner.querySelector('.corner-vertical'), {
+        scaleY: 1,
         duration: 0.2,
         ease: 'ease-out',
       })
-      gsap.from(corner.querySelector('.corner-horizontal'), {
-        scaleX: 0,
+      gsap.to(corner.querySelector('.corner-horizontal'), {
+        scaleX: 1,
         duration: 0.2,
         ease: 'ease-out',
       })
     })
 
-    gsap.from('.shop-title', {
-      opacity: 0,
-      y: 30,
+    gsap.to('.shop-title', {
+      opacity: 1,
+      y: 0,
       duration: 0.5,
       ease: 'ease-out',
       scrollTrigger: {
@@ -78,9 +78,9 @@ export default {
       },
     })
 
-    gsap.from('.shop-desc', {
-      opacity: 0,
-      y: 30,
+    gsap.to('.shop-desc', {
+      opacity: 1,
+      y: 0,
       duration: 0.5,
       delay: 0.2,
       ease: 'ease-out',
@@ -90,8 +90,8 @@ export default {
       },
     })
 
-    gsap.from('.shop-img', {
-      opacity: 0,
+    gsap.to('.shop-img', {
+      opacity: 1,
       duration: 0.5,
       ease: 'ease-out',
       scrollTrigger: {
@@ -101,8 +101,8 @@ export default {
       stagger: 0.3,
     })
 
-    gsap.from('.shop-img', {
-      y: 150,
+    gsap.to('.shop-img', {
+      y: 0,
       duration: 3,
       ease: 'ease-out',
       scrollTrigger: {
@@ -112,9 +112,9 @@ export default {
       stagger: 0.3,
     })
 
-    gsap.from('.shop-link', {
-      opacity: 0,
-      y: 30,
+    gsap.to('.shop-link', {
+      opacity: 1,
+      y: 0,
       duration: 0.5,
       delay: 0.5,
       ease: 'ease-out',
@@ -143,6 +143,8 @@ export default {
 
   .shop-title {
     margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(30px);
 
     span:not(.star) {
       padding: 0 80px;
@@ -163,6 +165,8 @@ export default {
 
   .shop-desc {
     margin-bottom: 60px;
+    opacity: 0;
+    transform: translateY(30px);
 
     @include below('sm') {
       margin-bottom: 10px;
@@ -180,6 +184,8 @@ export default {
 
     .shop-img {
       width: 30%;
+      opacity: 0;
+      transform: translateY(150px);
 
       @include below('sm') {
         width: 30%;
@@ -202,6 +208,12 @@ export default {
       }
     }
   }
+
+  .shop-link {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
   .star {
     margin: auto;
 
