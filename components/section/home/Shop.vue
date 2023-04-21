@@ -10,12 +10,12 @@
     </div>
     <div class="shop-images">
       <ui-blob
-        v-for="i in 3"
-        :key="`shop-img-${i}`"
+        v-for="(shopImg, index) in section.images"
+        :key="`shop-img-${index}`"
         class="shop-img"
         :style="`width:${blobW}px`"
-        :index="i"
-        :path-name="`path-shop-${i}`"
+        :index="index"
+        :path-name="shopImg.responsiveImage.src"
         :scale="0.85"
         :scale-mobile="0.18"
       />
@@ -146,6 +146,10 @@ export default {
     opacity: 0;
     transform: translateY(30px);
 
+    @include below('sm') {
+      transform: translateY(15px);
+    }
+
     span:not(.star) {
       padding: 0 80px;
 
@@ -170,6 +174,7 @@ export default {
 
     @include below('sm') {
       margin-bottom: 10px;
+      transform: translateY(15px);
     }
   }
 
@@ -189,6 +194,7 @@ export default {
 
       @include below('sm') {
         width: 30%;
+        transform: translateY(40px);
       }
 
       &:first-of-type {
@@ -212,6 +218,10 @@ export default {
   .shop-link {
     opacity: 0;
     transform: translateY(30px);
+
+    @include below('sm') {
+      transform: translateY(15px);
+    }
   }
 
   .star {

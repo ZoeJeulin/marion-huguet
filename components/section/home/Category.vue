@@ -4,7 +4,7 @@
       class="category-img"
       :class="{ '-right': index % 2 == 1 }"
       :index="index"
-      :path-name="`path-${section.title.toLowerCase().replace(/[\W_]+/g, '-')}`"
+      :path-name="section.image.responsiveImage.src"
       :scale-mobile="0.45"
     />
     <div class="category-wrapper" :class="{ '-right': index % 2 == 1 }">
@@ -75,8 +75,9 @@ export default {
     @include below('sm') {
       width: 66%;
       position: absolute;
-      top: 2%;
+      top: 0 !important;
       right: -5%;
+      transform: translateY(0%);
     }
   }
 
@@ -104,6 +105,10 @@ export default {
         margin-bottom: 20px;
         opacity: 0;
         transform: translateY(30px);
+
+        @include below('sm') {
+          transform: translateY(15px);
+        }
       }
 
       .category-desc {
@@ -113,6 +118,7 @@ export default {
 
         @include below('sm') {
           margin-bottom: 40px;
+          transform: translateY(15px);
         }
       }
 

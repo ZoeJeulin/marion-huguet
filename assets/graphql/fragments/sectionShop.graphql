@@ -6,7 +6,7 @@ fragment SectionShop on SectionShopRecord {
   title
   description
   images {
-    responsiveImage {
+    responsiveImage(imgixParams: { ar: "1:1", fit: crop }) {
       ...ResponsiveImage
     }
   }

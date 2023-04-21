@@ -9,12 +9,12 @@ export default function (to, from, savedPosition) {
 
   // wait for transition before scroll top
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
+    // setTimeout(() => {
       if (to.hash) {
         resolve(t)
       } else {
         resolve(window.scrollTo(0, 0))
       }
-    }, 400)
+   // }, 400)
   })
 }

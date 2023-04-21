@@ -17,4 +17,9 @@ fragment SectionCategory on SectionCategoryRecord {
     }
   }
   btnLabel
+  image {
+    responsiveImage(imgixParams: { ar: "1:1", fit: crop }) {
+      ...ResponsiveImage
+    }
+  }
 }

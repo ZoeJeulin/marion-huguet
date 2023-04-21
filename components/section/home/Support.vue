@@ -156,6 +156,10 @@ export default {
         margin-bottom: 20px;
         opacity: 0;
         transform: translateY(30px);
+
+        @include below('sm') {
+          transform: translateY(15px);
+        }
       }
 
       .support-desc {
@@ -165,6 +169,7 @@ export default {
 
         @include below('sm') {
           margin-bottom: 40px;
+          transform: translateY(15px);
         }
       }
 

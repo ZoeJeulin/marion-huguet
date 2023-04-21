@@ -30,7 +30,7 @@
     <img
       class="img-wrapper"
       :style="`clip-path: url('#${pathName}');`"
-      src="https://source.unsplash.com/random/480x480"
+      :src="pathName"
       alt="category image"
     />
   </div>

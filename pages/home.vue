@@ -146,69 +146,7 @@ export default {
         ease: 'none',
       })
 
-      // ANIMS
       catSections.forEach((cat) => {
-        // const catTitle = cat.querySelector('.category-title')
-        cat.querySelectorAll('.ui-frame .frame-corner').forEach((corner) => {
-          gsap.to(corner.querySelector('.corner-vertical'), {
-            scaleY: 1,
-            duration: 0.2,
-            ease: 'ease-out',
-            scrollTrigger: cat,
-          })
-          gsap.to(corner.querySelector('.corner-horizontal'), {
-            scaleX: 1,
-            duration: 0.2,
-            ease: 'ease-out',
-            scrollTrigger: cat,
-          })
-        })
-
-        gsap.to(cat.querySelector('.category-title'), {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          ease: 'ease-out',
-          scrollTrigger: {
-            trigger: cat.querySelector('.category-title'),
-            start: 'top 85%',
-          },
-        })
-
-        gsap.to(cat.querySelector('.category-desc'), {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          delay: 0.2,
-          ease: 'ease-out',
-          scrollTrigger: {
-            trigger: cat.querySelector('.category-title'),
-            start: 'top 85%',
-          },
-        })
-
-        gsap.to(cat.querySelector('.category-link'), {
-          opacity: 1,
-          y: 0,
-          duration: 0.3,
-          delay: 0.5,
-          ease: 'ease-out',
-          scrollTrigger: {
-            trigger: cat.querySelector('.category-title'),
-            start: 'top 85%',
-          },
-        })
-
-        gsap.to(cat.querySelector('.category-img'), {
-          opacity: 1,
-          duration: 0.5,
-          ease: 'ease-out',
-          scrollTrigger: {
-            trigger: cat.querySelector('.category-title'),
-            start: 'top 85%',
-          },
-        })
-
         gsap.to(cat.querySelector('.category-img'), {
           y: 0,
           duration: 3,
@@ -238,6 +176,70 @@ export default {
             },
           }
         )
+      })
+    })
+
+    // ANIMS
+    catSections.forEach((cat) => {
+      // const catTitle = cat.querySelector('.category-title')
+      cat.querySelectorAll('.ui-frame .frame-corner').forEach((corner) => {
+        gsap.to(corner.querySelector('.corner-vertical'), {
+          scaleY: 1,
+          duration: 0.2,
+          ease: 'ease-out',
+          scrollTrigger: cat,
+        })
+        gsap.to(corner.querySelector('.corner-horizontal'), {
+          scaleX: 1,
+          duration: 0.2,
+          ease: 'ease-out',
+          scrollTrigger: cat,
+        })
+      })
+
+      gsap.to(cat.querySelector('.category-title'), {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: 'ease-out',
+        scrollTrigger: {
+          trigger: cat.querySelector('.category-title'),
+          start: 'top 85%',
+        },
+      })
+
+      gsap.to(cat.querySelector('.category-desc'), {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        delay: 0.2,
+        ease: 'ease-out',
+        scrollTrigger: {
+          trigger: cat.querySelector('.category-title'),
+          start: 'top 85%',
+        },
+      })
+
+      gsap.to(cat.querySelector('.category-link'), {
+        opacity: 1,
+        y: 0,
+        duration: 0.3,
+        delay: 0.5,
+        ease: 'ease-out',
+        scrollTrigger: {
+          trigger: cat.querySelector('.category-title'),
+          start: 'top 85%',
+        },
+      })
+
+      gsap.to(cat.querySelector('.category-img'), {
+        opacity: 1,
+        duration: 0.5,
+        ease: 'ease-out',
+        scrollTrigger: {
+          trigger: cat.querySelector('.category-title'),
+          start: 'top 85%',
+        },
       })
     })
 
@@ -283,8 +285,8 @@ export default {
           },
         })
 
-        catSections.forEach((cat) => {
-          gsap.to(cat.querySelector('.img-wrapper'), {
+        /* catSections.forEach((cat) => {
+          gsap.to(cat.querySelector('.category-img'), {
             yPercent: 25,
             ease: 'none',
             scrollTrigger: {
@@ -294,7 +296,7 @@ export default {
               scrub: true,
             },
           })
-        })
+        }) */
       })
     }, 500)
   },
