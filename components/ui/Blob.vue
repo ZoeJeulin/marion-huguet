@@ -27,12 +27,19 @@
       </clipPath>
     </svg>
 
-    <img
+    <nuxt-picture
       class="img-wrapper"
       :style="`clip-path: url('#${pathName}');`"
       :src="pathName"
       alt="category image"
     />
+
+    <!-- <img
+      class="img-wrapper"
+      :style="`clip-path: url('#${pathName}');`"
+      :src="pathName"
+      alt="category image"
+    /> -->
   </div>
 </template>
 
@@ -101,6 +108,11 @@ export default {
     right: 0;
     margin: auto;
     object-fit: cover;
+    transform: translate(5%, 5%);
+
+    @include below('sm') {
+      transform: none;
+    }
   }
 }
 </style>

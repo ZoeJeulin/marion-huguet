@@ -34,7 +34,8 @@ export default {
     return { page }
   },
   mounted() {
-    document.body.style.overflow = ''
+    document.body.style.overflowX = 'hidden'
+    document.body.style.overflowY = ''
     /* const appId = '711878503910367'
     const redUri = 'https://httpstat.us/200'
     const url = `https://api.instagram.com/oauth/authorize?client_id=${appId}&redirect_uri=${redUri}&scope=user_profile,user_media&response_type=code`
@@ -285,9 +286,9 @@ export default {
           },
         })
 
-        /* catSections.forEach((cat) => {
+        catSections.forEach((cat) => {
           gsap.to(cat.querySelector('.category-img'), {
-            yPercent: 25,
+            yPercent: 20,
             ease: 'none',
             scrollTrigger: {
               trigger: cat,
@@ -296,12 +297,20 @@ export default {
               scrub: true,
             },
           })
-        }) */
+
+          gsap.to(cat.querySelector('.category-img img'), {
+            filter: 'brightness(0.5) blur(1px)',
+            ease: 'none',
+            scrollTrigger: {
+              trigger: cat,
+              start: 'top 25%',
+              end: 'bottom center',
+              scrub: true,
+            },
+          })
+        })
       })
     }, 500)
-  },
-  beforeDestroy() {
-    this.stHome.kill()
   },
   methods: {
     getComponent(section) {

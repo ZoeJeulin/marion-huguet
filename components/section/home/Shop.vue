@@ -17,7 +17,7 @@
         :index="index"
         :path-name="shopImg.responsiveImage.src"
         :scale="0.85"
-        :scale-mobile="0.18"
+        :scale-mobile="0.17"
       />
     </div>
     <!-- <ui-link class="shop-link" :label="section.btnLabel" path="boutique" /> -->
@@ -133,12 +133,12 @@ export default {
   padding: 120px 40px;
   text-align: center;
   min-height: calc(100vh - 30px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   @include below('sm') {
     padding: 60px 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
 
   .shop-title {
@@ -171,17 +171,20 @@ export default {
     margin-bottom: 60px;
     opacity: 0;
     transform: translateY(30px);
+    width: 70%;
+    align-self: center;
 
     @include below('sm') {
       margin-bottom: 10px;
       transform: translateY(15px);
+      width: 100%;
     }
   }
 
   .shop-images {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 180px;
+    margin-bottom: 80px;
 
     @include below('sm') {
       margin-bottom: 40px;

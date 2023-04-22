@@ -73,11 +73,17 @@ export default {
     }
 
     @include below('sm') {
-      width: 66%;
+      width: 68%;
       position: absolute;
       top: 0 !important;
       right: -5%;
       transform: translateY(0%);
+    }
+
+    img {
+      @include below('sm') {
+        filter: brightness(1) blur(0px);
+      }
     }
   }
 

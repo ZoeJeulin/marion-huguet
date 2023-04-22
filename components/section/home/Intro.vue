@@ -47,24 +47,22 @@ export default {
   mounted() {
     const tlIntro = gsap.timeline()
 
-    tlIntro.delay(1)
-
     this.$el.querySelectorAll('.ui-frame .frame-corner').forEach((corner) => {
-      tlIntro.from(corner.querySelector('.corner-vertical'), {
-        scaleY: 0,
+      tlIntro.to(corner.querySelector('.corner-vertical'), {
+        scaleY: 1,
         duration: 0.2,
         ease: 'ease-out',
       })
-      tlIntro.from(corner.querySelector('.corner-horizontal'), {
-        scaleX: 0,
+      tlIntro.to(corner.querySelector('.corner-horizontal'), {
+        scaleX: 1,
         duration: 0.2,
         ease: 'ease-out',
       })
     })
 
-    tlIntro.from('.intro-desc', {
-      opacity: 0,
-      y: 10,
+    tlIntro.to('.intro-desc', {
+      opacity: 1,
+      y: 0,
       duration: 0.5,
       ease: 'ease-out',
     })
@@ -73,30 +71,30 @@ export default {
     const bird2 = this.$el.querySelector('.bird:nth-of-type(2)')
     const bird3 = this.$el.querySelector('.bird:nth-of-type(3)')
 
-    tlIntro.from(bird1, {
-      opacity: 0,
-      y: 15,
-      x: 10,
+    tlIntro.to(bird1, {
+      opacity: 1,
+      y: 0,
+      x: 0,
       duration: 0.5,
     })
 
-    tlIntro.from(
+    tlIntro.to(
       bird2,
       {
-        opacity: 0,
-        y: -5,
-        x: -12,
+        opacity: 1,
+        y: 0,
+        x: 0,
         duration: 0.5,
       },
       '<'
     )
 
-    tlIntro.from(
+    tlIntro.to(
       bird3,
       {
-        opacity: 0,
-        y: -15,
-        x: -2,
+        opacity: 1,
+        y: 0,
+        x: 0,
         duration: 0.5,
       },
       '<'
@@ -148,6 +146,8 @@ export default {
 
     .intro-desc {
       margin-top: 60px;
+      opacity: 0;
+      transform: translateY(10px);
 
       @include below('sm') {
         margin-top: 20px;
@@ -168,15 +168,16 @@ export default {
       position: absolute;
       width: 18%;
       height: auto;
+      opacity: 0;
 
       &:nth-of-type(1) {
         top: 25%;
         left: 35%;
-        transform: rotate(-70deg);
+        transform: translate(10px, 15px) rotate(-70deg);
 
         @include below('sm') {
           left: 30%;
-          transform: rotate(190deg);
+          transform: translate(0) rotate(190deg);
         }
       }
 
@@ -185,23 +186,23 @@ export default {
         bottom: 0;
         right: 15%;
         margin: auto;
-        transform: rotate(80deg);
+        transform: translate(-12px, -5px) rotate(80deg);
 
         @include below('sm') {
           right: 25%;
-          transform: rotate(95deg);
+          transform: translate(0) rotate(95deg);
         }
       }
 
       &:nth-of-type(3) {
         bottom: 25%;
         left: 35%;
-        transform: rotate(10deg);
+        transform: translate(-2px, -15px) rotate(10deg);
 
         @include below('sm') {
           bottom: 15%;
           left: 35%;
-          transform: rotate(-65deg);
+          transform: translate(0) rotate(-65deg);
         }
       }
     }
