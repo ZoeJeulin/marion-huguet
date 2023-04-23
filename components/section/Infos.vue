@@ -85,7 +85,7 @@ export default {
   position: relative;
   display: flex;
   width: 60%;
-  padding-top: 240px;
+  padding-top: 160px;
 
   @include below('sm') {
     display: block;
