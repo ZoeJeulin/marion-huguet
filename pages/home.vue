@@ -42,7 +42,7 @@ export default {
     window.open(url, '_blank').focus() */
     // const w = window.innerWidth
 
-    const tlBird = gsap.timeline()
+    this.tlBird = gsap.timeline()
 
     const catSections = this.$el.querySelectorAll('.sections .home-category')
 
@@ -127,7 +127,7 @@ export default {
         )
       )
 
-      tlBird.to(bird, {
+      this.tlBird.to(bird, {
         motionPath: {
           path: anchorPoints,
           alignOrigin: [0.5, 0.5],
@@ -206,6 +206,7 @@ export default {
         scrollTrigger: {
           trigger: cat.querySelector('.category-title'),
           start: 'top 85%',
+          markers: true,
         },
       })
 
@@ -311,6 +312,10 @@ export default {
         })
       })
     }, 500)
+  },
+  beforeDestroy() {
+    this.stHome.kill(false)
+    this.tlBird.pause().kill(false)
   },
   methods: {
     getComponent(section) {
