@@ -41,8 +41,10 @@ export default {
     const url = `https://api.instagram.com/oauth/authorize?client_id=${appId}&redirect_uri=${redUri}&scope=user_profile,user_media&response_type=code`
     window.open(url, '_blank').focus() */
     // const w = window.innerWidth
-
+    console.log(this.tlBird && this.tlBird.progress())
     this.tlBird = gsap.timeline()
+    this.tlBird.scrollTrigger && this.tlBird.scrollTrigger.kill()
+    console.log(this.tlBird.progress())
 
     const catSections = this.$el.querySelectorAll('.sections .home-category')
 
@@ -316,7 +318,6 @@ export default {
   beforeDestroy() {
     this.stHome.kill(false)
     this.tlBird.pause().kill(false)
-    console.log('killed')
   },
   methods: {
     getComponent(section) {

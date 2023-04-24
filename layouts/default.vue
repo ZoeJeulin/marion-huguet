@@ -72,7 +72,6 @@ export default {
   beforeMount() {
     this.resize()
     window.addEventListener('resize', this.resize)
-    window.addEventListener('beforeunload', this.clearAnims)
   },
   mounted() {
     window.addEventListener('resize', this.resize)
@@ -102,7 +101,6 @@ export default {
     }
 
     this.$router.beforeEach((to, from, callback) => {
-      console.log('same')
       if (shouldIgnoreTransition(from, to)) {
         callback()
       } else {
@@ -125,13 +123,6 @@ export default {
         this.SET_WINDOW_SIZE()
         this.$nuxt.$emit('WINDOW:RESIZE')
       }, 100)
-    },
-    clearAnims() {
-      setTimeout(() => {
-        ScrollTrigger.clearScrollMemory()
-        window.history.scrollRestoration = 'manual'
-        console.log('clear')
-      }, 2000)
     },
     particlesInit: async (engine) => {
       await loadFull(engine)
