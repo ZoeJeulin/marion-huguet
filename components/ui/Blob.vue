@@ -67,15 +67,15 @@ export default {
   },
   mounted() {
     const svgPath = this.$el.querySelector('.img-blob path')
-    const mqCategoryHome = gsap.matchMedia()
+    const mqBlob = gsap.matchMedia()
 
-    mqCategoryHome.add('(max-width: 640px)', () => {
+    mqBlob.add('(max-width: 640px)', () => {
       gsap.set(svgPath, {
         scale: this.scaleMobile,
       })
     })
 
-    mqCategoryHome.add('(min-width: 641px)', () => {
+    mqBlob.add('(min-width: 641px)', () => {
       gsap.set(svgPath, {
         scale: this.scale,
       })

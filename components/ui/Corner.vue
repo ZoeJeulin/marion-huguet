@@ -1,7 +1,7 @@
 <template>
   <div class="ui-corner" :class="`corner-${position}`">
-    <span class="corner-horizontal"></span>
-    <span class="corner-vertical"></span>
+    <span ref="horizontal" class="corner-horizontal"></span>
+    <span ref="vertical" class="corner-vertical"></span>
   </div>
 </template>
 

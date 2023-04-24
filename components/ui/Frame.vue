@@ -3,6 +3,7 @@
     <ui-corner
       v-for="index in 4"
       :key="index"
+      ref="corner"
       :position="index"
       class="frame-corner"
       :class="{

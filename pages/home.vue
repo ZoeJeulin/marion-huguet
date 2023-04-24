@@ -42,29 +42,29 @@ export default {
     window.open(url, '_blank').focus() */
     // const w = window.innerWidth
 
-    const catSections = this.$el.querySelectorAll('.sections .home-category')
+    // const catSections = this.$el.querySelectorAll('.sections .home-category')
+    this.$nextTick(() => {
+      const mq = gsap.matchMedia()
 
-    const mq = gsap.matchMedia()
-
-    mq.add('(min-width: 641px)', () => {
-      // PIN NAV + SCROLL BTN
-      setTimeout(() => {
-        this.stHome = ScrollTrigger.create({
+      mq.add('(min-width: 641px)', () => {
+        // PIN NAV + SCROLL BTN
+        // setTimeout(() => {
+        ScrollTrigger.create({
           trigger: '.sections',
           start: 'top top',
           endTrigger: 'footer',
           end: 'top bottom',
           pin: '.ui-side-nav',
         })
-      }, 500)
+        // }, 500)
 
-      // BIRD PATH
-      /* const bird = this.$el.querySelector(
+        // BIRD PATH
+        /* const bird = this.$el.querySelector(
         '.section-intro .intro-birds .bird:last-of-type'
       ) */
-      // const blobs = this.$el.querySelectorAll('.category-img .img-wrapper')
+        // const blobs = this.$el.querySelectorAll('.category-img .img-wrapper')
 
-      /* const introSection = this.$el.querySelector('.section-intro')
+        /* const introSection = this.$el.querySelector('.section-intro')
       const shopSection = this.$el.querySelector('.sections .home-shop')
       const supportSection = this.$el.querySelector('.sections .home-support')
 
@@ -145,8 +145,8 @@ export default {
         ease: 'none',
       }) */
 
-      catSections.forEach((cat) => {
-        gsap.to(cat.querySelector('.category-img'), {
+        // catSections.forEach((cat) => {
+        /* gsap.to(cat.querySelector('.category-img'), {
           y: 0,
           duration: 3,
           ease: 'ease-out',
@@ -174,78 +174,14 @@ export default {
               start: 'top 85%',
             },
           }
-        )
+        ) */
+        // })
       })
     })
 
-    // ANIMS
-    catSections.forEach((cat) => {
-      // const catTitle = cat.querySelector('.category-title')
-      cat.querySelectorAll('.ui-frame .frame-corner').forEach((corner) => {
-        gsap.to(corner.querySelector('.corner-vertical'), {
-          scaleY: 1,
-          duration: 0.2,
-          ease: 'ease-out',
-          scrollTrigger: cat,
-        })
-        gsap.to(corner.querySelector('.corner-horizontal'), {
-          scaleX: 1,
-          duration: 0.2,
-          ease: 'ease-out',
-          scrollTrigger: cat,
-        })
-      })
-
-      gsap.to(cat.querySelector('.category-title'), {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        ease: 'ease-out',
-        scrollTrigger: {
-          trigger: cat.querySelector('.category-title'),
-          start: 'top 85%',
-          markers: true,
-        },
-      })
-
-      gsap.to(cat.querySelector('.category-desc'), {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        delay: 0.2,
-        ease: 'ease-out',
-        scrollTrigger: {
-          trigger: cat.querySelector('.category-title'),
-          start: 'top 85%',
-        },
-      })
-
-      gsap.to(cat.querySelector('.category-link'), {
-        opacity: 1,
-        y: 0,
-        duration: 0.3,
-        delay: 0.5,
-        ease: 'ease-out',
-        scrollTrigger: {
-          trigger: cat.querySelector('.category-title'),
-          start: 'top 85%',
-        },
-      })
-
-      gsap.to(cat.querySelector('.category-img'), {
-        opacity: 1,
-        duration: 0.5,
-        ease: 'ease-out',
-        scrollTrigger: {
-          trigger: cat.querySelector('.category-title'),
-          start: 'top 85%',
-        },
-      })
-    })
-
-    setTimeout(() => {
-      mq.add('(max-width: 640px)', () => {
-        /* const bird1 = this.$el.querySelector(
+    // setTimeout(() => {
+    // mq.add('(max-width: 640px)', () => {
+    /* const bird1 = this.$el.querySelector(
           '.section-intro .intro-birds .bird:nth-of-type(1)'
         )
         const bird2 = this.$el.querySelector(
@@ -284,8 +220,7 @@ export default {
             scrub: true,
           },
         }) */
-
-        catSections.forEach((cat) => {
+    /* catSections.forEach((cat) => {
           gsap.to(cat.querySelector('.category-img'), {
             yPercent: 20,
             ease: 'none',
@@ -307,14 +242,14 @@ export default {
               scrub: true,
             },
           })
-        })
-      })
-    }, 500)
+        }) */
+    /* })
+    }, 500) */
   },
-  beforeDestroy() {
-    this.stHome.kill(false)
-    // this.tlBird.pause().kill(false)
-  },
+  /* beforeDestroy() {
+    if (this.stHome) this.stHome.kill()
+    if (this.tlBird) this.tlBird.kill()
+  }, */
   methods: {
     getComponent(section) {
       return section
