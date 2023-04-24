@@ -41,10 +41,6 @@ export default {
     const url = `https://api.instagram.com/oauth/authorize?client_id=${appId}&redirect_uri=${redUri}&scope=user_profile,user_media&response_type=code`
     window.open(url, '_blank').focus() */
     // const w = window.innerWidth
-    /* console.log(this.tlBird && this.tlBird.progress())
-    this.tlBird = gsap.timeline()
-    this.tlBird.scrollTrigger && this.tlBird.scrollTrigger.kill()
-    console.log(this.tlBird.progress()) */
 
     const catSections = this.$el.querySelectorAll('.sections .home-category')
 
@@ -63,12 +59,12 @@ export default {
       }, 500)
 
       // BIRD PATH
-      const bird = this.$el.querySelector(
+      /* const bird = this.$el.querySelector(
         '.section-intro .intro-birds .bird:last-of-type'
-      )
-      const blobs = this.$el.querySelectorAll('.category-img .img-wrapper')
+      ) */
+      // const blobs = this.$el.querySelectorAll('.category-img .img-wrapper')
 
-      const introSection = this.$el.querySelector('.section-intro')
+      /* const introSection = this.$el.querySelector('.section-intro')
       const shopSection = this.$el.querySelector('.sections .home-shop')
       const supportSection = this.$el.querySelector('.sections .home-support')
 
@@ -147,7 +143,7 @@ export default {
         },
         transformOrigin: '50% 50%',
         ease: 'none',
-      })
+      }) */
 
       catSections.forEach((cat) => {
         gsap.to(cat.querySelector('.category-img'), {
@@ -249,7 +245,7 @@ export default {
 
     setTimeout(() => {
       mq.add('(max-width: 640px)', () => {
-        const bird1 = this.$el.querySelector(
+        /* const bird1 = this.$el.querySelector(
           '.section-intro .intro-birds .bird:nth-of-type(1)'
         )
         const bird2 = this.$el.querySelector(
@@ -287,7 +283,7 @@ export default {
             end: 'bottom top',
             scrub: true,
           },
-        })
+        }) */
 
         catSections.forEach((cat) => {
           gsap.to(cat.querySelector('.category-img'), {
