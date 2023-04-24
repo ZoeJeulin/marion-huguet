@@ -42,7 +42,7 @@ export default {
     window.open(url, '_blank').focus() */
     // const w = window.innerWidth
 
-    this.tlBird = gsap.timeline()
+    this.tlBird = gsap.timeline().clear()
 
     const catSections = this.$el.querySelectorAll('.sections .home-category')
 
@@ -316,6 +316,7 @@ export default {
   beforeDestroy() {
     this.stHome.kill(false)
     this.tlBird.pause().kill(false)
+    console.log('killed')
   },
   methods: {
     getComponent(section) {
