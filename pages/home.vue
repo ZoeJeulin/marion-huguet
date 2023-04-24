@@ -42,7 +42,7 @@ export default {
     window.open(url, '_blank').focus() */
     // const w = window.innerWidth
 
-    this.tlBird = gsap.timeline().clear()
+    this.tlBird = gsap.timeline()
 
     const catSections = this.$el.querySelectorAll('.sections .home-category')
 
@@ -145,6 +145,7 @@ export default {
         },
         transformOrigin: '50% 50%',
         ease: 'none',
+        onRefresh: (self) => self.progress && self.animation.progress(0),
       })
 
       catSections.forEach((cat) => {
