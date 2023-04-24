@@ -145,7 +145,6 @@ export default {
         },
         transformOrigin: '50% 50%',
         ease: 'none',
-        onRefresh: (self) => self.progress && self.animation.progress(0),
       })
 
       catSections.forEach((cat) => {
