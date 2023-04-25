@@ -43,7 +43,7 @@ export default {
     // const w = window.innerWidth
 
     this.$nextTick(() => {
-      const catSections = this.$el.querySelectorAll('.sections .home-category')
+      // const catSections = this.$el.querySelectorAll('.sections .home-category')
 
       const mq = gsap.matchMedia()
 
@@ -61,10 +61,10 @@ export default {
         const bird = this.$el.querySelector(
           '.section-intro .intro-birds .bird:last-of-type'
         )
-        const blobs = this.$el.querySelectorAll('.category-img .img-wrapper')
+        // const blobs = this.$el.querySelectorAll('.category-img .img-wrapper')
 
         const introSection = this.$el.querySelector('.section-intro')
-        const shopSection = this.$el.querySelector('.sections .home-shop')
+        // const shopSection = this.$el.querySelector('.sections .home-shop')
         const supportSection = this.$el.querySelector('.sections .home-support')
 
         const anchorPoints = []
@@ -78,7 +78,7 @@ export default {
           )
         )
 
-        for (let i = 0; i < catSections.length; i++) {
+        /* for (let i = 0; i < catSections.length; i++) {
           anchorPoints.push(
             MotionPathPlugin.getRelativePosition(
               i === 0 ? introSection : catSections[i - 1],
@@ -97,7 +97,7 @@ export default {
           )
         }
 
-        anchorPoints.push(
+         anchorPoints.push(
           MotionPathPlugin.getRelativePosition(
             catSections[catSections.length - 1],
             shopSection,
@@ -122,7 +122,7 @@ export default {
             [0.75, 1],
             [0.82, 0.25]
           )
-        )
+        ) */
 
         gsap.to(bird, {
           motionPath: {
