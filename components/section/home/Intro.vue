@@ -46,22 +46,22 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      const tlIntro = gsap.timeline()
+      this.tlIntro = gsap.timeline()
 
       this.$refs.frameIntro.$refs.corner.forEach((corner) => {
-        tlIntro.to(corner.$refs.vertical, {
+        this.tlIntro.to(corner.$refs.vertical, {
           scaleY: 1,
           duration: 0.2,
           ease: 'ease-out',
         })
-        tlIntro.to(corner.$refs.horizontal, {
+        this.tlIntro.to(corner.$refs.horizontal, {
           scaleX: 1,
           duration: 0.2,
           ease: 'ease-out',
         })
       })
 
-      tlIntro.to('.intro-desc', {
+      this.tlIntro.to('.intro-desc', {
         opacity: 1,
         y: 0,
         duration: 0.5,
@@ -72,7 +72,7 @@ export default {
       const bird2 = this.$el.querySelector('.bird:nth-of-type(2)')
       const bird3 = this.$el.querySelector('.bird:nth-of-type(3)')
 
-      tlIntro.to([bird1, bird2, bird3], {
+      this.tlIntro.to([bird1, bird2, bird3], {
         opacity: 1,
         y: 0,
         x: 0,

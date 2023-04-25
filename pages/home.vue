@@ -124,7 +124,8 @@ export default {
           )
         ) */
 
-      gsap.to(bird, {
+      this.tlHome = gsap.timeline()
+      this.tlHome.to(bird, {
         motionPath: {
           path: anchorPoints,
           alignOrigin: [0.5, 0.5],
@@ -139,12 +140,16 @@ export default {
           scrub: 3,
           endTrigger: supportSection,
           once: true,
+          onUpdate: (self) => console.log('progress:', self.progress),
         },
         transformOrigin: '50% 50%',
         ease: 'none',
       })
       // })
     })
+  },
+  beforeDestroy() {
+    if (this.tlHome) this.tlHome.kill()
   },
   methods: {
     getComponent(section) {
