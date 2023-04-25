@@ -22,7 +22,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 import { loadFull } from 'tsparticles'
 
-gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
+if (process.client) {
+  gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
+}
 
 export default {
   data() {

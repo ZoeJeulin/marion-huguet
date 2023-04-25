@@ -24,7 +24,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { mapState } from 'vuex'
 import PageInfosContactQuery from '~/assets/graphql/pages/infosContact.graphql'
 
-gsap.registerPlugin(ScrollTrigger)
+if (process.client) {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 export default {
   name: 'InfosContact',
