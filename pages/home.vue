@@ -99,9 +99,8 @@ export default {
             )
           )
         }
-      }, 2000)
 
-      /* anchorPoints.push(
+        /* anchorPoints.push(
           MotionPathPlugin.getRelativePosition(
             catSections[catSections.length - 1],
             shopSection,
@@ -127,28 +126,29 @@ export default {
             [0.82, 0.25]
           )
         ) */
-      console.log(anchorPoints)
-      this.tlHome = gsap.timeline()
-      this.tlHome.to(bird, {
-        motionPath: {
-          path: anchorPoints,
-          alignOrigin: [0.5, 0.5],
-          autoRotate: 55,
-          curviness: 1,
-          relative: true,
-        },
-        scrollTrigger: {
-          trigger: introSection,
-          start: 'center center',
-          end: 'top 60%',
-          scrub: 3,
-          endTrigger: supportSection,
-          once: true,
-          onUpdate: (self) => console.log('progress:', self.progress),
-        },
-        transformOrigin: '50% 50%',
-        ease: 'none',
-      })
+        console.log(anchorPoints)
+        this.tlHome = gsap.timeline()
+        this.tlHome.to(bird, {
+          motionPath: {
+            path: anchorPoints,
+            alignOrigin: [0.5, 0.5],
+            autoRotate: 55,
+            curviness: 1,
+            relative: true,
+          },
+          scrollTrigger: {
+            trigger: introSection,
+            start: 'center center',
+            end: 'top 60%',
+            scrub: 3,
+            endTrigger: supportSection,
+            once: true,
+            onUpdate: (self) => console.log('progress:', self.progress),
+          },
+          transformOrigin: '50% 50%',
+          ease: 'none',
+        })
+      }, 2000)
     })
   },
   beforeDestroy() {
