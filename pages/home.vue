@@ -125,9 +125,10 @@ export default {
             [0.82, 0.25]
           )
         ) */
-
+      console.log(anchorPoints)
       this.tlHome = gsap.timeline()
       setTimeout(() => {
+        console.log(anchorPoints)
         this.tlHome.to(bird, {
           motionPath: {
             path: anchorPoints,
