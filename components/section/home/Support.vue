@@ -204,13 +204,13 @@ export default {
 
     &:nth-of-type(1) {
       right: 6%;
-      top: 15%;
+      top: 12%;
       transform: rotate(300deg);
     }
 
     &:nth-of-type(2) {
-      right: 10%;
-      top: 30%;
+      right: 6%;
+      top: 32%;
       transform: rotate(25deg);
     }
   }

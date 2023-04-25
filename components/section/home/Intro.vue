@@ -29,7 +29,7 @@
       />
     </div>
     <ui-icon name="etoile" class="star -mobile" />
-    <ui-frame :desktop-corners="[1, 2, 3, 4]" />
+    <ui-frame ref="frameIntro" :desktop-corners="[1, 2, 3, 4]" />
   </div>
 </template>
 
@@ -45,60 +45,74 @@ export default {
     },
   },
   mounted() {
-    const tlIntro = gsap.timeline()
+    this.$nextTick(() => {
+      const tlIntro = gsap.timeline()
 
-    this.$el.querySelectorAll('.ui-frame .frame-corner').forEach((corner) => {
-      tlIntro.to(corner.querySelector('.corner-vertical'), {
-        scaleY: 1,
-        duration: 0.2,
+      this.$refs.frameIntro.$refs.corner.forEach((corner) => {
+        tlIntro.to(corner.$refs.vertical, {
+          scaleY: 1,
+          duration: 0.2,
+          ease: 'ease-out',
+        })
+        tlIntro.to(corner.$refs.horizontal, {
+          scaleX: 1,
+          duration: 0.2,
+          ease: 'ease-out',
+        })
+      })
+
+      tlIntro.to('.intro-desc', {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
         ease: 'ease-out',
       })
-      tlIntro.to(corner.querySelector('.corner-horizontal'), {
-        scaleX: 1,
-        duration: 0.2,
-        ease: 'ease-out',
-      })
-    })
 
-    tlIntro.to('.intro-desc', {
-      opacity: 1,
-      y: 0,
-      duration: 0.5,
-      ease: 'ease-out',
-    })
+      const bird1 = this.$el.querySelector('.bird:nth-of-type(1)')
+      const bird2 = this.$el.querySelector('.bird:nth-of-type(2)')
+      const bird3 = this.$el.querySelector('.bird:nth-of-type(3)')
 
-    const bird1 = this.$el.querySelector('.bird:nth-of-type(1)')
-    const bird2 = this.$el.querySelector('.bird:nth-of-type(2)')
-    const bird3 = this.$el.querySelector('.bird:nth-of-type(3)')
-
-    tlIntro.to(bird1, {
-      opacity: 1,
-      y: 0,
-      x: 0,
-      duration: 0.5,
-    })
-
-    tlIntro.to(
-      bird2,
-      {
+      tlIntro.to([bird1, bird2, bird3], {
         opacity: 1,
         y: 0,
         x: 0,
         duration: 0.5,
-      },
-      '<'
-    )
+      })
 
-    tlIntro.to(
-      bird3,
-      {
-        opacity: 1,
-        y: 0,
-        x: 0,
-        duration: 0.5,
-      },
-      '<'
-    )
+      const mqIntro = gsap.matchMedia()
+
+      mqIntro.add('(max-width: 640px)', () => {
+        gsap.to(bird1, {
+          rotate: -230,
+          scrollTrigger: {
+            trigger: this.$el,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true,
+          },
+        })
+
+        gsap.to(bird2, {
+          rotate: 165,
+          scrollTrigger: {
+            trigger: this.$el,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true,
+          },
+        })
+
+        gsap.to(bird3, {
+          rotate: -240,
+          scrollTrigger: {
+            trigger: this.$el,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true,
+          },
+        })
+      })
+    })
 
     setTimeout(async () => {
       if (this.$refs.anim) {
@@ -112,6 +126,9 @@ export default {
         })
       }
     }, 0)
+  },
+  beforeDestroy() {
+    if (this.tlIntro) this.tlIntro.kill()
   },
 }
 </script>

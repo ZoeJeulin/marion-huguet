@@ -68,7 +68,7 @@ export default {
     })
   },
   beforeDestroy() {
-    this.stInfos.kill()
+    if (this.stInfos) this.stInfos.kill()
   },
 }
 </script>
