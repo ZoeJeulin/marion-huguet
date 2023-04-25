@@ -69,6 +69,8 @@ export default {
   },
   beforeDestroy() {
     if (this.stInfos) this.stInfos.kill()
+    document.querySelector('#main-default').style.padding =
+      '160px 40px 40px 40px'
   },
 }
 </script>
