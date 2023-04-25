@@ -73,9 +73,13 @@ export default {
     this.resize()
 
     this.$router.beforeEach((to, from, callback) => {
-      gsap
-        .to('.splash', { y: '-100vh', duration: 0.75, ease: 'ease-out' })
-        .then(callback)
+      if (document.querySelector('.splash')) {
+        gsap
+          .to('.splash', { y: '-100vh', duration: 0.75, ease: 'ease-out' })
+          .then(callback)
+      } else {
+        callback()
+      }
     })
   },
   beforeDestroy() {
