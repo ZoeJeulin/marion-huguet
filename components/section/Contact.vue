@@ -84,7 +84,7 @@
       </div>
     </div>
 
-    <ui-frame :desktop-corners="[2, 3]" />
+    <ui-frame ref="frameContact" :desktop-corners="[2, 3]" />
   </section>
 </template>
 
@@ -123,24 +123,48 @@ export default {
     }
   },
   mounted() {
-    const mq = gsap.matchMedia()
-    mq.add('(min-width: 641px)', () => {
-      gsap.to('.contact-title', {
-        opacity: 1,
-        x: 0,
-        duration: 0.5,
-        delay: 0.3,
-        ease: 'ease-out',
-        scrollTrigger: {
-          trigger: '.contact-content',
-          start: 'top 95%',
-        },
-      })
+    this.$nextTick(() => {
+      const mq = gsap.matchMedia()
+      mq.add('(min-width: 641px)', () => {
+        this.$refs.frameContact.$refs.corner.forEach((corner) => {
+          gsap.to(corner.$refs.vertical, {
+            scaleY: 1,
+            duration: 0.2,
+            delay: 0.6,
+            ease: 'ease-out',
+            scrollTrigger: {
+              trigger: '.contact-content',
+              start: 'top 95%',
+            },
+          })
+          gsap.to(corner.$refs.horizontal, {
+            scaleX: 1,
+            duration: 0.2,
+            delay: 0.8,
+            ease: 'ease-out',
+            scrollTrigger: {
+              trigger: '.contact-content',
+              start: 'top 95%',
+            },
+          })
+        })
 
-      this.$el.querySelectorAll('.ui-frame .frame-corner').forEach((corner) => {
-        gsap.to(corner.querySelector('.corner-vertical'), {
-          scaleY: 1,
-          duration: 0.2,
+        gsap.to('.contact-title', {
+          opacity: 1,
+          x: 0,
+          duration: 0.5,
+          delay: 0.3,
+          ease: 'ease-out',
+          scrollTrigger: {
+            trigger: '.contact-content',
+            start: 'top 95%',
+          },
+        })
+
+        gsap.to('.contact-content', {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
           delay: 0.6,
           ease: 'ease-out',
           scrollTrigger: {
@@ -148,66 +172,44 @@ export default {
             start: 'top 95%',
           },
         })
-        gsap.to(corner.querySelector('.corner-horizontal'), {
-          scaleX: 1,
-          duration: 0.2,
-          delay: 0.8,
+      })
+
+      mq.add('(max-width: 640px)', () => {
+        gsap.to('.contact-title', {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          delay: 0.3,
           ease: 'ease-out',
           scrollTrigger: {
             trigger: '.contact-content',
             start: 'top 95%',
           },
         })
-      })
 
-      gsap.to('.contact-content', {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        delay: 0.6,
-        ease: 'ease-out',
-        scrollTrigger: {
-          trigger: '.contact-content',
-          start: 'top 95%',
-        },
-      })
-    })
+        gsap.to('.contact-text', {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          delay: 0.5,
+          ease: 'ease-out',
+          scrollTrigger: {
+            trigger: '.contact-content',
+            start: 'top 95%',
+          },
+        })
 
-    mq.add('(max-width: 640px)', () => {
-      gsap.to('.contact-title', {
-        opacity: 1,
-        y: 0,
-        duration: 0.3,
-        delay: 0.3,
-        ease: 'ease-out',
-        scrollTrigger: {
-          trigger: '.contact-content',
-          start: 'top 95%',
-        },
-      })
-
-      gsap.to('.contact-text', {
-        opacity: 1,
-        y: 15,
-        duration: 0.3,
-        delay: 0.5,
-        ease: 'ease-out',
-        scrollTrigger: {
-          trigger: '.contact-content',
-          start: 'top 95%',
-        },
-      })
-
-      gsap.to('#form-contact', {
-        opacity: 1,
-        y: 0,
-        duration: 0.3,
-        delay: 0.7,
-        ease: 'ease-out',
-        scrollTrigger: {
-          trigger: '.contact-content',
-          start: 'top 95%',
-        },
+        gsap.to('#form-contact', {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          delay: 0.7,
+          ease: 'ease-out',
+          scrollTrigger: {
+            trigger: '.contact-content',
+            start: 'top 95%',
+          },
+        })
       })
     })
 
@@ -306,7 +308,6 @@ export default {
     display: block;
     width: 100%;
     margin-top: 80px;
-    padding: 0 20px;
   }
 
   .contact-title {
@@ -356,10 +357,18 @@ export default {
       padding-left: 0;
       margin: 0;
       transform: translateY(15px);
+      opacity: 1;
     }
 
     .-hide {
       display: none;
+    }
+
+    .contact-text {
+      @include below('sm') {
+        opacity: 0;
+        transform: translateY(15px);
+      }
     }
 
     form {

@@ -54,7 +54,8 @@ export default {
   },
   mounted() {
     document.body.style.overflowX = 'hidden'
-    document.querySelector('#main-default').style.padding = 0
+    if (window.innerWidth > 640)
+      document.querySelector('#main-default').style.padding = 0
     const mqInfosContact = gsap.matchMedia()
 
     mqInfosContact.add('(min-width: 641px)', () => {
@@ -71,8 +72,9 @@ export default {
   },
   beforeDestroy() {
     if (this.stInfos) this.stInfos.kill()
-    document.querySelector('#main-default').style.padding =
-      '160px 40px 40px 40px'
+    if (window.innerWidth > 640)
+      document.querySelector('#main-default').style.padding =
+        '160px 40px 40px 40px'
   },
 }
 </script>

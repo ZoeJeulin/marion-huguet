@@ -6,7 +6,7 @@
       <ui-icon name="etoile" class="star" />
     </h1>
     <div class="infos-text t-body-1">{{ infosText }}</div>
-    <ui-frame :desktop-corners="[2, 3]" />
+    <ui-frame ref="frameInfos" :desktop-corners="[2, 3]" />
   </section>
 </template>
 
@@ -25,55 +25,57 @@ export default {
     },
   },
   mounted() {
-    const mq = gsap.matchMedia()
-    mq.add('(min-width: 641px)', () => {
-      this.$el.querySelectorAll('.ui-frame .frame-corner').forEach((corner) => {
-        gsap.to(corner.querySelector('.corner-vertical'), {
-          scaleY: 1,
-          duration: 0.2,
+    this.$nextTick(() => {
+      const mq = gsap.matchMedia()
+      mq.add('(min-width: 641px)', () => {
+        this.$refs.frameInfos.$refs.corner.forEach((corner) => {
+          gsap.to(corner.$refs.vertical, {
+            scaleY: 1,
+            duration: 0.2,
+            delay: 0.6,
+            ease: 'ease-out',
+          })
+          gsap.to(corner.$refs.horizontal, {
+            scaleX: 1,
+            duration: 0.2,
+            delay: 0.8,
+            ease: 'ease-out',
+          })
+        })
+
+        gsap.to('.infos-title', {
+          opacity: 1,
+          x: 0,
+          duration: 0.5,
+          delay: 0.3,
+          ease: 'ease-out',
+        })
+
+        gsap.to('.infos-text', {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
           delay: 0.6,
           ease: 'ease-out',
         })
-        gsap.to(corner.querySelector('.corner-horizontal'), {
-          scaleX: 1,
-          duration: 0.2,
-          delay: 0.8,
+      })
+
+      mq.add('(max-width: 640px)', () => {
+        gsap.to('.infos-title', {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          delay: 0.3,
           ease: 'ease-out',
         })
-      })
 
-      gsap.to('.infos-title', {
-        opacity: 1,
-        x: 0,
-        duration: 0.5,
-        delay: 0.3,
-        ease: 'ease-out',
-      })
-
-      gsap.to('.infos-text', {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        delay: 0.6,
-        ease: 'ease-out',
-      })
-    })
-
-    mq.add('(max-width: 640px)', () => {
-      gsap.to('.infos-title', {
-        opacity: 1,
-        y: 0,
-        duration: 0.3,
-        delay: 0.3,
-        ease: 'ease-out',
-      })
-
-      gsap.to('.infos-text', {
-        opacity: 1,
-        y: 0,
-        duration: 0.3,
-        delay: 0.5,
-        ease: 'ease-out',
+        gsap.to('.infos-text', {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          delay: 0.5,
+          ease: 'ease-out',
+        })
       })
     })
   },
@@ -90,7 +92,7 @@ export default {
   @include below('sm') {
     display: block;
     width: 100%;
-    padding: 100px 20px 0;
+    padding-top: 0;
   }
 
   .infos-title {
