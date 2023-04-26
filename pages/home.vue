@@ -71,37 +71,40 @@ export default {
         const supportSection = this.$el.querySelector('.sections .home-support')
 
         const anchorPoints = []
+        console.log('intro section')
         console.log(introSection)
-        setTimeout(() => {
+        console.log('cat sections')
+        console.log(catSections)
+        // setTimeout(() => {
+        anchorPoints.push(
+          MotionPathPlugin.getRelativePosition(
+            bird,
+            introSection,
+            [0.5, 0.5],
+            [0.8, 1]
+          )
+        )
+
+        for (let i = 0; i < catSections.length; i++) {
           anchorPoints.push(
             MotionPathPlugin.getRelativePosition(
-              bird,
-              introSection,
-              [0.5, 0.5],
-              [0.8, 1]
+              i === 0 ? introSection : catSections[i - 1],
+              blobs[i],
+              i === 0 ? [0.8, 1] : [0.5, 1],
+              [0.5, 0]
             )
           )
-
-          for (let i = 0; i < catSections.length; i++) {
-            anchorPoints.push(
-              MotionPathPlugin.getRelativePosition(
-                i === 0 ? introSection : catSections[i - 1],
-                blobs[i],
-                i === 0 ? [0.8, 1] : [0.5, 1],
-                [0.5, 0]
-              )
+          anchorPoints.push(
+            MotionPathPlugin.getRelativePosition(
+              blobs[i],
+              catSections[i],
+              [0.5, 0],
+              i === catSections.length - 1 ? [0.7, 1] : [0.5, 1]
             )
-            anchorPoints.push(
-              MotionPathPlugin.getRelativePosition(
-                blobs[i],
-                catSections[i],
-                [0.5, 0],
-                i === catSections.length - 1 ? [0.7, 1] : [0.5, 1]
-              )
-            )
-          }
+          )
+        }
 
-          /* anchorPoints.push(
+        /* anchorPoints.push(
           MotionPathPlugin.getRelativePosition(
             catSections[catSections.length - 1],
             shopSection,
@@ -127,29 +130,29 @@ export default {
             [0.82, 0.25]
           )
         ) */
-          console.log(anchorPoints)
-          this.tlHome = gsap.timeline()
-          this.tlHome.to(bird, {
-            motionPath: {
-              path: anchorPoints,
-              alignOrigin: [0.5, 0.5],
-              autoRotate: 55,
-              curviness: 1,
-              relative: true,
-            },
-            scrollTrigger: {
-              trigger: introSection,
-              start: 'center center',
-              end: 'top 60%',
-              scrub: 3,
-              endTrigger: supportSection,
-              once: true,
-              onUpdate: (self) => console.log('progress:', self.progress),
-            },
-            transformOrigin: '50% 50%',
-            ease: 'none',
-          })
-        }, 2000)
+        console.log(anchorPoints)
+        this.tlHome = gsap.timeline()
+        this.tlHome.to(bird, {
+          motionPath: {
+            path: anchorPoints,
+            alignOrigin: [0.5, 0.5],
+            autoRotate: 55,
+            curviness: 1,
+            relative: true,
+          },
+          scrollTrigger: {
+            trigger: introSection,
+            start: 'center center',
+            end: 'top 60%',
+            scrub: 3,
+            endTrigger: supportSection,
+            once: true,
+            onUpdate: (self) => console.log('progress:', self.progress),
+          },
+          transformOrigin: '50% 50%',
+          ease: 'none',
+        })
+        // }, 2000)
       })
     })
   },

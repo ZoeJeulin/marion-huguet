@@ -14,11 +14,10 @@
 import { mapMutations } from 'vuex'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 import { loadFull } from 'tsparticles'
 
 if (process.client) {
-  gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
+  gsap.registerPlugin(ScrollTrigger)
 }
 
 export default {
