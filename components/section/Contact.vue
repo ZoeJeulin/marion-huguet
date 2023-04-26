@@ -356,7 +356,7 @@ export default {
     @include below('sm') {
       padding-left: 0;
       margin: 0;
-      transform: translateY(15px);
+      transform: translateY(0);
       opacity: 1;
     }
 

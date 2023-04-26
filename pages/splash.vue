@@ -46,10 +46,6 @@ export default {
   transform-origin: 38% 50%;
   transform: translateY(-50%);
 
-  /* @include below('sm') {
-    top: 30%;
-  } */
-
   .typo,
   .whale {
     width: 300px;
