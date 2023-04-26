@@ -54,6 +54,9 @@ export default {
   beforeDestroy() {
     if (this.tlHome) this.tlHome.kill()
   },
+  updated() {
+    console.log('updated')
+  },
   methods: {
     getComponent(section) {
       return section
