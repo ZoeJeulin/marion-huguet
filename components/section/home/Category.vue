@@ -174,7 +174,9 @@ export default {
           },
         })
       })
+      console.log('end nextTick')
     })
+    console.log('cat mounted')
   },
 }
 </script>

@@ -46,65 +46,70 @@ export default {
     // const w = window.innerWidth
 
     this.$nextTick(() => {
-      const catSections = this.$el.querySelectorAll('.sections .home-category')
-
-      const mq = gsap.matchMedia()
-
-      mq.add('(min-width: 641px)', () => {
-        // PIN NAV + SCROLL BTN
-        ScrollTrigger.create({
-          trigger: '.sections',
-          start: 'top top',
-          endTrigger: 'footer',
-          end: 'top bottom',
-          pin: '.ui-side-nav',
-        })
-
-        // BIRD PATH
-        const bird = this.$el.querySelector(
-          '.section-intro .intro-birds .bird:last-of-type'
-        )
-        const blobs = this.$el.querySelectorAll('.category-img .img-wrapper')
-
-        const introSection = this.$el.querySelector('.section-intro')
-        // const shopSection = this.$el.querySelector('.sections .home-shop')
-        const supportSection = this.$el.querySelector('.sections .home-support')
-
-        const anchorPoints = []
-        console.log('intro section')
-        console.log(introSection)
-        console.log('cat sections')
-        console.log(catSections)
-        // setTimeout(() => {
-        anchorPoints.push(
-          MotionPathPlugin.getRelativePosition(
-            bird,
-            introSection,
-            [0.5, 0.5],
-            [0.8, 1]
-          )
+      this.$nextTick(() => {
+        const catSections = this.$el.querySelectorAll(
+          '.sections .home-category'
         )
 
-        for (let i = 0; i < catSections.length; i++) {
-          anchorPoints.push(
-            MotionPathPlugin.getRelativePosition(
-              i === 0 ? introSection : catSections[i - 1],
-              blobs[i],
-              i === 0 ? [0.8, 1] : [0.5, 1],
-              [0.5, 0]
-            )
-          )
-          anchorPoints.push(
-            MotionPathPlugin.getRelativePosition(
-              blobs[i],
-              catSections[i],
-              [0.5, 0],
-              i === catSections.length - 1 ? [0.7, 1] : [0.5, 1]
-            )
-          )
-        }
+        const mq = gsap.matchMedia()
 
-        /* anchorPoints.push(
+        mq.add('(min-width: 641px)', () => {
+          // PIN NAV + SCROLL BTN
+          ScrollTrigger.create({
+            trigger: '.sections',
+            start: 'top top',
+            endTrigger: 'footer',
+            end: 'top bottom',
+            pin: '.ui-side-nav',
+          })
+
+          // BIRD PATH
+          const bird = this.$el.querySelector(
+            '.section-intro .intro-birds .bird:last-of-type'
+          )
+          const blobs = this.$el.querySelectorAll('.category-img .img-wrapper')
+
+          const introSection = this.$el.querySelector('.section-intro')
+          // const shopSection = this.$el.querySelector('.sections .home-shop')
+          const supportSection = this.$el.querySelector(
+            '.sections .home-support'
+          )
+
+          const anchorPoints = []
+          console.log('intro section')
+          console.log(introSection)
+          console.log('cat sections')
+          console.log(catSections)
+          // setTimeout(() => {
+          anchorPoints.push(
+            MotionPathPlugin.getRelativePosition(
+              bird,
+              introSection,
+              [0.5, 0.5],
+              [0.8, 1]
+            )
+          )
+
+          for (let i = 0; i < catSections.length; i++) {
+            anchorPoints.push(
+              MotionPathPlugin.getRelativePosition(
+                i === 0 ? introSection : catSections[i - 1],
+                blobs[i],
+                i === 0 ? [0.8, 1] : [0.5, 1],
+                [0.5, 0]
+              )
+            )
+            anchorPoints.push(
+              MotionPathPlugin.getRelativePosition(
+                blobs[i],
+                catSections[i],
+                [0.5, 0],
+                i === catSections.length - 1 ? [0.7, 1] : [0.5, 1]
+              )
+            )
+          }
+
+          /* anchorPoints.push(
           MotionPathPlugin.getRelativePosition(
             catSections[catSections.length - 1],
             shopSection,
@@ -130,29 +135,30 @@ export default {
             [0.82, 0.25]
           )
         ) */
-        console.log(anchorPoints)
-        this.tlHome = gsap.timeline()
-        this.tlHome.to(bird, {
-          motionPath: {
-            path: anchorPoints,
-            alignOrigin: [0.5, 0.5],
-            autoRotate: 55,
-            curviness: 1,
-            relative: true,
-          },
-          scrollTrigger: {
-            trigger: introSection,
-            start: 'center center',
-            end: 'top 60%',
-            scrub: 3,
-            endTrigger: supportSection,
-            once: true,
-            onUpdate: (self) => console.log('progress:', self.progress),
-          },
-          transformOrigin: '50% 50%',
-          ease: 'none',
+          console.log(anchorPoints)
+          this.tlHome = gsap.timeline()
+          this.tlHome.to(bird, {
+            motionPath: {
+              path: anchorPoints,
+              alignOrigin: [0.5, 0.5],
+              autoRotate: 55,
+              curviness: 1,
+              relative: true,
+            },
+            scrollTrigger: {
+              trigger: introSection,
+              start: 'center center',
+              end: 'top 60%',
+              scrub: 3,
+              endTrigger: supportSection,
+              once: true,
+              onUpdate: (self) => console.log('progress:', self.progress),
+            },
+            transformOrigin: '50% 50%',
+            ease: 'none',
+          })
+          // }, 2000)
         })
-        // }, 2000)
       })
     })
   },

@@ -106,7 +106,7 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     extractCSS: true,
-    transpile: ['gsap', 'gsap/MotionPathPlugin'],
+    transpile: ['gsap'],
     extend(config) {
       config.module.rules.push({
         test: /\.(graphql|gql)$/,
