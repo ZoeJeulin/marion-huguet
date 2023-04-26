@@ -1,7 +1,14 @@
 <template>
   <div class="home">
     <client-only>
-      <section-home-intro :intro-text="page.introText" class="section" />
+      <section-home-intro
+        :intro-text="page.introText"
+        class="section"
+        @hook:mounted="
+          () => {
+            sectionsMounted += 1
+          }
+        " />
       <div class="sections">
         <ui-side-nav :sections="page.sections" />
         <component
@@ -12,6 +19,11 @@
           :index="index"
           :section="section"
           class="section"
+          @hook:mounted="
+            () => {
+              sectionsMounted += 1
+            }
+          "
         /></div
     ></client-only>
   </div>
@@ -36,6 +48,16 @@ export default {
 
     return { page }
   },
+  data() {
+    return {
+      sectionsMounted: 0,
+    }
+  },
+  computed: {
+    totalSections() {
+      return this.page.sections.length + 1
+    },
+  },
   mounted() {
     document.body.style.overflowX = 'hidden'
     document.body.style.overflowY = ''
@@ -45,17 +67,25 @@ export default {
     window.open(url, '_blank').focus() */
     // const w = window.innerWidth
 
-    this.$nextTick(() => {
+    /* this.$nextTick(() => {
       this.$nextTick(() => {
         this.initBirdAnim()
       })
-    })
+    }) */
   },
   beforeDestroy() {
     if (this.tlHome) this.tlHome.kill()
   },
   updated() {
-    console.log('updated')
+    console.log('sections mounted: ' + this.sectionsMounted)
+    console.log('total sections: ' + this.totalSections)
+    if (this.sectionsMounted === this.totalSections) {
+      this.$nextTick(() => {
+        this.$nextTick(() => {
+          this.initBirdAnim()
+        })
+      })
+    }
   },
   methods: {
     getComponent(section) {
