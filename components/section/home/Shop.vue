@@ -58,85 +58,85 @@ export default {
     if (this.w > 640) this.blobW -= 20
     this.blobScale = (this.blobW * 3) / this.w
 
-    this.$nextTick(() => {
-      this.$refs.frameShop.$refs.corner.forEach((corner) => {
-        gsap.to(corner.$refs.vertical, {
-          scaleY: 1,
-          duration: 0.2,
-          ease: 'ease-out',
-          scrollTrigger: {
-            trigger: '.home-shop',
-            start: 'top 90%',
-          },
-        })
-        gsap.to(corner.$refs.horizontal, {
-          scaleX: 1,
-          duration: 0.2,
-          ease: 'ease-out',
-          scrollTrigger: {
-            trigger: '.home-shop',
-            start: 'top 90%',
-          },
-        })
-      })
-
-      gsap.to('.shop-title', {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
+    // this.$nextTick(() => {
+    this.$refs.frameShop.$refs.corner.forEach((corner) => {
+      gsap.to(corner.$refs.vertical, {
+        scaleY: 1,
+        duration: 0.2,
         ease: 'ease-out',
         scrollTrigger: {
-          trigger: '.shop-title',
-          start: 'top 85%',
+          trigger: '.home-shop',
+          start: 'top 90%',
         },
       })
-
-      gsap.to('.shop-desc', {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        delay: 0.2,
+      gsap.to(corner.$refs.horizontal, {
+        scaleX: 1,
+        duration: 0.2,
         ease: 'ease-out',
         scrollTrigger: {
-          trigger: '.shop-title',
-          start: 'top 85%',
-        },
-      })
-
-      gsap.to('.shop-img', {
-        opacity: 1,
-        duration: 0.5,
-        ease: 'ease-out',
-        scrollTrigger: {
-          trigger: '.shop-title',
-          start: 'top 85%',
-        },
-        stagger: 0.3,
-      })
-
-      gsap.to('.shop-img', {
-        y: 0,
-        duration: 3,
-        ease: 'ease-out',
-        scrollTrigger: {
-          trigger: '.shop-title',
-          start: 'top 85%',
-        },
-        stagger: 0.3,
-      })
-
-      gsap.to('.shop-link', {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        delay: 0.5,
-        ease: 'ease-out',
-        scrollTrigger: {
-          trigger: '.shop-title',
-          start: 'top 85%',
+          trigger: '.home-shop',
+          start: 'top 90%',
         },
       })
     })
+
+    gsap.to('.shop-title', {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: 'ease-out',
+      scrollTrigger: {
+        trigger: '.shop-title',
+        start: 'top 85%',
+      },
+    })
+
+    gsap.to('.shop-desc', {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      delay: 0.2,
+      ease: 'ease-out',
+      scrollTrigger: {
+        trigger: '.shop-title',
+        start: 'top 85%',
+      },
+    })
+
+    gsap.to('.shop-img', {
+      opacity: 1,
+      duration: 0.5,
+      ease: 'ease-out',
+      scrollTrigger: {
+        trigger: '.shop-title',
+        start: 'top 85%',
+      },
+      stagger: 0.3,
+    })
+
+    gsap.to('.shop-img', {
+      y: 0,
+      duration: 3,
+      ease: 'ease-out',
+      scrollTrigger: {
+        trigger: '.shop-title',
+        start: 'top 85%',
+      },
+      stagger: 0.3,
+    })
+
+    gsap.to('.shop-link', {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      delay: 0.5,
+      ease: 'ease-out',
+      scrollTrigger: {
+        trigger: '.shop-title',
+        start: 'top 85%',
+      },
+    })
+    // })
   },
 }
 </script>

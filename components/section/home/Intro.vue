@@ -45,74 +45,74 @@ export default {
     },
   },
   mounted() {
-    this.$nextTick(() => {
-      this.tlIntro = gsap.timeline()
+    // this.$nextTick(() => {
+    this.tlIntro = gsap.timeline()
 
-      this.$refs.frameIntro.$refs.corner.forEach((corner) => {
-        this.tlIntro.to(corner.$refs.vertical, {
-          scaleY: 1,
-          duration: 0.2,
-          ease: 'ease-out',
-        })
-        this.tlIntro.to(corner.$refs.horizontal, {
-          scaleX: 1,
-          duration: 0.2,
-          ease: 'ease-out',
-        })
-      })
-
-      this.tlIntro.to('.intro-desc', {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
+    this.$refs.frameIntro.$refs.corner.forEach((corner) => {
+      this.tlIntro.to(corner.$refs.vertical, {
+        scaleY: 1,
+        duration: 0.2,
         ease: 'ease-out',
       })
-
-      const bird1 = this.$el.querySelector('.bird:nth-of-type(1)')
-      const bird2 = this.$el.querySelector('.bird:nth-of-type(2)')
-      const bird3 = this.$el.querySelector('.bird:nth-of-type(3)')
-
-      this.tlIntro.to([bird1, bird2, bird3], {
-        opacity: 1,
-        y: 0,
-        x: 0,
-        duration: 0.5,
-      })
-
-      const mqIntro = gsap.matchMedia()
-
-      mqIntro.add('(max-width: 640px)', () => {
-        gsap.to(bird1, {
-          rotate: -230,
-          scrollTrigger: {
-            trigger: this.$el,
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true,
-          },
-        })
-
-        gsap.to(bird2, {
-          rotate: 165,
-          scrollTrigger: {
-            trigger: this.$el,
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true,
-          },
-        })
-
-        gsap.to(bird3, {
-          rotate: -240,
-          scrollTrigger: {
-            trigger: this.$el,
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true,
-          },
-        })
+      this.tlIntro.to(corner.$refs.horizontal, {
+        scaleX: 1,
+        duration: 0.2,
+        ease: 'ease-out',
       })
     })
+
+    this.tlIntro.to('.intro-desc', {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: 'ease-out',
+    })
+
+    const bird1 = this.$el.querySelector('.bird:nth-of-type(1)')
+    const bird2 = this.$el.querySelector('.bird:nth-of-type(2)')
+    const bird3 = this.$el.querySelector('.bird:nth-of-type(3)')
+
+    this.tlIntro.to([bird1, bird2, bird3], {
+      opacity: 1,
+      y: 0,
+      x: 0,
+      duration: 0.5,
+    })
+
+    const mqIntro = gsap.matchMedia()
+
+    mqIntro.add('(max-width: 640px)', () => {
+      gsap.to(bird1, {
+        rotate: -230,
+        scrollTrigger: {
+          trigger: this.$el,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+      })
+
+      gsap.to(bird2, {
+        rotate: 165,
+        scrollTrigger: {
+          trigger: this.$el,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+      })
+
+      gsap.to(bird3, {
+        rotate: -240,
+        scrollTrigger: {
+          trigger: this.$el,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+      })
+    })
+    // })
 
     setTimeout(async () => {
       if (this.$refs.anim) {

@@ -54,63 +54,63 @@ export default {
     },
   },
   mounted() {
-    this.$nextTick(() => {
-      this.$refs.frameSupport.$refs.corner.forEach((corner) => {
-        gsap.to(corner.$refs.vertical, {
-          scaleY: 1,
-          duration: 0.2,
-          ease: 'ease-out',
-          scrollTrigger: {
-            trigger: '.home-support',
-            start: 'top 90%',
-          },
-        })
-        gsap.to(corner.$refs.horizontal, {
-          scaleX: 1,
-          duration: 0.2,
-          ease: 'ease-out',
-          scrollTrigger: {
-            trigger: '.home-support',
-            start: 'top 90%',
-          },
-        })
-      })
-
-      gsap.to('.support-title', {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
+    // this.$nextTick(() => {
+    this.$refs.frameSupport.$refs.corner.forEach((corner) => {
+      gsap.to(corner.$refs.vertical, {
+        scaleY: 1,
+        duration: 0.2,
         ease: 'ease-out',
         scrollTrigger: {
-          trigger: '.support-title',
-          start: 'top 85%',
+          trigger: '.home-support',
+          start: 'top 90%',
         },
       })
-
-      gsap.to('.support-desc', {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        delay: 0.2,
+      gsap.to(corner.$refs.horizontal, {
+        scaleX: 1,
+        duration: 0.2,
         ease: 'ease-out',
         scrollTrigger: {
-          trigger: '.support-title',
-          start: 'top 85%',
-        },
-      })
-
-      gsap.to('.support-link', {
-        opacity: 1,
-        y: 0,
-        duration: 0.3,
-        delay: 0.5,
-        ease: 'ease-out',
-        scrollTrigger: {
-          trigger: '.support-title',
-          start: 'top 85%',
+          trigger: '.home-support',
+          start: 'top 90%',
         },
       })
     })
+
+    gsap.to('.support-title', {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: 'ease-out',
+      scrollTrigger: {
+        trigger: '.support-title',
+        start: 'top 85%',
+      },
+    })
+
+    gsap.to('.support-desc', {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      delay: 0.2,
+      ease: 'ease-out',
+      scrollTrigger: {
+        trigger: '.support-title',
+        start: 'top 85%',
+      },
+    })
+
+    gsap.to('.support-link', {
+      opacity: 1,
+      y: 0,
+      duration: 0.3,
+      delay: 0.5,
+      ease: 'ease-out',
+      scrollTrigger: {
+        trigger: '.support-title',
+        start: 'top 85%',
+      },
+    })
+    // })
   },
 }
 </script>
