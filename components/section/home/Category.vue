@@ -50,66 +50,78 @@ export default {
     },
   },
   mounted() {
-    this.$nextTick(() => {
-      this.$refs.frameCat.$refs.corner.forEach((corner) => {
-        gsap.to(corner.$refs.vertical, {
-          scaleY: 1,
-          duration: 0.2,
-          ease: 'ease-out',
-          scrollTrigger: {
-            trigger: this.$refs.category,
-            start: 'top 90%',
-          },
-        })
-        gsap.to(corner.$refs.horizontal, {
-          scaleX: 1,
-          duration: 0.2,
-          ease: 'ease-out',
-          scrollTrigger: {
-            trigger: this.$refs.category,
-            start: 'top 90%',
-          },
-        })
-      })
-
-      gsap.to(this.$refs.catTitle, {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
+    this.$refs.frameCat.$refs.corner.forEach((corner) => {
+      gsap.to(corner.$refs.vertical, {
+        scaleY: 1,
+        duration: 0.2,
         ease: 'ease-out',
         scrollTrigger: {
-          trigger: this.$refs.catTitle,
-          start: 'top 85%',
+          trigger: this.$refs.category,
+          start: 'top 90%',
         },
       })
-
-      gsap.to(this.$refs.catDesc, {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        delay: 0.2,
+      gsap.to(corner.$refs.horizontal, {
+        scaleX: 1,
+        duration: 0.2,
         ease: 'ease-out',
         scrollTrigger: {
-          trigger: this.$refs.catTitle,
-          start: 'top 85%',
+          trigger: this.$refs.category,
+          start: 'top 90%',
         },
       })
+    })
 
-      gsap.to(this.$refs.catLink.$el, {
-        opacity: 1,
-        y: 0,
-        duration: 0.3,
-        delay: 0.5,
-        ease: 'ease-out',
-        scrollTrigger: {
-          trigger: this.$refs.catTitle,
-          start: 'top 85%',
-        },
-      })
+    gsap.to(this.$refs.catTitle, {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: 'ease-out',
+      scrollTrigger: {
+        trigger: this.$refs.catTitle,
+        start: 'top 85%',
+      },
+    })
 
+    gsap.to(this.$refs.catDesc, {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      delay: 0.2,
+      ease: 'ease-out',
+      scrollTrigger: {
+        trigger: this.$refs.catTitle,
+        start: 'top 85%',
+      },
+    })
+
+    gsap.to(this.$refs.catLink.$el, {
+      opacity: 1,
+      y: 0,
+      duration: 0.3,
+      delay: 0.5,
+      ease: 'ease-out',
+      scrollTrigger: {
+        trigger: this.$refs.catTitle,
+        start: 'top 85%',
+      },
+    })
+
+    gsap.to(this.$refs.catImg.$el, {
+      opacity: 1,
+      duration: 0.5,
+      ease: 'ease-out',
+      scrollTrigger: {
+        trigger: this.$refs.catTitle,
+        start: 'top 85%',
+      },
+    })
+
+    const mqCatHome = gsap.matchMedia()
+
+    mqCatHome.add('(min-width: 641px)', () => {
       gsap.to(this.$refs.catImg.$el, {
-        opacity: 1,
-        duration: 0.5,
+        y: 0,
+        duration: 3,
         ease: 'ease-out',
         scrollTrigger: {
           trigger: this.$refs.catTitle,
@@ -117,64 +129,49 @@ export default {
         },
       })
 
-      const mqCatHome = gsap.matchMedia()
-
-      mqCatHome.add('(min-width: 641px)', () => {
-        gsap.to(this.$refs.catImg.$el, {
-          y: 0,
+      gsap.fromTo(
+        this.$refs.catImg.$el,
+        {
+          x: 0,
+        },
+        {
+          x: Math.PI * 3,
           duration: 3,
-          ease: 'ease-out',
+          modifiers: {
+            x(x) {
+              return Math.sin(parseFloat(x)) * 5 + 'px'
+            },
+          },
           scrollTrigger: {
             trigger: this.$refs.catTitle,
             start: 'top 85%',
           },
-        })
+        }
+      )
+    })
 
-        gsap.fromTo(
-          this.$refs.catImg.$el,
-          {
-            x: 0,
-          },
-          {
-            x: Math.PI * 3,
-            duration: 3,
-            modifiers: {
-              x(x) {
-                return Math.sin(parseFloat(x)) * 5 + 'px'
-              },
-            },
-            scrollTrigger: {
-              trigger: this.$refs.catTitle,
-              start: 'top 85%',
-            },
-          }
-        )
+    mqCatHome.add('(max-width: 640px)', () => {
+      gsap.to(this.$refs.catImg.$el, {
+        yPercent: 20,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: this.$refs.category,
+          start: 'top center',
+          end: 'bottom center',
+          scrub: true,
+        },
       })
 
-      mqCatHome.add('(max-width: 640px)', () => {
-        gsap.to(this.$refs.catImg.$el, {
-          yPercent: 20,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: this.$refs.category,
-            start: 'top center',
-            end: 'bottom center',
-            scrub: true,
-          },
-        })
-
-        gsap.to(this.$el.querySelector('.category-img img'), {
-          filter: 'brightness(0.5) blur(1px)',
-          ease: 'none',
-          scrollTrigger: {
-            trigger: this.$refs.category,
-            start: 'top 25%',
-            end: 'bottom center',
-            scrub: true,
-          },
-        })
+      gsap.to(this.$el.querySelector('.category-img img'), {
+        filter: 'brightness(0.5) blur(1px)',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: this.$refs.category,
+          start: 'top 25%',
+          end: 'bottom center',
+          scrub: true,
+        },
       })
-      console.log('end nextTick')
     })
     console.log('cat mounted')
   },
