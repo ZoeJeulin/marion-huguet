@@ -66,19 +66,11 @@ export default {
     const url = `https://api.instagram.com/oauth/authorize?client_id=${appId}&redirect_uri=${redUri}&scope=user_profile,user_media&response_type=code`
     window.open(url, '_blank').focus() */
     // const w = window.innerWidth
-
-    /* this.$nextTick(() => {
-      this.$nextTick(() => {
-        this.initBirdAnim()
-      })
-    }) */
   },
   beforeDestroy() {
     if (this.tlHome) this.tlHome.kill()
   },
   updated() {
-    console.log('sections mounted: ' + this.sectionsMounted)
-    console.log('total sections: ' + this.totalSections)
     if (this.sectionsMounted === this.totalSections) {
       this.$nextTick(() => {
         this.$nextTick(() => {
@@ -116,14 +108,10 @@ export default {
         const blobs = this.$el.querySelectorAll('.category-img .img-wrapper')
 
         const introSection = this.$el.querySelector('.section-intro')
-        // const shopSection = this.$el.querySelector('.sections .home-shop')
+        const shopSection = this.$el.querySelector('.sections .home-shop')
         const supportSection = this.$el.querySelector('.sections .home-support')
 
         const anchorPoints = []
-        console.log('intro section')
-        console.log(introSection)
-        console.log('cat sections')
-        console.log(catSections)
 
         anchorPoints.push(
           MotionPathPlugin.getRelativePosition(
@@ -153,7 +141,7 @@ export default {
           )
         }
 
-        /* anchorPoints.push(
+        anchorPoints.push(
           MotionPathPlugin.getRelativePosition(
             catSections[catSections.length - 1],
             shopSection,
@@ -178,8 +166,8 @@ export default {
             [0.75, 1],
             [0.82, 0.25]
           )
-        ) */
-        console.log(anchorPoints)
+        )
+
         this.tlHome = gsap.timeline()
         this.tlHome.to(bird, {
           motionPath: {
@@ -196,7 +184,6 @@ export default {
             scrub: 3,
             endTrigger: supportSection,
             once: true,
-            onUpdate: (self) => console.log('progress:', self.progress),
           },
           transformOrigin: '50% 50%',
           ease: 'none',
