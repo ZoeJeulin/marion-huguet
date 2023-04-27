@@ -1,8 +1,15 @@
+#import "../fragments/responsiveImage.graphql"
+
 query InfosContact {
   page: pageInfosContact {
     pageTitle
     infosTitle
     infosText
+    infosPhoto {
+      responsiveImage {
+        ...ResponsiveImage
+      }
+    }
     contactTitle
     contactText
     contactConfirmationText

@@ -8,6 +8,7 @@
     <section-infos
       :infos-title="page.infosTitle"
       :infos-text="page.infosText"
+      :infos-photo="page.infosPhoto"
     />
     <section-contact
       :contact-title="page.contactTitle"

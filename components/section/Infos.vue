@@ -6,6 +6,13 @@
       <ui-icon name="etoile" class="star" />
     </h1>
     <div class="infos-text t-body-1">{{ infosText }}</div>
+    <ui-blob
+      ref="infosPhoto"
+      class="infos-photo"
+      :path-name="infosPhoto.responsiveImage.src"
+      :scale="0.52"
+      :scale-mobile="0.25"
+    />
     <ui-frame ref="frameInfos" :desktop-corners="[2, 3]" />
   </section>
 </template>
@@ -22,6 +29,10 @@ export default {
     infosText: {
       type: String,
       required: true,
+    },
+    infosPhoto: {
+      type: Object,
+      default: () => {},
     },
   },
   mounted() {
@@ -41,6 +52,13 @@ export default {
             delay: 0.8,
             ease: 'ease-out',
           })
+        })
+
+        gsap.to('.infos-photo', {
+          opacity: 1,
+          duration: 0.5,
+          delay: 0.6,
+          ease: 'ease-out',
         })
 
         gsap.to('.infos-title', {
@@ -66,6 +84,14 @@ export default {
           y: 0,
           duration: 0.3,
           delay: 0.3,
+          ease: 'ease-out',
+        })
+
+        gsap.to('.infos-photo', {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          delay: 0.4,
           ease: 'ease-out',
         })
 
@@ -116,31 +142,67 @@ export default {
     }
 
     .star {
+      @include below('sm') {
+        display: none;
+      }
       &:first-of-type {
         margin-bottom: 40px;
-        @include below('sm') {
-          display: none;
-        }
       }
       &:last-of-type {
         margin-top: 40px;
-        @include below('sm') {
-          margin-top: 0;
-          margin-left: 20px;
-        }
       }
     }
   }
 
   .infos-text {
+    position: relative;
     padding-left: 60px;
     margin: 60px 60px 60px 0;
     transform: translateY(30px);
     opacity: 0;
+    z-index: 3;
 
     @include below('sm') {
       padding-left: 0;
       margin: 0;
+      transform: translateY(15px);
+    }
+
+    &::before {
+      content: '';
+      width: 100px;
+      height: 16px;
+      float: right;
+    }
+  }
+
+  .infos-photo {
+    position: absolute;
+    top: 120px;
+    right: -100px;
+    width: 255px;
+    z-index: 2;
+    opacity: 0;
+
+    animation: blobAnim 5s 0s ease-in-out infinite;
+
+    @keyframes blobAnim {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    @include below('sm') {
+      width: 135px;
+      top: -40px;
+      right: 0;
+      animation: none;
       transform: translateY(15px);
     }
   }
