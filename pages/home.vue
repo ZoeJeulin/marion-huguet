@@ -134,18 +134,26 @@ export default {
           anchorPoints.push(
             MotionPathPlugin.getRelativePosition(
               blobs[i],
-              catSections[i],
+              blobs[i],
               [0.5, 0],
-              i === catSections.length - 1 ? [0.7, 1] : [0.5, 1]
+              [0.5, 0.33]
+            )
+          )
+          anchorPoints.push(
+            MotionPathPlugin.getRelativePosition(
+              blobs[i],
+              i === catSections.length - 1 ? shopSection : catSections[i],
+              [0.5, 0.33],
+              i === catSections.length - 1 ? [0.8, 0.1] : [0.5, 1]
             )
           )
         }
 
         anchorPoints.push(
           MotionPathPlugin.getRelativePosition(
-            catSections[catSections.length - 1],
             shopSection,
-            [0.7, 1],
+            shopSection,
+            [0.8, 0.1],
             [0.95, 0.5]
           )
         )
@@ -180,7 +188,7 @@ export default {
           scrollTrigger: {
             trigger: introSection,
             start: 'center center',
-            end: 'top 60%',
+            end: 'top 80%',
             scrub: 3,
             endTrigger: supportSection,
             once: true,
