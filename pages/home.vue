@@ -91,7 +91,7 @@ export default {
 
       const mq = gsap.matchMedia()
 
-      mq.add('(min-width: 641px)', () => {
+      mq.add('(min-width: 769px)', () => {
         // PIN NAV + SCROLL BTN
         ScrollTrigger.create({
           trigger: '.sections',
@@ -216,14 +216,14 @@ export default {
     .section {
       margin-top: 80px;
 
-      @include below('sm') {
+      @include below('md') {
         margin-top: 30px;
         min-height: 75vh;
       }
     }
 
     .ui-btn-scroll {
-      @include below('sm') {
+      @include below('md') {
         display: none;
       }
     }

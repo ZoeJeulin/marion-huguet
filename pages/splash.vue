@@ -27,7 +27,7 @@ export default {
     }
   },
   mounted() {
-    this.isMobile = window.innerWidth <= 640
+    this.isMobile = window.innerWidth <= 768
     document.body.style.overflow = 'hidden'
   },
 }
@@ -51,7 +51,7 @@ export default {
     width: 300px;
     margin: 0 auto 20px;
 
-    @include below('sm') {
+    @include below('md') {
       width: 200px;
     }
   }

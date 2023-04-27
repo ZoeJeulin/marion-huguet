@@ -40,7 +40,7 @@ export default {
   gap: 10px;
   margin-bottom: 30px;
 
-  @include below('sm') {
+  @include below('md') {
     gap: 5px;
     margin-bottom: 20px;
   }

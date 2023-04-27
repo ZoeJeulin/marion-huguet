@@ -79,7 +79,7 @@ footer {
     display: flex;
     justify-content: space-between;
 
-    @include below('sm') {
+    @include below('md') {
       padding: 20px;
     }
 
@@ -88,14 +88,14 @@ footer {
       height: fit-content;
       align-self: center;
 
-      @include below('sm') {
+      @include below('md') {
         order: 2;
       }
 
       .whale {
         display: none;
 
-        @include below('sm') {
+        @include below('md') {
           display: block;
         }
       }
@@ -106,7 +106,7 @@ footer {
       justify-content: space-between;
       width: 60%;
 
-      @include below('sm') {
+      @include below('md') {
         flex-direction: column;
         order: 1;
       }
@@ -115,7 +115,7 @@ footer {
         height: fit-content;
         align-self: center;
 
-        @include below('sm') {
+        @include below('md') {
           align-self: flex-start;
         }
 
@@ -127,7 +127,7 @@ footer {
             &:not(:last-child) {
               margin-bottom: 20px;
 
-              @include below('sm') {
+              @include below('md') {
                 margin-bottom: 15px;
               }
             }
@@ -138,7 +138,7 @@ footer {
       .footer-insta {
         align-self: center;
 
-        @include below('sm') {
+        @include below('md') {
           display: none;
         }
       }
@@ -146,7 +146,7 @@ footer {
       .footer-donation {
         align-self: center;
 
-        @include below('sm') {
+        @include below('md') {
           align-self: flex-start;
           margin-top: 15px;
         }
@@ -167,7 +167,7 @@ footer {
             transform: scaleX(1);
             transition: transform 0.15s ease-out;
 
-            @include below('sm') {
+            @include below('md') {
               transform: scaleX(0);
             }
           }
@@ -176,7 +176,7 @@ footer {
             opacity: 1;
             transition: opacity 0.15s 0.15s ease-out;
 
-            @include below('sm') {
+            @include below('md') {
               opacity: 0;
             }
           }
@@ -197,7 +197,7 @@ footer {
           transform-origin: center left;
           transition: transform 0.15s 0.15s ease-out;
 
-          @include below('sm') {
+          @include below('md') {
             display: none;
           }
         }
@@ -221,7 +221,7 @@ footer {
 
           transition: opacity 0.15s ease-out;
 
-          @include below('sm') {
+          @include below('md') {
             display: none;
           }
         }
@@ -235,7 +235,7 @@ footer {
     justify-content: space-between;
     padding: 10px 50px;
 
-    @include below('sm') {
+    @include below('md') {
       padding: 10px 20px;
     }
 
@@ -244,13 +244,13 @@ footer {
       justify-content: space-between;
       width: 100%;
 
-      @include below('sm') {
+      @include below('md') {
         width: auto;
         flex-direction: column;
       }
 
       a {
-        @include below('sm') {
+        @include below('md') {
           margin-top: 10px;
         }
       }
@@ -259,7 +259,7 @@ footer {
     .ui-btn-scroll {
       display: none;
 
-      @include below('sm') {
+      @include below('md') {
         display: block;
       }
     }

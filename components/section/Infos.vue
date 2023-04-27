@@ -38,7 +38,7 @@ export default {
   mounted() {
     this.$nextTick(() => {
       const mq = gsap.matchMedia()
-      mq.add('(min-width: 641px)', () => {
+      mq.add('(min-width: 769px)', () => {
         this.$refs.frameInfos.$refs.corner.forEach((corner) => {
           gsap.to(corner.$refs.vertical, {
             scaleY: 1,
@@ -78,7 +78,7 @@ export default {
         })
       })
 
-      mq.add('(max-width: 640px)', () => {
+      mq.add('(max-width: 768px)', () => {
         gsap.to('.infos-title', {
           opacity: 1,
           y: 0,
@@ -115,7 +115,7 @@ export default {
   width: 60%;
   padding-top: 160px;
 
-  @include below('sm') {
+  @include below('md') {
     display: block;
     width: 100%;
     padding-top: 0;
@@ -132,7 +132,7 @@ export default {
     margin: 40px 0;
     opacity: 0;
 
-    @include below('sm') {
+    @include below('md') {
       writing-mode: horizontal-tb;
       -webkit-writing-mode: horizontal-tb;
       transform: none;
@@ -142,7 +142,7 @@ export default {
     }
 
     .star {
-      @include below('sm') {
+      @include below('md') {
         display: none;
       }
       &:first-of-type {
@@ -162,7 +162,7 @@ export default {
     opacity: 0;
     z-index: 3;
 
-    @include below('sm') {
+    @include below('md') {
       padding-left: 0;
       margin: 0;
       transform: translateY(15px);
@@ -198,7 +198,7 @@ export default {
       }
     }
 
-    @include below('sm') {
+    @include below('md') {
       width: 135px;
       top: -40px;
       right: 0;

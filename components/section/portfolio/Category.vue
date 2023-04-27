@@ -40,7 +40,7 @@ export default {
 
     const works = this.$el.querySelectorAll('.ui-work-card')
     works.forEach((work) => {
-      mqCategory.add('(max-width: 640px)', () => {
+      mqCategory.add('(max-width: 768px)', () => {
         gsap.to(work.querySelector('.work-overlay'), {
           y: '20px',
           ease: 'none',
@@ -67,7 +67,7 @@ export default {
   + .category {
     margin-top: 160px;
 
-    @include below('sm') {
+    @include below('md') {
       margin-top: 80px;
     }
   }
@@ -85,14 +85,14 @@ export default {
     margin: calc(90px + 5vh) 0 5vh;
     @include fluid-type($xs, $xl, 36px, 78px);
 
-    @include below('sm') {
+    @include below('md') {
       position: absolute;
       top: 0;
       margin: 0;
     }
 
     &.-left {
-      @include below('sm') {
+      @include below('md') {
         text-align: right;
         transform-origin: 25% center;
         transform: translateX(-100px) rotate(180deg);
@@ -100,7 +100,7 @@ export default {
     }
 
     &.-right {
-      @include below('sm') {
+      @include below('md') {
         right: 0;
         transform: translateX(100px);
       }
@@ -112,7 +112,7 @@ export default {
     width: 90%;
     position: relative;
 
-    @include below('sm') {
+    @include below('md') {
       display: flex;
       flex-direction: column;
       width: 100%;
@@ -142,7 +142,7 @@ export default {
         }
       }
 
-      @include below('sm') {
+      @include below('md') {
         display: none;
       }
     }

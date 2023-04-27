@@ -55,11 +55,11 @@ export default {
   },
   mounted() {
     document.body.style.overflowX = 'hidden'
-    if (window.innerWidth > 640)
+    if (window.innerWidth > 768)
       document.querySelector('#main-default').style.padding = 0
     const mqInfosContact = gsap.matchMedia()
 
-    mqInfosContact.add('(min-width: 641px)', () => {
+    mqInfosContact.add('(min-width: 769px)', () => {
       setTimeout(() => {
         this.stInfos = ScrollTrigger.create({
           trigger: this.$el,
@@ -73,7 +73,7 @@ export default {
   },
   beforeDestroy() {
     if (this.stInfos) this.stInfos.kill()
-    if (window.innerWidth > 640)
+    if (window.innerWidth > 768)
       document.querySelector('#main-default').style.padding =
         '160px 40px 40px 40px'
   },
@@ -85,7 +85,7 @@ export default {
   position: relative;
   padding: 0 40px 80px;
 
-  @include below('sm') {
+  @include below('md') {
     padding: 0 0 40px;
   }
 
@@ -94,7 +94,7 @@ export default {
     right: 0;
     height: 100vh !important;
 
-    @include below('sm') {
+    @include below('md') {
       display: none;
     }
 

@@ -46,7 +46,7 @@ export default {
   width: 100%;
   z-index: 15;
 
-  @include below('sm') {
+  @include below('md') {
     display: none;
   }
 
@@ -82,7 +82,7 @@ export default {
       transform-origin: center left;
       transition: transform 0.3s ease-out;
 
-      @include below('sm') {
+      @include below('md') {
         width: 50px;
       }
     }

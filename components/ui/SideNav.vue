@@ -46,7 +46,7 @@ export default {
   transform: translateY(-50%);
   z-index: 10;
 
-  @include below('sm') {
+  @include below('md') {
     display: none;
   }
 

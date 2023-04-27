@@ -118,7 +118,7 @@ export default {
 
     const mqCatHome = gsap.matchMedia()
 
-    mqCatHome.add('(min-width: 641px)', () => {
+    mqCatHome.add('(min-width: 769px)', () => {
       gsap.to(this.$refs.catImg.$el, {
         y: 0,
         duration: 3,
@@ -150,7 +150,7 @@ export default {
       )
     })
 
-    mqCatHome.add('(max-width: 640px)', () => {
+    mqCatHome.add('(max-width: 768px)', () => {
       gsap.to(this.$refs.catImg.$el, {
         yPercent: 20,
         ease: 'none',
@@ -185,7 +185,7 @@ export default {
   display: flex;
   justify-content: space-between;
 
-  @include below('sm') {
+  @include below('md') {
     flex-direction: column;
     padding: 60px 10px;
     min-height: auto;
@@ -200,12 +200,12 @@ export default {
     &.-right {
       order: 2;
 
-      @include below('sm') {
+      @include below('md') {
         left: -10%;
       }
     }
 
-    @include below('sm') {
+    @include below('md') {
       width: 68%;
       position: absolute;
       top: 0 !important;
@@ -214,7 +214,7 @@ export default {
     }
 
     img {
-      @include below('sm') {
+      @include below('md') {
         filter: brightness(1) blur(0px);
       }
     }
@@ -228,12 +228,12 @@ export default {
     z-index: 2;
 
     &.-right {
-      @include below('sm') {
+      @include below('md') {
         text-align: right;
       }
     }
 
-    @include below('sm') {
+    @include below('md') {
       width: 100%;
     }
 
@@ -245,7 +245,7 @@ export default {
         opacity: 0;
         transform: translateY(30px);
 
-        @include below('sm') {
+        @include below('md') {
           transform: translateY(15px);
         }
       }
@@ -255,7 +255,7 @@ export default {
         opacity: 0;
         transform: translateY(30px);
 
-        @include below('sm') {
+        @include below('md') {
           margin-bottom: 40px;
           transform: translateY(15px);
         }
@@ -274,7 +274,7 @@ export default {
     &.-desktop {
       display: block;
 
-      @include below('sm') {
+      @include below('md') {
         display: none;
       }
     }
@@ -282,7 +282,7 @@ export default {
     &.-mobile {
       display: none;
 
-      @include below('sm') {
+      @include below('md') {
         display: block;
         position: absolute;
         left: 0;

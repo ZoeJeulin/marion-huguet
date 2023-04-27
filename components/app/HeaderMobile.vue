@@ -61,7 +61,7 @@ export default {
   position: relative;
   z-index: 5;
 
-  @include below('sm') {
+  @include below('md') {
     display: block;
   }
 

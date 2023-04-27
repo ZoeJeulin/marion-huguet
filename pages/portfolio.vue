@@ -52,7 +52,7 @@ export default {
     const categories = this.$el.querySelectorAll('.category')
     categories.forEach((cat) => {
       setTimeout(() => {
-        mqPortoflio.add('(min-width: 641px)', () => {
+        mqPortoflio.add('(min-width: 769px)', () => {
           this.stPortfolio1 = ScrollTrigger.create({
             trigger: cat,
             start: 'top top',
@@ -61,7 +61,7 @@ export default {
           })
         })
 
-        mqPortoflio.add('(max-width: 640px)', () => {
+        mqPortoflio.add('(max-width: 768px)', () => {
           gsap.to(cat.querySelector('.category-title'), {
             x: 0,
             duration: 0.5,
@@ -76,7 +76,7 @@ export default {
     })
 
     setTimeout(() => {
-      mqPortoflio.add('(min-width: 641px)', () => {
+      mqPortoflio.add('(min-width: 769px)', () => {
         this.stPortfolio2 = ScrollTrigger.create({
           trigger: '.categories',
           start: 'top top',
@@ -100,7 +100,7 @@ export default {
         })
       })
 
-      mqPortoflio.add('(max-width: 640px)', () => {
+      mqPortoflio.add('(max-width: 768px)', () => {
         gsap.to('.title', {
           opacity: 1,
           y: 0,
@@ -156,7 +156,7 @@ export default {
       }
     }
 
-    @include below('sm') {
+    @include below('md') {
       margin-top: 0;
       margin-right: 25px;
       text-shadow: none;
@@ -180,7 +180,7 @@ export default {
     .star {
       display: none;
 
-      @include below('sm') {
+      @include below('md') {
         display: inline-block;
         margin-left: 20px;
       }
@@ -191,13 +191,13 @@ export default {
     position: relative;
     padding-bottom: 140px;
 
-    @include below('sm') {
+    @include below('md') {
       padding-bottom: 40px;
       margin-top: 60px;
     }
 
     .ui-btn-scroll {
-      @include below('sm') {
+      @include below('md') {
         display: none;
       }
     }
@@ -217,7 +217,7 @@ export default {
     .categories-list {
       margin-top: -15vh;
 
-      @include below('sm') {
+      @include below('md') {
         margin-top: 0;
       }
     }

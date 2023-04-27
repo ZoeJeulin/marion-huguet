@@ -129,7 +129,7 @@ export default {
   justify-content: space-between;
   min-height: calc(100vh - 30px);
 
-  @include below('sm') {
+  @include below('md') {
     padding: 60px 10px;
     flex-direction: column;
     justify-content: center;
@@ -140,7 +140,7 @@ export default {
     align-self: center;
     text-align: center;
 
-    @include below('sm') {
+    @include below('md') {
       margin-top: 40px;
       width: 100%;
       order: 2;
@@ -152,7 +152,7 @@ export default {
       opacity: 0;
       transform: translateY(30px);
 
-      @include below('sm') {
+      @include below('md') {
         transform: translateY(15px);
       }
     }
@@ -164,7 +164,7 @@ export default {
     flex-direction: column;
     justify-content: space-between;
 
-    @include below('sm') {
+    @include below('md') {
       width: 100%;
       order: 1;
     }
@@ -172,7 +172,7 @@ export default {
     .support-content {
       padding: 100px 0;
 
-      @include below('sm') {
+      @include below('md') {
         padding: 0;
       }
 
@@ -181,7 +181,7 @@ export default {
         opacity: 0;
         transform: translateY(30px);
 
-        @include below('sm') {
+        @include below('md') {
           transform: translateY(15px);
         }
       }
@@ -191,7 +191,7 @@ export default {
         opacity: 0;
         transform: translateY(30px);
 
-        @include below('sm') {
+        @include below('md') {
           margin-bottom: 40px;
           transform: translateY(15px);
         }
@@ -208,7 +208,7 @@ export default {
     position: absolute;
     width: 5%;
 
-    @include below('sm') {
+    @include below('md') {
       display: none;
     }
 
@@ -230,7 +230,7 @@ export default {
 
     &.-desktop {
       display: block;
-      @include below('sm') {
+      @include below('md') {
         display: none;
       }
     }
@@ -238,7 +238,7 @@ export default {
     &.-mobile {
       display: none;
 
-      @include below('sm') {
+      @include below('md') {
         display: block;
         position: absolute;
         left: 0;

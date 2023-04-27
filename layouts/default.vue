@@ -159,14 +159,14 @@ body {
   background: $blue1;
 
   .default-wrapper {
-    @include below('sm') {
+    @include below('md') {
       overflow: hidden;
     }
 
     #main-default {
       padding: 160px 40px 40px 40px;
 
-      @include below('sm') {
+      @include below('md') {
         padding: 100px 20px 40px;
       }
     }

@@ -125,7 +125,7 @@ export default {
   mounted() {
     this.$nextTick(() => {
       const mq = gsap.matchMedia()
-      mq.add('(min-width: 641px)', () => {
+      mq.add('(min-width: 769px)', () => {
         this.$refs.frameContact.$refs.corner.forEach((corner) => {
           gsap.to(corner.$refs.vertical, {
             scaleY: 1,
@@ -174,7 +174,7 @@ export default {
         })
       })
 
-      mq.add('(max-width: 640px)', () => {
+      mq.add('(max-width: 768px)', () => {
         gsap.to('.contact-title', {
           opacity: 1,
           y: 0,
@@ -304,7 +304,7 @@ export default {
   width: 70%;
   margin-top: 180px;
 
-  @include below('sm') {
+  @include below('md') {
     display: block;
     width: 100%;
     margin-top: 80px;
@@ -321,7 +321,7 @@ export default {
     margin: 40px 0;
     opacity: 0;
 
-    @include below('sm') {
+    @include below('md') {
       writing-mode: horizontal-tb;
       -webkit-writing-mode: horizontal-tb;
       transform: none;
@@ -333,13 +333,13 @@ export default {
     .star {
       &:first-of-type {
         margin-bottom: 40px;
-        @include below('sm') {
+        @include below('md') {
           display: none;
         }
       }
       &:last-of-type {
         margin-top: 40px;
-        @include below('sm') {
+        @include below('md') {
           margin-top: 0;
           margin-left: 20px;
         }
@@ -353,7 +353,7 @@ export default {
     transform: translateY(30px);
     opacity: 0;
 
-    @include below('sm') {
+    @include below('md') {
       padding-left: 0;
       margin: 0;
       transform: translateY(0);
@@ -365,7 +365,7 @@ export default {
     }
 
     .contact-text {
-      @include below('sm') {
+      @include below('md') {
         opacity: 0;
         transform: translateY(15px);
       }
@@ -377,7 +377,7 @@ export default {
       flex-wrap: wrap;
       justify-content: space-between;
 
-      @include below('sm') {
+      @include below('md') {
         margin-top: 40px;
         opacity: 0;
         transform: translateY(15px);
@@ -389,7 +389,7 @@ export default {
         flex-direction: column;
         width: 45%;
 
-        @include below('sm') {
+        @include below('md') {
           width: 100%;
         }
 
@@ -406,7 +406,7 @@ export default {
         &:not(:last-child) {
           margin-bottom: 60px;
 
-          @include below('sm') {
+          @include below('md') {
             margin-bottom: 20px;
           }
         }

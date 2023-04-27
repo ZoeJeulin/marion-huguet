@@ -32,7 +32,7 @@ export default {
     top: 10px;
     transform: scaleX(0);
 
-    @include below('sm') {
+    @include below('md') {
       width: 30px;
       top: 5px;
     }
@@ -44,7 +44,7 @@ export default {
     left: 10px;
     transform: scaleY(0);
 
-    @include below('sm') {
+    @include below('md') {
       height: 30px;
       left: 5px;
     }

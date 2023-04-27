@@ -55,7 +55,7 @@ export default {
   mounted() {
     this.w = window.innerWidth
     this.blobW = this.$el.querySelector('.shop-images').scrollWidth / 3
-    if (this.w > 640) this.blobW -= 20
+    if (this.w > 768) this.blobW -= 20
     this.blobScale = (this.blobW * 3) / this.w
 
     // this.$nextTick(() => {
@@ -151,7 +151,7 @@ export default {
   flex-direction: column;
   justify-content: center;
 
-  @include below('sm') {
+  @include below('md') {
     padding: 60px 10px;
   }
 
@@ -160,14 +160,14 @@ export default {
     opacity: 0;
     transform: translateY(30px);
 
-    @include below('sm') {
+    @include below('md') {
       transform: translateY(15px);
     }
 
     span:not(.star) {
       padding: 0 80px;
 
-      @include below('sm') {
+      @include below('md') {
         padding: 0;
       }
     }
@@ -175,7 +175,7 @@ export default {
     .star {
       vertical-align: middle;
 
-      @include below('sm') {
+      @include below('md') {
         display: none;
       }
     }
@@ -188,7 +188,7 @@ export default {
     width: 70%;
     align-self: center;
 
-    @include below('sm') {
+    @include below('md') {
       margin-bottom: 10px;
       transform: translateY(15px);
       width: 100%;
@@ -200,7 +200,7 @@ export default {
     justify-content: space-between;
     margin-bottom: 80px;
 
-    @include below('sm') {
+    @include below('md') {
       margin-bottom: 40px;
     }
 
@@ -209,7 +209,7 @@ export default {
       opacity: 0;
       transform: translateY(150px);
 
-      @include below('sm') {
+      @include below('md') {
         width: 30%;
         transform: translateY(40px);
       }
@@ -217,7 +217,7 @@ export default {
       &:first-of-type {
         transform: translateY(25%);
 
-        @include below('sm') {
+        @include below('md') {
           transform: translate(-10%, 40px);
         }
       }
@@ -225,7 +225,7 @@ export default {
       &:last-of-type {
         transform: translateY(25%);
 
-        @include below('sm') {
+        @include below('md') {
           transform: translateY(40px);
         }
       }
@@ -236,7 +236,7 @@ export default {
     opacity: 0;
     transform: translateY(30px);
 
-    @include below('sm') {
+    @include below('md') {
       transform: translateY(15px);
     }
   }
@@ -246,7 +246,7 @@ export default {
 
     &.-desktop {
       display: block;
-      @include below('sm') {
+      @include below('md') {
         display: none;
       }
     }
@@ -254,7 +254,7 @@ export default {
     &.-mobile {
       display: none;
 
-      @include below('sm') {
+      @include below('md') {
         display: block;
         position: absolute;
         left: 0;

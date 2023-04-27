@@ -46,13 +46,13 @@ export default {
     &.-desktop {
       display: block;
 
-      @include below('sm') {
+      @include below('md') {
         display: none;
       }
     }
 
     &.-mobile {
-      @include below('sm') {
+      @include below('md') {
         display: block;
       }
     }
@@ -61,7 +61,7 @@ export default {
       top: 0;
       left: 0;
 
-      @include below('sm') {
+      @include below('md') {
         top: -20px;
       }
     }
@@ -71,7 +71,7 @@ export default {
       right: 0;
       transform: rotate(90deg);
 
-      @include below('sm') {
+      @include below('md') {
         top: -20px;
       }
     }

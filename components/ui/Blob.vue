@@ -69,13 +69,13 @@ export default {
     const svgPath = this.$el.querySelector('.img-blob path')
     const mqBlob = gsap.matchMedia()
 
-    mqBlob.add('(max-width: 640px)', () => {
+    mqBlob.add('(max-width: 768px)', () => {
       gsap.set(svgPath, {
         scale: this.scaleMobile,
       })
     })
 
-    mqBlob.add('(min-width: 641px)', () => {
+    mqBlob.add('(min-width: 769px)', () => {
       gsap.set(svgPath, {
         scale: this.scale,
       })
@@ -110,7 +110,7 @@ export default {
     object-fit: cover;
     transform: translate(5%, 5%);
 
-    @include below('sm') {
+    @include below('md') {
       transform: none;
     }
   }

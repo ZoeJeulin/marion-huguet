@@ -48,7 +48,7 @@ export default {
     const mqWork = gsap.matchMedia()
 
     setTimeout(() => {
-      mqWork.add('(min-width: 641px)', () => {
+      mqWork.add('(min-width: 769px)', () => {
         this.$el
           .querySelectorAll('.ui-frame .frame-corner')
           .forEach((corner) => {
@@ -67,7 +67,7 @@ export default {
           })
       })
 
-      mqWork.add('(max-width: 640px)', () => {
+      mqWork.add('(max-width: 768px)', () => {
         this.$el
           .querySelectorAll('.ui-frame .frame-corner')
           .forEach((corner) => {
@@ -104,14 +104,14 @@ export default {
   margin: -10% auto;
   opacity: 0;
 
-  @include below('sm') {
+  @include below('md') {
     width: 75%;
     margin: 0;
     display: flex;
   }
 
   + .ui-work-card {
-    @include below('sm') {
+    @include below('md') {
       margin-top: 80px;
     }
   }
@@ -131,7 +131,7 @@ export default {
 
     &.-left .work-img-wrapper:before,
     &.-right .work-img-wrapper:before {
-      @include below('sm') {
+      @include below('md') {
         background: linear-gradient(
           90deg,
           rgba(4, 34, 62, 0.15) 0%,
@@ -151,7 +151,7 @@ export default {
   &.-left {
     transform: translateX(-60%) translateY(100px);
 
-    @include below('sm') {
+    @include below('md') {
       transform: translateY(30px);
       align-self: flex-end;
       justify-content: flex-end;
@@ -160,14 +160,14 @@ export default {
     .work-img-wrapper {
       padding-left: 50px;
 
-      @include below('sm') {
+      @include below('md') {
         padding-left: 20px;
       }
 
       &:before {
         left: 50px;
 
-        @include below('sm') {
+        @include below('md') {
           left: 20px;
           background: linear-gradient(
             90deg,
@@ -182,14 +182,14 @@ export default {
     .work-overlay {
       padding-left: 70px;
 
-      @include below('sm') {
+      @include below('md') {
         padding-left: 0;
         left: 0;
         transform: translateX(calc(-100% + 40px));
       }
 
       .work-content {
-        @include below('sm') {
+        @include below('md') {
           text-align: right;
         }
       }
@@ -199,21 +199,21 @@ export default {
   &.-right {
     transform: translateX(60%) translateY(100px);
 
-    @include below('sm') {
+    @include below('md') {
       transform: translateY(30px);
     }
 
     .work-img-wrapper {
       padding-right: 50px;
 
-      @include below('sm') {
+      @include below('md') {
         padding-right: 20px;
       }
 
       &:before {
         right: 50px;
 
-        @include below('sm') {
+        @include below('md') {
           right: 20px;
           background: linear-gradient(
             90deg,
@@ -228,7 +228,7 @@ export default {
     .work-overlay {
       padding-right: 70px;
 
-      @include below('sm') {
+      @include below('md') {
         padding-right: 0;
         right: 0;
         transform: translateX(calc(100% - 40px));
@@ -240,7 +240,7 @@ export default {
     position: relative;
     padding-bottom: 50px;
 
-    @include below('sm') {
+    @include below('md') {
       padding-bottom: 20px;
     }
 
@@ -259,7 +259,7 @@ export default {
       opacity: 0;
       transition: opacity 0.3s ease-out;
 
-      @include below('sm') {
+      @include below('md') {
         bottom: 20px;
         opacity: 1;
         transition: none;
@@ -277,7 +277,7 @@ export default {
     transition: opacity 0.3s ease-out;
     z-index: 2;
 
-    @include below('sm') {
+    @include below('md') {
       width: 55%;
       justify-content: start;
       flex-direction: column;
@@ -291,14 +291,14 @@ export default {
     .work-content {
       width: 70%;
 
-      @include below('sm') {
+      @include below('md') {
         width: 100%;
       }
 
       .work-category {
         display: none;
 
-        @include below('sm') {
+        @include below('md') {
           display: block;
           margin-bottom: 10px;
           text-transform: uppercase;
@@ -320,7 +320,7 @@ export default {
       width: 28%;
       align-self: flex-end;
 
-      @include below('sm') {
+      @include below('md') {
         width: 100%;
         align-self: flex-start;
       }

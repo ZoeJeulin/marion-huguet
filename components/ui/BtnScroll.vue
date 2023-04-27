@@ -67,7 +67,7 @@ export default {
   transform: translateX(-50%) translateY(-50%);
   z-index: 11;
 
-  @include below('sm') {
+  @include below('md') {
     position: initial;
     left: initial;
     top: initial;

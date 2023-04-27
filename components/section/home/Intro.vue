@@ -81,7 +81,7 @@ export default {
 
     const mqIntro = gsap.matchMedia()
 
-    mqIntro.add('(max-width: 640px)', () => {
+    mqIntro.add('(max-width: 768px)', () => {
       gsap.to(bird1, {
         rotate: -230,
         scrollTrigger: {
@@ -140,7 +140,7 @@ export default {
   padding: 40px;
   display: flex;
 
-  @include below('sm') {
+  @include below('md') {
     padding: 0;
     flex-direction: column;
   }
@@ -148,7 +148,7 @@ export default {
   .intro-content {
     width: 70%;
 
-    @include below('sm') {
+    @include below('md') {
       width: 100%;
     }
 
@@ -156,7 +156,7 @@ export default {
       width: 100%;
       height: calc((100vw - 160px) * 0.7 * (510 / 1473));
 
-      @include below('sm') {
+      @include below('md') {
         height: auto;
       }
     }
@@ -166,7 +166,7 @@ export default {
       opacity: 0;
       transform: translateY(10px);
 
-      @include below('sm') {
+      @include below('md') {
         margin-top: 20px;
       }
     }
@@ -176,7 +176,7 @@ export default {
     width: 30%;
     position: relative;
 
-    @include below('sm') {
+    @include below('md') {
       width: 100%;
       padding: 140px 0;
     }
@@ -192,7 +192,7 @@ export default {
         left: 35%;
         transform: translate(10px, 15px) rotate(-70deg);
 
-        @include below('sm') {
+        @include below('md') {
           left: 30%;
           transform: translate(0) rotate(190deg);
         }
@@ -205,7 +205,7 @@ export default {
         margin: auto;
         transform: translate(-12px, -5px) rotate(80deg);
 
-        @include below('sm') {
+        @include below('md') {
           right: 25%;
           transform: translate(0) rotate(95deg);
         }
@@ -216,7 +216,7 @@ export default {
         left: 35%;
         transform: translate(-2px, -15px) rotate(10deg);
 
-        @include below('sm') {
+        @include below('md') {
           bottom: 15%;
           left: 35%;
           transform: translate(0) rotate(-65deg);
@@ -228,7 +228,7 @@ export default {
   .star {
     display: none;
 
-    @include below('sm') {
+    @include below('md') {
       display: block;
       margin: auto;
       position: absolute;

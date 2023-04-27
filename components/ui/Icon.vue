@@ -33,7 +33,7 @@ export default {
 
     transition: transform 0.3s ease-out;
 
-    @include below('sm') {
+    @include below('md') {
       pointer-events: none;
     }
 
@@ -41,7 +41,7 @@ export default {
       &:nth-of-type(2n) {
         transform: rotate(-40deg);
 
-        @include below('sm') {
+        @include below('md') {
           pointer-events: none;
         }
       }
@@ -49,7 +49,7 @@ export default {
       &:nth-of-type(2n + 1) {
         transform: rotate(40deg);
 
-        @include below('sm') {
+        @include below('md') {
           pointer-events: none;
         }
       }

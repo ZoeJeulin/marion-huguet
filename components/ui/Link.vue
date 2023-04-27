@@ -83,7 +83,7 @@ export default {
     transform: translateX(0);
     transition: transform 0.3s 0.05s ease-out;
 
-    @include below('sm') {
+    @include below('md') {
       padding: 0 10px;
       white-space: normal;
     }
@@ -106,7 +106,7 @@ export default {
 
     transition: opacity 0.15s ease-out;
 
-    @include below('sm') {
+    @include below('md') {
       right: 45px;
     }
   }
@@ -120,7 +120,7 @@ export default {
     transform: translateX(0) scaleX(1);
     transition: transform 0.3s 0.05s ease-out;
 
-    @include below('sm') {
+    @include below('md') {
       width: 50px;
     }
   }
