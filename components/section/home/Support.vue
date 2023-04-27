@@ -1,19 +1,10 @@
 <template>
   <div class="home-support">
     <div class="support-insta">
-      <!-- <ul>
-        <li v-for="post in section.feedInstagram" :key="`post-${post.id}`">
-          <a :href="post.permalink">
-            <nuxt-picture :src="`${post.permalink}media/?size=l`" :alt="post.caption" />
-          </a>
-        </li>
-      </ul> -->
-      <nuxt-picture
-        src="https://source.unsplash.com/random"
-        alt="feed insta"
-        class="support-feed"
-      />
-      <ui-link class="support-link" label="En voir plus" />
+      <ui-feed-insta :posts="section.feedInstagram" />
+      <a class="insta-account t-cta-1" :href="global.instagramLink"
+        >Instagram : {{ global.instagramLabel }}</a
+      >
     </div>
     <div class="support-wrapper">
       <ui-icon name="etoile" class="star -desktop" />
@@ -41,6 +32,7 @@
 
 <script>
 import { gsap } from 'gsap'
+import { mapState } from 'vuex'
 
 export default {
   props: {
@@ -53,8 +45,12 @@ export default {
       default: () => {},
     },
   },
+  computed: {
+    ...mapState({
+      global: (state) => state.global,
+    }),
+  },
   mounted() {
-    // this.$nextTick(() => {
     this.$refs.frameSupport.$refs.corner.forEach((corner) => {
       gsap.to(corner.$refs.vertical, {
         scaleY: 1,
@@ -74,6 +70,17 @@ export default {
           start: 'top 90%',
         },
       })
+    })
+
+    gsap.to('.insta-account', {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: 'ease-out',
+      scrollTrigger: {
+        trigger: '.support-insta',
+        start: 'bottom bottom',
+      },
     })
 
     gsap.to('.support-title', {
@@ -110,7 +117,6 @@ export default {
         start: 'top 85%',
       },
     })
-    // })
   },
 }
 </script>
@@ -132,6 +138,7 @@ export default {
   .support-insta {
     width: 30%;
     align-self: center;
+    text-align: center;
 
     @include below('sm') {
       margin-top: 40px;
@@ -139,11 +146,14 @@ export default {
       order: 2;
     }
 
-    .support-feed {
-      margin-bottom: 80px;
+    .insta-account {
+      display: inline-block;
+      text-transform: none;
+      opacity: 0;
+      transform: translateY(30px);
 
       @include below('sm') {
-        margin-bottom: 40px;
+        transform: translateY(15px);
       }
     }
   }

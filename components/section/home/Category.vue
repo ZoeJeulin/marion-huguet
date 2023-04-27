@@ -173,7 +173,6 @@ export default {
         },
       })
     })
-    console.log('cat mounted')
   },
 }
 </script>
