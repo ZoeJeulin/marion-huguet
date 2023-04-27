@@ -60,7 +60,7 @@ footer {
   z-index: 5;
   opacity: 0;
   transform: translateY(30px);
-  animation: showFooter 0.5s 1s ease-out forwards;
+  animation: showFooter 0.5s 3s ease-out forwards;
 
   @keyframes showFooter {
     0% {

@@ -183,7 +183,7 @@ export default {
           ease: 'ease-out',
           scrollTrigger: {
             trigger: '.contact-content',
-            start: 'top 95%',
+            start: 'top bottom',
           },
         })
 
@@ -195,7 +195,7 @@ export default {
           ease: 'ease-out',
           scrollTrigger: {
             trigger: '.contact-content',
-            start: 'top 95%',
+            start: 'top bottom',
           },
         })
 
@@ -207,7 +207,7 @@ export default {
           ease: 'ease-out',
           scrollTrigger: {
             trigger: '.contact-content',
-            start: 'top 95%',
+            start: 'top bottom',
           },
         })
       })

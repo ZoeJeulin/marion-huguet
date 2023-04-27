@@ -1,7 +1,9 @@
 <template>
   <div class="header-mobile">
     <div class="header-nav">
-      <ui-icon class="typo" name="typo" />
+      <nuxt-link class="link-logo" :to="localePath({ name: 'home' })"
+        ><ui-icon class="typo" name="typo"
+      /></nuxt-link>
       <ui-burger-menu @click.native="toggleMenu" />
     </div>
     <div class="header-panel">
@@ -75,8 +77,16 @@ export default {
     justify-content: space-between;
     width: 100%;
 
-    .typo {
-      width: 30%;
+    .link-logo {
+      width: fit-content;
+
+      .typo {
+        height: 100%;
+
+        svg {
+          width: auto;
+        }
+      }
     }
 
     .ui-burger-menu {

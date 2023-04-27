@@ -43,7 +43,7 @@ export default {
             direction: 'top',
           },
           opacity: {
-            value: 0.1,
+            value: 0.05,
           },
           shadow: {
             blur: 4,

@@ -163,6 +163,7 @@ export default {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      opacity: 0;
 
       @keyframes titlePortfolio {
         0% {
