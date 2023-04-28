@@ -33,4 +33,16 @@ query Global {
       }
     }
   }
+  seo: _site {
+    globalSeo {
+      fallbackSeo {
+        description
+        image {
+          url
+        }
+        title
+        twitterCard
+      }
+    }
+  }
 }

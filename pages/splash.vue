@@ -13,6 +13,9 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import head from '@/assets/js/head.js'
+
 export default {
   nuxtI18n: {
     paths: {
@@ -25,6 +28,14 @@ export default {
     return {
       isMobile: false,
     }
+  },
+  head() {
+    return head(this.globalSeo.seo.fallbackSeo)
+  },
+  computed: {
+    ...mapState({
+      globalSeo: (state) => state.seo,
+    }),
   },
   mounted() {
     this.isMobile = window.innerWidth <= 768
