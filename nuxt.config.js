@@ -36,7 +36,28 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon/favicon.ico' },
+      {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        type: 'image/png',
+        href: '/favicon/apple-touch-icon.png',
+      },
+      {
+        rel: 'icon',
+        sizes: '32x32',
+        type: 'image/png',
+        href: '/favicon/favicon-32x32.png',
+      },
+      {
+        rel: 'icon',
+        sizes: '16x16',
+        type: 'image/png',
+        href: '/favicon/favicon-16x16.png',
+      },
+      { rel: 'manifest', href: '/favicon/manifest.json' },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -47,10 +68,7 @@ export default {
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    '@/plugins/query.js',
-    '@/plugins/particles.vue.js'
-  ],
+  plugins: ['@/plugins/query.js', '@/plugins/particles.vue.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -87,13 +105,13 @@ export default {
       fallbackLocale: 'fr',
       messages: {
         fr: {
-          welcome: 'Bienvenue'
+          welcome: 'Bienvenue',
         },
         en: {
-          welcome: 'Welcome'
-        }
-      }
-    }
+          welcome: 'Welcome',
+        },
+      },
+    },
   },
 
   image: {
@@ -117,6 +135,6 @@ export default {
   },
 
   server: {
-    host: "0.0.0.0"
-  }
+    host: '0.0.0.0',
+  },
 }
