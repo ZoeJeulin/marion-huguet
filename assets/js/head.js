@@ -7,6 +7,11 @@ const head = (data) => {
       property: 'og:title',
       content: data.title,
     })
+    seo.meta.push({
+      hid: `twitter:title`,
+      property: 'twitter:title',
+      content: data.title,
+    })
   }
 
   if (data && data.description) {
@@ -36,6 +41,11 @@ const head = (data) => {
       hid: `twitter:image`,
       name: 'twitter:image',
       content: data.image.url,
+    })
+    seo.meta.push({
+      hid: `twitter:card`,
+      name: 'twitter:card',
+      content: 'summary_large_image',
     })
   }
 
