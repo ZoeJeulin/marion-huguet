@@ -1,7 +1,11 @@
 #import "../fragments/responsiveImage.graphql"
+#import "../fragments/seo.graphql"
 
 query Portfolio {
   page: pagePortfolio {
+    seo {
+      ...Seo
+    }
     pageTitle
     portfolioCategories {
       _modelApiKey

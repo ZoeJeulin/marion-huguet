@@ -1,7 +1,11 @@
 #import "../fragments/responsiveImage.graphql"
+#import "../fragments/seo.graphql"
 
 query InfosContact {
   page: pageInfosContact {
+    seo {
+      ...Seo
+    }
     pageTitle
     infosTitle
     infosText

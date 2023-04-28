@@ -1,9 +1,13 @@
 #import "../fragments/sectionCategory.graphql"
 #import "../fragments/sectionShop.graphql"
 #import "../fragments/sectionSupport.graphql"
+#import "../fragments/seo.graphql"
 
 query Home {
   page: pageHome {
+    seo {
+      ...Seo
+    }
     introText
     sections {
       ...SectionCategory

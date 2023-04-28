@@ -24,6 +24,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { mapState } from 'vuex'
 import PageInfosContactQuery from '~/assets/graphql/pages/infosContact.graphql'
+import head from '@/assets/js/head.js'
 
 if (process.client) {
   gsap.registerPlugin(ScrollTrigger)
@@ -47,6 +48,9 @@ export default {
     )
 
     return { page }
+  },
+  head() {
+    return head(this.page.seo)
   },
   computed: {
     ...mapState({

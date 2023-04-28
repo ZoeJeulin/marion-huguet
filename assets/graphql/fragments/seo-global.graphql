@@ -1,0 +1,12 @@
+fragment Site on Site {
+  globalSeo {
+    seo: fallbackSeo {
+      description
+      image {
+        url
+      }
+      title
+      twitterCard
+    }
+  }
+}

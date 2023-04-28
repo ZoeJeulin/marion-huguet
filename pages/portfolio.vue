@@ -24,6 +24,7 @@
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import PagePortfolioQuery from '~/assets/graphql/pages/portfolio.graphql'
+import head from '@/assets/js/head.js'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -45,6 +46,9 @@ export default {
     )
 
     return { page }
+  },
+  head() {
+    return head(this.page.seo)
   },
   mounted() {
     const mqPortoflio = gsap.matchMedia()

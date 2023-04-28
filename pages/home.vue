@@ -34,6 +34,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 import PageHomeQuery from '~/assets/graphql/pages/home.graphql'
+import head from '@/assets/js/head.js'
 
 if (process.client) {
   gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
@@ -52,6 +53,9 @@ export default {
     return {
       sectionsMounted: 0,
     }
+  },
+  head() {
+    return head(this.page.seo)
   },
   computed: {
     totalSections() {
