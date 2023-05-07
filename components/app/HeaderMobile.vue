@@ -59,7 +59,7 @@ export default {
 .header-mobile {
   display: none;
   position: relative;
-  z-index: 5;
+  z-index: 6;
 
   @include below('md') {
     display: block;
