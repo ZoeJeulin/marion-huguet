@@ -7,6 +7,8 @@
         :src="work.workImages[0].responsiveImage.src"
         :alt="work.workTitle"
         loading="lazy"
+        provider="imgix"
+        :modifiers="{ auto: 'format,compress' }"
       />
       <ui-frame
         :desktop-corners="index % 2 == 0 ? [3] : [4]"

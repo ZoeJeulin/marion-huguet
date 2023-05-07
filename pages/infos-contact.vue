@@ -5,6 +5,8 @@
       :alt="global.bgImg.alt"
       class="whale-img"
       loading="lazy"
+      provider="imgix"
+      :modifiers="{ auto: 'format,compress' }"
     />
     <section-infos
       :infos-title="page.infosTitle"
