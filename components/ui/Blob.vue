@@ -32,6 +32,7 @@
       :style="`clip-path: url('#${pathName}');`"
       :src="pathName"
       alt="category image"
+      loading="lazy"
     />
 
     <!-- <img

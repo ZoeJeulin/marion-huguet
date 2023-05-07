@@ -6,6 +6,7 @@
         :img-attrs="{ class: 'work-img' }"
         :src="work.workImages[0].responsiveImage.src"
         :alt="work.workTitle"
+        loading="lazy"
       />
       <ui-frame
         :desktop-corners="index % 2 == 0 ? [3] : [4]"

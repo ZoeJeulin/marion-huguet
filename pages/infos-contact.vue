@@ -4,6 +4,7 @@
       :src="global.bgImg.url"
       :alt="global.bgImg.alt"
       class="whale-img"
+      loading="lazy"
     />
     <section-infos
       :infos-title="page.infosTitle"

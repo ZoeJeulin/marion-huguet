@@ -2,7 +2,12 @@
   <ul class="feed-insta">
     <li v-for="post in posts" :key="`post-${post.id}`" class="post">
       <a :href="post.permalink" class="post-link">
-        <img :src="post.media_url" :alt="post.caption" class="post-img" />
+        <img
+          :src="post.media_url"
+          :alt="post.caption"
+          class="post-img"
+          loading="lazy"
+        />
       </a>
     </li>
   </ul>
