@@ -22,7 +22,7 @@
 
         <div class="field">
           <label for="nom" class="t-body-1">Nom</label>
-          <input type="text" name="nom" required />
+          <input id="nom" type="text" name="nom" required />
           <span v-if="error.nom" class="required t-body-3"
             >Ce champ est obligatoire</span
           >
@@ -30,7 +30,7 @@
 
         <div class="field">
           <label for="prenom" class="t-body-1">Prénom</label>
-          <input type="text" name="prenom" required />
+          <input id="prenom" type="text" name="prenom" required />
           <span v-if="error.prenom" class="required t-body-3"
             >Ce champ est obligatoire</span
           >
@@ -38,7 +38,7 @@
 
         <div class="field">
           <label for="email" class="t-body-1">Adresse mail</label>
-          <input type="email" name="email" required />
+          <input id="email" type="email" name="email" required />
           <span v-if="error.email" class="required t-body-3"
             >Une adresse mail valide est obligatoire</span
           >
@@ -46,7 +46,7 @@
 
         <div class="field">
           <label for="sujet" class="t-body-1">Sujet</label>
-          <input type="text" name="sujet" required />
+          <input id="sujet" type="text" name="sujet" required />
           <span v-if="error.sujet" class="required t-body-3"
             >Ce champ est obligatoire</span
           >
@@ -54,7 +54,7 @@
 
         <div class="field -big">
           <label for="message" class="t-body-1"> Message </label>
-          <textarea name="message"></textarea>
+          <textarea id="message" name="message"></textarea>
           <span v-if="error.message" class="required t-body-3"
             >Ce champ est obligatoire</span
           >
