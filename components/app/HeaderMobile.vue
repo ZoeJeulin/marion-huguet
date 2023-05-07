@@ -1,7 +1,10 @@
 <template>
   <div class="header-mobile">
     <div class="header-nav">
-      <nuxt-link class="link-logo" :to="localePath({ name: 'home' })"
+      <nuxt-link
+        class="link-logo"
+        :to="localePath({ name: 'home' })"
+        aria-label="Accueil"
         ><ui-icon class="typo" name="typo"
       /></nuxt-link>
       <ui-burger-menu :aria-label="label" @click.native="toggleMenu" />
