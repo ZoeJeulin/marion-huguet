@@ -4,7 +4,7 @@
       <nuxt-link class="link-logo" :to="localePath({ name: 'home' })"
         ><ui-icon class="typo" name="typo"
       /></nuxt-link>
-      <ui-burger-menu @click.native="toggleMenu" />
+      <ui-burger-menu :aria-label="label" @click.native="toggleMenu" />
     </div>
     <div class="header-panel">
       <ul class="nav-list">
@@ -36,10 +36,18 @@
 import { mapState } from 'vuex'
 
 export default {
+  data() {
+    return {
+      isMenuOpen: false,
+    }
+  },
   computed: {
     ...mapState({
       global: (state) => state.global,
     }),
+    label() {
+      return this.isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'
+    },
   },
   methods: {
     toggleMenu() {
@@ -50,6 +58,7 @@ export default {
       } else if (document.body.style.overflow === '') {
         document.body.style.overflow = 'hidden'
       }
+      this.isMenuOpen = !this.isMenuOpen
     },
   },
 }

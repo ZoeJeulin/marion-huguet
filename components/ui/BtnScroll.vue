@@ -1,5 +1,9 @@
 <template>
-  <button class="ui-btn-scroll" @click="scrollToTop">
+  <button
+    class="ui-btn-scroll"
+    aria-label="Revenir en haut de la page"
+    @click="scrollToTop"
+  >
     <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 42">
       <path
         class="btn-border"
