@@ -122,7 +122,7 @@ export default {
   },
 
   generate: {
-    fallback: '/error/index.html',
+    fallback: true,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
