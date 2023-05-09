@@ -32,6 +32,9 @@ query Global {
         ...ResponsiveImage
       }
     }
+    errorTitle
+    errorSubtitle
+    errorLabel
   }
   seo: _site {
     globalSeo {
