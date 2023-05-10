@@ -22,6 +22,7 @@
 import { mapState } from 'vuex'
 
 export default {
+  layout: 'error',
   head() {
     return {
       title: 'Page introuvable',

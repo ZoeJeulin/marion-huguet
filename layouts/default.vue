@@ -26,6 +26,7 @@ if (process.client) {
 }
 
 export default {
+  props: ['error'],
   data() {
     return {
       options: {
@@ -75,6 +76,7 @@ export default {
     window.addEventListener('resize', this.resize)
   },
   mounted() {
+    console.log(this.error)
     window.addEventListener('resize', this.resize)
     this.resize()
 
