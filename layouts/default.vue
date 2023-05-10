@@ -3,7 +3,7 @@
   <div class="default-wrapper">
     <ui-transition ref="transition" />
     <app-header />
-    <div id="main-default">
+    <div :id="isValidPage() ? 'main-default' : ''">
       <Particles
         id="tsparticles"
         :options="options"
@@ -11,7 +11,7 @@
       />
       <nuxt />
     </div>
-    <app-footer />
+    <app-footer v-if="isValidPage()" />
   </div>
 </template>
 
@@ -26,7 +26,6 @@ if (process.client) {
 }
 
 export default {
-  props: ['error'],
   data() {
     return {
       options: {
@@ -76,7 +75,6 @@ export default {
     window.addEventListener('resize', this.resize)
   },
   mounted() {
-    console.log(this.error)
     window.addEventListener('resize', this.resize)
     this.resize()
 
@@ -129,6 +127,10 @@ export default {
     },
     particlesInit: async (engine) => {
       await loadFull(engine)
+    },
+    isValidPage() {
+      console.log(this.$route.name)
+      return this.$route.name
     },
   },
 }

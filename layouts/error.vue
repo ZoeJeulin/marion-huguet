@@ -24,29 +24,13 @@ import { mapState } from 'vuex'
 export default {
   head() {
     return {
-      title: 'Page introuvable',
+      title: 'Page introuvable | Marion Huguet',
     }
   },
   computed: {
     ...mapState({
       global: (state) => state.global,
     }),
-  },
-  mounted() {
-    document.body.style.overflow = 'hidden'
-    document.body.style.height = '100vh'
-    document.querySelector('.footer').style.display = 'none'
-    // if (window.innerWidth > 768)
-    document.querySelector('#main-default').style.padding = 0
-  },
-  beforeDestroy() {
-    if (window.innerWidth > 768) {
-      document.querySelector('#main-default').style.padding =
-        '160px 40px 40px 40px'
-    } else {
-      document.querySelector('#main-default').style.padding = '100px 20px 40px'
-    }
-    document.querySelector('.footer').style.display = 'block'
   },
 }
 </script>
@@ -63,6 +47,7 @@ export default {
 
   @include below('md') {
     padding: 0;
+    height: 90vh;
   }
 
   .error-content {
@@ -96,8 +81,10 @@ export default {
 
       @include below('sm') {
         display: block;
-        width: 25%;
+        width: 20%;
         margin: 0 auto 60px;
+        opacity: 0;
+        animation: showText 0.5s 0.4s ease-out forwards;
       }
     }
 
