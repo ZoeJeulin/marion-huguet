@@ -7,14 +7,14 @@
       <ui-link class="error-link" :label="global.errorLabel" path="home" />
     </div>
 
-    <nuxt-picture
+    <!-- <nuxt-picture
       :src="global.bgImg.url"
       :alt="global.bgImg.alt"
       class="error-img"
       loading="lazy"
       provider="imgix"
       :modifiers="{ auto: 'format,compress' }"
-    />
+    /> -->
   </div>
 </template>
 
@@ -37,17 +37,17 @@ export default {
 
 <style lang="scss">
 .error {
-  height: 100vh;
+  //height: 100vh;
   position: relative;
-  padding: 160px 40px 60px;
+  padding: 100px 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   @include below('md') {
-    padding: 0;
-    height: 90vh;
+    padding: 60px 0;
+    //height: 90vh;
   }
 
   .error-content {
@@ -110,7 +110,7 @@ export default {
     }
   }
 
-  .error-img {
+  /* .error-img {
     position: absolute;
     top: 0;
     right: 0;
@@ -124,6 +124,6 @@ export default {
       height: 100%;
       object-fit: cover;
     }
-  }
+  } */
 }
 </style>

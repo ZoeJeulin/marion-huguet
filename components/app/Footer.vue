@@ -59,7 +59,7 @@ footer {
   position: relative;
   z-index: 5;
   opacity: 0;
-  animation: showFooter 0.5s 3s ease-out forwards;
+  animation: showFooter 0.5s 0.5s ease-out forwards;
 
   @keyframes showFooter {
     0% {

@@ -3,7 +3,7 @@
   <div class="default-wrapper">
     <ui-transition ref="transition" />
     <app-header />
-    <div :id="isValidPage() ? 'main-default' : ''">
+    <div id="main-default">
       <Particles
         id="tsparticles"
         :options="options"
@@ -11,7 +11,7 @@
       />
       <nuxt />
     </div>
-    <app-footer v-if="isValidPage()" />
+    <app-footer />
   </div>
 </template>
 
@@ -128,10 +128,10 @@ export default {
     particlesInit: async (engine) => {
       await loadFull(engine)
     },
-    isValidPage() {
+    /* isValidPage() {
       console.log(this.$route.name)
       return this.$route.name
-    },
+    }, */
   },
 }
 </script>
