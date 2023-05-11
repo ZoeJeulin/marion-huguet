@@ -1,14 +1,19 @@
 <template>
   <div class="splash">
     <ui-icon class="typo" name="typo" />
-    <ui-icon class="whale" name="whale" />
+    <ui-icon class="whale" name="logo_test" />
     <ui-link
       v-if="isMobile"
       class="link"
-      label="Plonger dans</br>mon univers"
+      label="Tatouages - illustrations"
       path="home"
     />
-    <ui-link v-else class="link" label="Plonger dans mon univers" path="home" />
+    <ui-link
+      v-else
+      class="link"
+      label="Tatouages - Illustrations"
+      path="home"
+    />
   </div>
 </template>
 
