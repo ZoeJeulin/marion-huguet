@@ -116,6 +116,14 @@ export default {
     @include below('md') {
       transform: none;
     }
+
+    img {
+      max-width: 480px;
+
+      @include below('sm') {
+        max-width: 100%;
+      }
+    }
   }
 }
 </style>
