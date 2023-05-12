@@ -10,9 +10,7 @@
       <ui-icon name="etoile" class="star -desktop" />
       <div class="support-content">
         <h2 class="support-title t-h2">{{ section.title }}</h2>
-        <div class="support-desc t-body-1">
-          {{ section.description }}
-        </div>
+        <div class="support-desc t-body-1" v-html="section.description"></div>
         <ui-link class="support-link" :label="section.btnLabel" />
       </div>
 

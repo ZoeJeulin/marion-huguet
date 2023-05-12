@@ -6,7 +6,7 @@
       <ui-icon name="etoile" class="star" />
     </h1>
     <div class="contact-content">
-      <div class="contact-text t-body-1">{{ contactText }}</div>
+      <div class="contact-text t-body-1" v-html="contactText"></div>
       <form
         id="form-contact"
         ref="formContainer"

@@ -12,9 +12,11 @@
       <ui-icon name="etoile" class="star -desktop" />
       <div class="category-content">
         <h2 ref="catTitle" class="category-title t-h2">{{ section.title }}</h2>
-        <div ref="catDesc" class="category-desc t-body-1">
-          {{ section.description }}
-        </div>
+        <div
+          ref="catDesc"
+          class="category-desc t-body-1"
+          v-html="section.description"
+        ></div>
         <ui-link
           ref="catLink"
           class="category-link"

@@ -5,9 +5,7 @@
       <span>{{ section.title }}</span>
       <ui-icon name="etoile" class="star" />
     </h1>
-    <div class="shop-desc t-body-1">
-      {{ section.description }}
-    </div>
+    <div class="shop-desc t-body-1" v-html="section.description"></div>
     <div class="shop-images">
       <ui-blob
         v-for="(shopImg, index) in section.images"

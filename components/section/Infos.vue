@@ -5,7 +5,7 @@
       {{ infosTitle }}
       <ui-icon name="etoile" class="star" />
     </h1>
-    <div class="infos-text t-body-1">{{ infosText }}</div>
+    <div class="infos-text t-body-1" v-html="infosText"></div>
     <ui-blob
       ref="infosPhoto"
       class="infos-photo"
@@ -204,6 +204,10 @@ export default {
       right: 0;
       animation: none;
       transform: translateY(15px);
+    }
+
+    .img-wrapper img {
+      max-width: 100%;
     }
   }
 }

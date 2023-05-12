@@ -7,9 +7,7 @@
         </div>
       </client-only>
       <h1 class="sr-only">Marion Huguet</h1>
-      <div class="intro-desc t-body-1">
-        {{ introText }}
-      </div>
+      <div class="intro-desc t-body-1" v-html="introText"></div>
     </div>
     <div class="intro-birds">
       <img
