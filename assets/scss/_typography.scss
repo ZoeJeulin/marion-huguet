@@ -38,6 +38,7 @@
 .t-body-1 {
   @extend %t-body;
   @include fluid-type($xs, $xl, 16px, 22px);
+  line-height: 1.4
 }
 
 .t-body-2 {

@@ -279,6 +279,7 @@ export default {
     opacity: 0;
     transition: opacity 0.3s ease-out;
     z-index: 2;
+    // width: 70%;
 
     @include below('md') {
       width: 55%;
@@ -292,12 +293,6 @@ export default {
     }
 
     .work-content {
-      width: 70%;
-
-      @include below('md') {
-        width: 100%;
-      }
-
       .work-category {
         display: none;
 
