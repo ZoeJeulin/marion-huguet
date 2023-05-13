@@ -87,6 +87,7 @@ export default {
     '@nuxtjs/style-resources',
     '@nuxtjs/i18n',
     '@nuxtjs/svg',
+    '@nuxtjs/dayjs',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -119,6 +120,11 @@ export default {
     imgix: {
       baseURL: '',
     },
+  },
+
+  dayjs: {
+    locales: ['fr'],
+    defaultLocale: 'fr',
   },
 
   generate: {

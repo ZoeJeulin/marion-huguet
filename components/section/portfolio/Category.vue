@@ -11,7 +11,7 @@
       :class="firstIndex % 2 == 0 ? '-right' : '-left'"
     >
       <ui-work-card
-        v-for="(work, index) in category.works"
+        v-for="(work, index) in worksByDate"
         :key="`work-item-${work.id}`"
         :work="work"
         :category="category.title"
@@ -33,6 +33,15 @@ export default {
     firstIndex: {
       type: Number,
       default: 0,
+    },
+  },
+  computed: {
+    worksByDate() {
+      let sortedWorks = this.category.works
+      sortedWorks = sortedWorks.sort(
+        (a, b) => new Date(b.workDate) - new Date(a.workDate)
+      )
+      return sortedWorks
     },
   },
   /* mounted() {

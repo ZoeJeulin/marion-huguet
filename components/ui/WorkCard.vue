@@ -17,9 +17,18 @@
     </div>
     <div class="work-overlay">
       <div class="work-content">
-        <div class="work-category t-body-3">{{ category }}</div>
+        <div class="work-category t-body-3">
+          {{ category }} - {{ $dayjs(work.workDate).format('MMM YYYY') }}
+        </div>
         <div class="work-title t-h3">{{ work.workTitle }}</div>
-        <div class="work-desc t-body-2">{{ work.workDescription }}</div>
+        <div v-if="work.workDate" class="work-date t-body-2">
+          {{ $dayjs(work.workDate).format('MMMM YYYY') }}
+        </div>
+        <div
+          v-if="work.workDescription"
+          class="work-desc t-body-2"
+          v-html="work.workDescription"
+        ></div>
       </div>
       <!-- <div class="work-cta">
         <ui-icon name="arrow" class="arrow" /> -->
@@ -300,6 +309,15 @@ export default {
           display: block;
           margin-bottom: 10px;
           text-transform: uppercase;
+        }
+      }
+
+      .work-date {
+        margin-bottom: 10px;
+        text-transform: uppercase;
+
+        @include below('sm') {
+          display: none;
         }
       }
 
