@@ -2,16 +2,21 @@
   <div class="home-support">
     <div class="support-insta">
       <ui-feed-insta :posts="section.feedInstagram" />
-      <a class="insta-account t-cta-1" :href="global.instagramLink"
+      <!-- <a class="insta-account t-cta-1" :href="global.instagramLink"
         >Instagram : {{ global.instagramLabel }}</a
-      >
+      > -->
     </div>
     <div class="support-wrapper">
       <ui-icon name="etoile" class="star -desktop" />
       <div class="support-content">
         <h2 class="support-title t-h2">{{ section.title }}</h2>
         <div class="support-desc t-body-1" v-html="section.description"></div>
-        <ui-link class="support-link" :label="section.btnLabel" />
+        <ui-link
+          class="support-link"
+          type="a"
+          :path="global.instagramLink"
+          :label="section.btnLabel"
+        />
       </div>
 
       <ui-icon name="etoile" class="star -desktop" />

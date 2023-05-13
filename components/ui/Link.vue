@@ -38,6 +38,11 @@ export default {
         return {
           to: this.localePath({ name: this.path, hash: this.hash }),
         }
+      } else if (this.type === 'a') {
+        return {
+          href: this.path,
+          target: '_blank',
+        }
       }
       return null
     },
