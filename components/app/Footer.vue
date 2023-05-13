@@ -3,7 +3,7 @@
     <div class="footer-top">
       <div class="footer-typo-wrapper">
         <ui-icon name="typo" />
-        <ui-icon class="whale" name="whale" />
+        <ui-icon class="logo" name="logo" />
       </div>
       <div class="footer-content-wrapper">
         <div class="footer-links">
@@ -89,11 +89,12 @@ footer {
         order: 2;
       }
 
-      .whale {
+      .logo {
         display: none;
 
         @include below('md') {
           display: block;
+          margin-top: 5px;
         }
       }
     }
@@ -106,6 +107,7 @@ footer {
       @include below('md') {
         flex-direction: column;
         order: 1;
+        justify-content: center;
       }
 
       .footer-links {

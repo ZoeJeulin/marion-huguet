@@ -30,7 +30,7 @@
           >
         </li>
       </ul>
-      <ui-icon class="whale" name="whale" />
+      <ui-icon class="logo" name="logo" />
     </div>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div class="splash">
     <ui-icon class="typo" name="typo" />
-    <ui-icon class="whale" name="logo_test" />
+    <ui-icon class="logo" name="logo" />
     <ui-link
       v-if="isMobile"
       class="link"
@@ -63,7 +63,7 @@ export default {
   transform: translateY(-50%);
 
   .typo,
-  .whale {
+  .logo {
     width: 300px;
     margin: 0 auto 20px;
 
