@@ -23,7 +23,7 @@
           </ul>
         </div>
         <div class="footer-insta">
-          <a :href="global.instagramLink">{{ global.instagramLabel }}</a>
+          <!-- <a :href="global.instagramLink">{{ global.instagramLabel }}</a> -->
         </div>
         <div class="footer-donation">
           <a class="t-cta-2 link-donation" :href="global.donationsLink">{{
@@ -134,6 +134,9 @@ footer {
 
       .footer-insta {
         align-self: center;
+        height: 1px;
+        width: 400px;
+        background: $beige;
 
         @include below('md') {
           display: none;
