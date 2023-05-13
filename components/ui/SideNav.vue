@@ -68,10 +68,10 @@ export default {
       &::after {
         content: '';
         position: absolute;
-        bottom: -75px;
+        bottom: -45px;
         left: 9px;
         width: 1px;
-        height: 76px;
+        height: 45px;
         background: $white;
       }
     }
@@ -101,7 +101,7 @@ export default {
     }
 
     + .nav-link {
-      margin-top: 60px;
+      margin-top: 30px;
     }
 
     &:hover {
