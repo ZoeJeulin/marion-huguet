@@ -1,7 +1,7 @@
 <template>
   <div class="home-support">
     <div class="support-insta">
-      <ui-feed-insta :posts="section.feedInstagram" />
+      <ui-feed-insta :posts="lastPostsInsta" />
       <!-- <a class="insta-account t-cta-1" :href="global.instagramLink"
         >Instagram : {{ global.instagramLabel }}</a
       > -->
@@ -52,6 +52,13 @@ export default {
     ...mapState({
       global: (state) => state.global,
     }),
+    lastPostsInsta() {
+      let sortedPosts = this.section.feedInstagram
+      sortedPosts = sortedPosts.sort(
+        (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
+      )
+      return sortedPosts.slice(0, 12)
+    },
   },
   mounted() {
     this.$refs.frameSupport.$refs.corner.forEach((corner) => {
@@ -75,7 +82,7 @@ export default {
       })
     })
 
-    gsap.to('.insta-account', {
+    /* gsap.to('.insta-account', {
       opacity: 1,
       y: 0,
       duration: 0.5,
@@ -84,7 +91,7 @@ export default {
         trigger: '.support-insta',
         start: 'bottom bottom',
       },
-    })
+    }) */
 
     gsap.to('.support-title', {
       opacity: 1,
