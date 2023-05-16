@@ -32,7 +32,6 @@
       :style="`clip-path: url('#${pathName}');`"
       :src="pathName"
       alt="category image"
-      loading="lazy"
       provider="imgix"
       :modifiers="{ auto: 'format,compress' }"
     />
