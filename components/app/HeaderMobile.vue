@@ -7,7 +7,7 @@
         aria-label="Accueil"
         ><ui-icon class="typo" name="typo"
       /></nuxt-link>
-      <ui-burger-menu :aria-label="label" @click.native="toggleMenu" />
+      <ui-burger-menu :aria-label="getAriaLabel" @click.native="toggleMenu" />
     </div>
     <div class="header-panel">
       <ul class="nav-list">
@@ -42,26 +42,32 @@ export default {
   data() {
     return {
       isMenuOpen: false,
+      label: 'Ouvrir le menu',
     }
   },
   computed: {
     ...mapState({
       global: (state) => state.global,
     }),
-    label() {
-      return this.isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'
-    },
   },
   methods: {
     toggleMenu() {
-      this.$el.querySelector('.ui-burger-menu').classList.toggle('-open')
-      this.$el.querySelector('.header-panel').classList.toggle('-show')
-      if (document.body.style.overflow === 'hidden') {
+      if (this.isMenuOpen) {
         document.body.style.overflow = ''
-      } else if (document.body.style.overflow === '') {
+        this.$el.querySelector('.ui-burger-menu').classList.remove('-open')
+        this.$el.querySelector('.header-panel').classList.remove('-show')
+        this.isMenuOpen = false
+        this.label = 'Ouvrir le menu'
+      } else {
         document.body.style.overflow = 'hidden'
+        this.$el.querySelector('.ui-burger-menu').classList.add('-open')
+        this.$el.querySelector('.header-panel').classList.add('-show')
+        this.isMenuOpen = true
+        this.label = 'Fermer le menu'
       }
-      this.isMenuOpen = !this.isMenuOpen
+    },
+    getAriaLabel() {
+      return this.label
     },
   },
 }
@@ -173,7 +179,8 @@ export default {
     .ui-icon {
       align-self: center;
       width: 60%;
-      padding-bottom: 100px;
+      padding-bottom: 40px;
+      margin-top: 60px;
     }
   }
 }
