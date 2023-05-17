@@ -115,9 +115,13 @@ export default {
   width: 60%;
   padding-top: 160px;
 
+  @include below('lg') {
+    width: 100%;
+    padding-top: 120px;
+  }
+
   @include below('md') {
     display: block;
-    width: 100%;
     padding-top: 0;
   }
 

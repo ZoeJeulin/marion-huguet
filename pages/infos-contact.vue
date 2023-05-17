@@ -101,7 +101,7 @@ export default {
     right: 0;
     height: 100vh !important;
 
-    @include below('md') {
+    @include below('lg') {
       display: none;
     }
 

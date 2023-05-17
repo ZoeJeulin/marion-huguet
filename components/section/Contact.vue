@@ -304,10 +304,13 @@ export default {
   width: 70%;
   margin-top: 180px;
 
-  @include below('md') {
-    display: block;
+  @include below('lg') {
     width: 100%;
     margin-top: 80px;
+  }
+
+  @include below('md') {
+    display: block;
   }
 
   .contact-title {
