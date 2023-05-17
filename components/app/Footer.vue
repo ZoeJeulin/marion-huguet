@@ -113,6 +113,7 @@ footer {
       .footer-links {
         height: fit-content;
         align-self: center;
+        flex-shrink: 0;
 
         @include below('md') {
           align-self: flex-start;
@@ -137,8 +138,10 @@ footer {
       .footer-insta {
         align-self: center;
         height: 1px;
-        width: 400px;
+        max-width: 400px;
+        width: fill-available;
         background: $beige;
+        margin: 0 20px;
 
         @include below('md') {
           display: none;
