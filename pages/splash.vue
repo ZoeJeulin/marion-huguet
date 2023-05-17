@@ -53,19 +53,18 @@ export default {
 .splash {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   position: absolute;
-  margin: auto;
-  top: 50%;
+  margin: 20px;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  transform-origin: 38% 50%;
-  transform: translateY(-50%);
 
   .typo,
   .logo {
     width: 300px;
-    margin: 0 auto 20px;
+    margin: 20px auto;
 
     @include below('md') {
       width: 200px;
@@ -73,7 +72,7 @@ export default {
   }
 
   .link {
-    margin-top: 60px;
+    margin: 20px auto;
   }
 }
 </style>
