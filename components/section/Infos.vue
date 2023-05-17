@@ -166,6 +166,10 @@ export default {
     opacity: 0;
     z-index: 3;
 
+    @include below('lg') {
+      padding-left: 40px;
+    }
+
     @include below('md') {
       padding-left: 0;
       margin: 0;

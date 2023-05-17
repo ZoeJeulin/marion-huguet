@@ -356,6 +356,10 @@ export default {
     transform: translateY(30px);
     opacity: 0;
 
+    @include below('lg') {
+      padding-left: 40px;
+    }
+
     @include below('md') {
       padding-left: 0;
       margin: 0;
