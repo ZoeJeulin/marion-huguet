@@ -6,7 +6,6 @@
         :img-attrs="{ class: 'work-img' }"
         :src="work.workImages[0].responsiveImage.src"
         :alt="work.workTitle"
-        loading="lazy"
         provider="imgix"
         :modifiers="{ auto: 'format,compress' }"
       />
@@ -116,6 +115,11 @@ export default {
   margin: -10% auto;
   opacity: 0;
 
+  @include below('lg') {
+    width: 45%;
+    //margin: -10% 0;
+  }
+
   @include below('md') {
     width: 75%;
     margin: 0;
@@ -172,15 +176,18 @@ export default {
     .work-img-wrapper {
       padding-left: 50px;
 
-      @include below('md') {
+      @include below('lg') {
         padding-left: 20px;
       }
 
       &:before {
         left: 50px;
 
-        @include below('md') {
+        @include below('lg') {
           left: 20px;
+        }
+
+        @include below('md') {
           background: linear-gradient(
             90deg,
             rgba($blue2, 0.3) 0%,
@@ -193,6 +200,10 @@ export default {
 
     .work-overlay {
       padding-left: 70px;
+
+      @include below('lg') {
+        padding-left: 40px;
+      }
 
       @include below('md') {
         padding-left: 0;
@@ -218,15 +229,18 @@ export default {
     .work-img-wrapper {
       padding-right: 50px;
 
-      @include below('md') {
+      @include below('lg') {
         padding-right: 20px;
       }
 
       &:before {
         right: 50px;
 
-        @include below('md') {
+        @include below('lg') {
           right: 20px;
+        }
+
+        @include below('md') {
           background: linear-gradient(
             90deg,
             rgba($blue2, 0) 50%,
@@ -240,6 +254,10 @@ export default {
     .work-overlay {
       padding-right: 70px;
 
+      @include below('lg') {
+        padding-right: 40px;
+      }
+
       @include below('md') {
         padding-right: 0;
         right: 0;
@@ -252,7 +270,7 @@ export default {
     position: relative;
     padding-bottom: 50px;
 
-    @include below('md') {
+    @include below('lg') {
       padding-bottom: 20px;
     }
 
@@ -271,10 +289,31 @@ export default {
       opacity: 0;
       transition: opacity 0.3s ease-out;
 
-      @include below('md') {
+      @include below('lg') {
         bottom: 20px;
+      }
+
+      @include below('md') {
         opacity: 1;
         transition: none;
+      }
+    }
+
+    .ui-frame {
+      .ui-corner {
+        .corner-horizontal {
+          @include below('lg') {
+            width: 30px;
+            top: 5px;
+          }
+        }
+
+        .corner-vertical {
+          @include below('lg') {
+            height: 30px;
+            left: 5px;
+          }
+        }
       }
     }
   }
@@ -289,6 +328,10 @@ export default {
     transition: opacity 0.3s ease-out;
     z-index: 2;
     // width: 70%;
+
+    @include below('lg') {
+      bottom: 20px;
+    }
 
     @include below('md') {
       width: 55%;

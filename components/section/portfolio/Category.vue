@@ -76,7 +76,7 @@ export default {
   + .category {
     margin-top: 160px;
 
-    @include below('md') {
+    @include below('lg') {
       margin-top: 80px;
     }
   }

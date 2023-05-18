@@ -81,7 +81,7 @@ footer {
     }
 
     .footer-typo-wrapper {
-      width: 30%;
+      width: 25%;
       height: fit-content;
       align-self: center;
 

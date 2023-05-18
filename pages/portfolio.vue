@@ -160,15 +160,17 @@ export default {
       }
     }
 
-    @include below('md') {
-      margin-top: 0;
-      margin-right: 25px;
+    @include below('lg') {
       text-shadow: none;
       display: flex;
       justify-content: space-between;
       align-items: center;
       opacity: 0;
+      margin-top: 0;
+      margin-right: 25px;
+    }
 
+    @include below('md') {
       @keyframes titlePortfolio {
         0% {
           opacity: 0;
@@ -195,33 +197,21 @@ export default {
     position: relative;
     padding-bottom: 140px;
 
-    @include below('md') {
+    @include below('lg') {
       padding-bottom: 40px;
       margin-top: 60px;
     }
 
-    .ui-btn-scroll {
-      @include below('md') {
+    .ui-side-nav {
+      @include below('lg') {
         display: none;
-      }
-    }
-
-    .bird-wrapper {
-      width: 90%;
-      position: absolute;
-      top: 20vh;
-      left: 0;
-      text-align: center;
-
-      .bird {
-        width: 5vw;
       }
     }
 
     .categories-list {
       margin-top: -15vh;
 
-      @include below('md') {
+      @include below('lg') {
         margin-top: 0;
       }
     }
