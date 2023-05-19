@@ -58,6 +58,7 @@ export default {
   display: flex;
   align-items: center;
   margin: auto;
+  max-width: 100%;
 
   &:hover {
     p {

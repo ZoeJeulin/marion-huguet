@@ -45,8 +45,11 @@ export default {
   gap: 10px;
   margin-bottom: 30px;
 
-  @include below('md') {
+  @include below('lg') {
     gap: 5px;
+  }
+
+  @include below('md') {
     margin-bottom: 20px;
   }
 

@@ -43,7 +43,6 @@ export default {
     },
   },
   mounted() {
-    // this.$nextTick(() => {
     this.tlIntro = gsap.timeline()
 
     this.$refs.frameIntro.$refs.corner.forEach((corner) => {
@@ -110,7 +109,6 @@ export default {
         },
       })
     })
-    // })
 
     setTimeout(async () => {
       if (this.$refs.anim) {
@@ -184,6 +182,14 @@ export default {
       width: 18%;
       height: auto;
       opacity: 0;
+
+      @include below('lg') {
+        width: 30%;
+      }
+
+      @include below('md') {
+        width: 18%;
+      }
 
       &:nth-of-type(1) {
         top: 25%;

@@ -11,11 +11,8 @@
         v-for="(shopImg, index) in section.images"
         :key="`shop-img-${index}`"
         class="shop-img"
-        :style="`width:${blobW}px`"
         :index="index"
         :path-name="shopImg.responsiveImage.src"
-        :scale="0.85"
-        :scale-mobile="0.17"
       />
     </div>
     <!-- <ui-link class="shop-link" :label="section.btnLabel" path="boutique" /> -->
@@ -43,20 +40,7 @@ export default {
       default: () => {},
     },
   },
-  data() {
-    return {
-      blobW: 380,
-      blobScale: 1,
-      w: 1440,
-    }
-  },
   mounted() {
-    this.w = window.innerWidth
-    this.blobW = this.$el.querySelector('.shop-images').scrollWidth / 3
-    if (this.w > 768) this.blobW -= 20
-    this.blobScale = (this.blobW * 3) / this.w
-
-    // this.$nextTick(() => {
     this.$refs.frameShop.$refs.corner.forEach((corner) => {
       gsap.to(corner.$refs.vertical, {
         scaleY: 1,
@@ -112,7 +96,7 @@ export default {
       stagger: 0.3,
     })
 
-    gsap.to('.shop-img', {
+    /* gsap.to('.shop-img', {
       y: 0,
       duration: 3,
       ease: 'ease-out',
@@ -121,7 +105,7 @@ export default {
         start: 'top 85%',
       },
       stagger: 0.3,
-    })
+    }) */
 
     gsap.to('.shop-link', {
       opacity: 1,
@@ -134,7 +118,6 @@ export default {
         start: 'top 85%',
       },
     })
-    // })
   },
 }
 </script>
@@ -148,6 +131,10 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @include below('lg') {
+    min-height: auto;
+  }
 
   @include below('md') {
     padding: 60px 10px;
@@ -186,10 +173,13 @@ export default {
     width: 70%;
     align-self: center;
 
+    @include below('lg') {
+      width: 100%;
+    }
+
     @include below('md') {
       margin-bottom: 10px;
       transform: translateY(15px);
-      width: 100%;
     }
   }
 
@@ -208,7 +198,7 @@ export default {
       transform: translateY(150px);
 
       @include below('md') {
-        width: 30%;
+        width: 33%;
         transform: translateY(40px);
       }
 
@@ -216,7 +206,7 @@ export default {
         transform: translateY(25%);
 
         @include below('md') {
-          transform: translate(-10%, 40px);
+          transform: translateY(40px);
         }
       }
 

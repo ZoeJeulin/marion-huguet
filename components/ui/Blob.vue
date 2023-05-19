@@ -58,29 +58,20 @@ export default {
       type: String,
       default: 'path',
     },
-    scale: {
-      type: Number,
-      default: 1,
-    },
-    scaleMobile: {
-      type: Number,
-      default: 1,
-    },
+  },
+  data() {
+    return {
+      widthBlob: 480,
+    }
   },
   mounted() {
     const svgPath = this.$el.querySelector('.img-blob path')
-    const mqBlob = gsap.matchMedia()
+    this.widthBlob = this.$el.offsetWidth
+    console.log(this.widthBlob)
+    window.addEventListener('resize', this.resizeBlob)
 
-    mqBlob.add('(max-width: 768px)', () => {
-      gsap.set(svgPath, {
-        scale: this.scaleMobile,
-      })
-    })
-
-    mqBlob.add('(min-width: 769px)', () => {
-      gsap.set(svgPath, {
-        scale: this.scale,
-      })
+    gsap.set(svgPath, {
+      scale: (this.widthBlob * 0.95) / 480,
     })
 
     gsap.set(svgPath, {
@@ -93,6 +84,21 @@ export default {
       repeat: -1,
       ease: 'none',
     })
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.resizeBlob)
+  },
+  methods: {
+    resizeBlob() {
+      clearTimeout(this.resizeDebounce)
+      this.resizeDebounce = setTimeout(() => {
+        const svgPath = this.$el.querySelector('.img-blob path')
+        this.widthBlob = this.$el.offsetWidth
+        gsap.set(svgPath, {
+          scale: (this.widthBlob * 0.95) / 480,
+        })
+      }, 100)
+    },
   },
 }
 </script>
@@ -110,18 +116,14 @@ export default {
     right: 0;
     margin: auto;
     object-fit: cover;
-    transform: translate(5%, 5%);
+    height: fit-content;
 
     @include below('md') {
       transform: none;
     }
 
     img {
-      max-width: 480px;
-
-      @include below('sm') {
-        max-width: 100%;
-      }
+      max-width: 100%;
     }
   }
 }

@@ -139,6 +139,10 @@ export default {
   justify-content: space-between;
   min-height: calc(100vh - 30px);
 
+  @include below('lg') {
+    min-height: auto;
+  }
+
   @include below('md') {
     padding: 60px 10px;
     flex-direction: column;
@@ -149,6 +153,10 @@ export default {
     width: 30%;
     align-self: center;
     text-align: center;
+
+    @include below('lg') {
+      width: 40%;
+    }
 
     @include below('md') {
       margin-top: 40px;
@@ -174,9 +182,15 @@ export default {
     flex-direction: column;
     justify-content: space-between;
 
+    @include below('lg') {
+      width: 60%;
+      padding-left: 30px;
+    }
+
     @include below('md') {
       width: 100%;
       order: 1;
+      padding-left: 0;
     }
 
     .support-content {
@@ -201,8 +215,11 @@ export default {
         opacity: 0;
         transform: translateY(30px);
 
-        @include below('md') {
+        @include below('lg') {
           margin-bottom: 40px;
+        }
+
+        @include below('md') {
           transform: translateY(15px);
         }
       }
@@ -226,12 +243,22 @@ export default {
       right: 6%;
       top: 12%;
       transform: rotate(300deg);
+
+      @include below('lg') {
+        right: 25%;
+        top: 6%;
+      }
     }
 
     &:nth-of-type(2) {
       right: 6%;
       top: 32%;
       transform: rotate(25deg);
+
+      @include below('lg') {
+        right: 24%;
+        top: 15%;
+      }
     }
   }
 
@@ -240,6 +267,13 @@ export default {
 
     &.-desktop {
       display: block;
+
+      &:first-of-type {
+        @include below('lg') {
+          opacity: 0;
+        }
+      }
+
       @include below('md') {
         display: none;
       }

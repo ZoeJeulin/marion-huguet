@@ -185,17 +185,20 @@ export default {
   padding: 40px;
   min-height: calc(100vh - 30px);
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+
+  @include below('lg') {
+    min-height: auto;
+  }
 
   @include below('md') {
     flex-direction: column;
     padding: 60px 10px;
-    min-height: auto;
     justify-content: center;
   }
 
   .category-img {
-    width: 40%;
+    width: 30%;
     opacity: 0;
     transform: translateX(0px) translateY(150px);
 
@@ -228,14 +231,18 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     z-index: 2;
+    padding-left: 60px;
 
     &.-right {
+      padding-left: 0;
+
       @include below('md') {
         text-align: right;
       }
     }
 
     @include below('md') {
+      padding-left: 0;
       width: 100%;
     }
 
