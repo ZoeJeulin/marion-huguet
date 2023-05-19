@@ -96,7 +96,7 @@ export default {
       stagger: 0.3,
     })
 
-    /* gsap.to('.shop-img', {
+    gsap.to('.shop-img', {
       y: 0,
       duration: 3,
       ease: 'ease-out',
@@ -105,7 +105,7 @@ export default {
         start: 'top 85%',
       },
       stagger: 0.3,
-    }) */
+    })
 
     gsap.to('.shop-link', {
       opacity: 1,
