@@ -61,8 +61,11 @@ export default {
   },
   mounted() {
     document.body.style.overflowX = 'hidden'
-    if (window.innerWidth > 768)
+    if (window.innerWidth > 768) {
       document.querySelector('#main-default').style.padding = 0
+      window.dispatchEvent(new Event('resize'))
+    }
+
     const mqInfosContact = gsap.matchMedia()
 
     mqInfosContact.add('(min-width: 769px)', () => {

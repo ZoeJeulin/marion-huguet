@@ -39,13 +39,6 @@
       provider="imgix"
       :modifiers="{ auto: 'format,compress' }"
     />
-
-    <!-- <img
-      class="img-wrapper"
-      :style="`clip-path: url('#${pathName}');`"
-      :src="pathName"
-      alt="category image"
-    /> -->
   </div>
 </template>
 
@@ -62,10 +55,6 @@ export default {
       type: String,
       default: 'path',
     },
-    coeff: {
-      type: Number,
-      default: 0.95,
-    },
   },
   data() {
     return {
@@ -75,18 +64,6 @@ export default {
   mounted() {
     const svgPath = this.$el.querySelector('.img-blob path')
 
-    /* this.widthBlob = this.$el.offsetWidth
-    console.log(this.coeff)
-    const newScale = (this.widthBlob * 0.95) / 480
-    window.addEventListener('resize', this.resizeBlob)
-
-    console.log(gsap.getProperty(svgPath, 'scale'))
-    gsap.set(svgPath, {
-      scale: newScale,
-    })
-
-    console.log(gsap.getProperty(svgPath, 'scale'))
-*/
     gsap.set(svgPath, {
       transformOrigin: '50% 50%',
     })
@@ -98,22 +75,6 @@ export default {
       ease: 'none',
     })
   },
-  /* beforeDestroy() {
-    window.removeEventListener('resize', this.resizeBlob)
-  },
-  methods: {
-    resizeBlob() {
-      console.log('resize')
-      clearTimeout(this.resizeDebounce)
-      this.resizeDebounce = setTimeout(() => {
-        const svgPath = this.$el.querySelector('.img-blob path')
-        this.widthBlob = this.$el.offsetWidth
-        gsap.set(svgPath, {
-          scale: (this.widthBlob * 0.95) / 480,
-        })
-      }, 100)
-    },
-  }, */
 }
 </script>
 

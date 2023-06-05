@@ -65,11 +65,6 @@ export default {
   mounted() {
     document.body.style.overflowX = 'hidden'
     document.body.style.overflowY = ''
-    /* const appId = '711878503910367'
-    const redUri = 'https://httpstat.us/200'
-    const url = `https://api.instagram.com/oauth/authorize?client_id=${appId}&redirect_uri=${redUri}&scope=user_profile,user_media&response_type=code`
-    window.open(url, '_blank').focus() */
-    // const w = window.innerWidth
   },
   beforeDestroy() {
     if (this.tlHome) this.tlHome.kill()
@@ -109,7 +104,6 @@ export default {
         const bird = this.$el.querySelector(
           '.section-intro .intro-birds .bird:last-of-type'
         )
-        const blobs = this.$el.querySelectorAll('.category-img .img-wrapper')
 
         const introSection = this.$el.querySelector('.section-intro')
         const shopSection = this.$el.querySelector('.sections .home-shop')
@@ -130,24 +124,17 @@ export default {
           anchorPoints.push(
             MotionPathPlugin.getRelativePosition(
               i === 0 ? introSection : catSections[i - 1],
-              blobs[i],
+              catSections[i],
               i === 0 ? [0.8, 1] : [0.5, 1],
-              [0.5, 0]
+              i % 2 === 0 ? [0.25, 0.5] : [0.75, 0.5]
             )
           )
+
           anchorPoints.push(
             MotionPathPlugin.getRelativePosition(
-              blobs[i],
-              blobs[i],
-              [0.5, 0],
-              [0.5, 0.33]
-            )
-          )
-          anchorPoints.push(
-            MotionPathPlugin.getRelativePosition(
-              blobs[i],
+              catSections[i],
               i === catSections.length - 1 ? shopSection : catSections[i],
-              [0.5, 0.33],
+              i % 2 === 0 ? [0.25, 0.5] : [0.75, 0.5],
               i === catSections.length - 1 ? [0.8, 0.1] : [0.5, 1]
             )
           )

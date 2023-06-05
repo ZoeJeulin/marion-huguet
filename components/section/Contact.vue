@@ -286,6 +286,7 @@ export default {
             document
               .querySelector('.form-confirmation')
               .classList.remove('-hide')
+            window.dispatchEvent(new Event('resize'))
           })
           .catch((error) => alert(error))
       }

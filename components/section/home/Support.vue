@@ -82,17 +82,6 @@ export default {
       })
     })
 
-    /* gsap.to('.insta-account', {
-      opacity: 1,
-      y: 0,
-      duration: 0.5,
-      ease: 'ease-out',
-      scrollTrigger: {
-        trigger: '.support-insta',
-        start: 'bottom bottom',
-      },
-    }) */
-
     gsap.to('.support-title', {
       opacity: 1,
       y: 0,

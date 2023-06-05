@@ -51,10 +51,6 @@ export default {
     },
   },
   mounted() {
-    // const hBlob = this.$el.querySelector('.category-img').offsetWidth
-    console.log(this.$el.querySelector('.category-img').offsetHeight)
-    // gsap.set('.shop-images', { height: hBlob + 'px' })
-
     this.$refs.frameCat.$refs.corner.forEach((corner) => {
       gsap.to(corner.$refs.vertical, {
         scaleY: 1,
@@ -173,7 +169,7 @@ export default {
         scrollTrigger: {
           trigger: this.$refs.category,
           start: 'top 25%',
-          end: 'bottom center',
+          end: '60% center',
           scrub: true,
         },
       })

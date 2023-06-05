@@ -22,8 +22,6 @@
 </template>
 
 <script>
-// import { gsap } from 'gsap'
-
 export default {
   props: {
     category: {
@@ -44,23 +42,6 @@ export default {
       return sortedWorks
     },
   },
-  /* mounted() {
-    const mqCategory = gsap.matchMedia()
-
-    const works = this.$el.querySelectorAll('.ui-work-card')
-    works.forEach((work) => {
-      mqCategory.add('(max-width: 768px)', () => {
-        gsap.to(work.querySelector('.work-overlay'), {
-          y: '20px',
-          ease: 'none',
-          scrollTrigger: {
-            trigger: work,
-            scrub: true,
-          },
-        })
-      })
-    })
-  }, */
 }
 </script>
 
