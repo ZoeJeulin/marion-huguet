@@ -41,6 +41,10 @@ export default {
     },
   },
   mounted() {
+    const hBlob = this.$el.querySelector('.shop-img:first-of-type').offsetWidth
+    gsap.set('.shop-images', { height: hBlob + 'px' })
+    window.addEventListener('resize', this.resizeBlobWrapper)
+
     this.$refs.frameShop.$refs.corner.forEach((corner) => {
       gsap.to(corner.$refs.vertical, {
         scaleY: 1,
@@ -119,6 +123,20 @@ export default {
       },
     })
   },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.resizeBlobWrapper)
+  },
+  methods: {
+    resizeBlobWrapper() {
+      clearTimeout(this.resizeDebounce)
+      this.resizeDebounce = setTimeout(() => {
+        const hBlob = this.$el.querySelector(
+          '.shop-img:first-of-type'
+        ).offsetWidth
+        gsap.set('.shop-images', { height: hBlob + 'px' })
+      }, 100)
+    },
+  },
 }
 </script>
 
@@ -189,7 +207,7 @@ export default {
     margin-bottom: 80px;
 
     @include below('md') {
-      margin-bottom: 40px;
+      margin: 20px 0 40px;
     }
 
     .shop-img {

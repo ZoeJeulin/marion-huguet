@@ -5,7 +5,11 @@
       viewBox="0 0 480 480"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <clipPath :id="pathName">
+      <clipPath
+        :id="pathName"
+        clipPathUnits="objectBoundingBox"
+        transform="scale(0.00208333333, 0.00208333333)"
+      >
         <!-- https://10015.io/tools/svg-blob-generator -->
         <path
           v-if="index % 3 == 0"
@@ -58,6 +62,10 @@ export default {
       type: String,
       default: 'path',
     },
+    coeff: {
+      type: Number,
+      default: 0.95,
+    },
   },
   data() {
     return {
@@ -66,14 +74,19 @@ export default {
   },
   mounted() {
     const svgPath = this.$el.querySelector('.img-blob path')
-    this.widthBlob = this.$el.offsetWidth
-    console.log(this.widthBlob)
+
+    /* this.widthBlob = this.$el.offsetWidth
+    console.log(this.coeff)
+    const newScale = (this.widthBlob * 0.95) / 480
     window.addEventListener('resize', this.resizeBlob)
 
+    console.log(gsap.getProperty(svgPath, 'scale'))
     gsap.set(svgPath, {
-      scale: (this.widthBlob * 0.95) / 480,
+      scale: newScale,
     })
 
+    console.log(gsap.getProperty(svgPath, 'scale'))
+*/
     gsap.set(svgPath, {
       transformOrigin: '50% 50%',
     })
@@ -85,11 +98,12 @@ export default {
       ease: 'none',
     })
   },
-  beforeDestroy() {
+  /* beforeDestroy() {
     window.removeEventListener('resize', this.resizeBlob)
   },
   methods: {
     resizeBlob() {
+      console.log('resize')
       clearTimeout(this.resizeDebounce)
       this.resizeDebounce = setTimeout(() => {
         const svgPath = this.$el.querySelector('.img-blob path')
@@ -99,7 +113,7 @@ export default {
         })
       }, 100)
     },
-  },
+  }, */
 }
 </script>
 
@@ -116,6 +130,7 @@ export default {
     right: 0;
     margin: auto;
     object-fit: cover;
+    width: 100%;
     height: fit-content;
 
     @include below('md') {

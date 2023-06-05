@@ -4,7 +4,6 @@
       :src="global.bgImg.url"
       :alt="global.bgImg.alt"
       class="whale-img"
-      loading="lazy"
       provider="imgix"
       :modifiers="{ auto: 'format,compress' }"
     />

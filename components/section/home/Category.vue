@@ -6,7 +6,6 @@
       :class="{ '-right': index % 2 == 1 }"
       :index="index"
       :path-name="section.image.responsiveImage.src"
-      :scale-mobile="0.45"
     />
     <div class="category-wrapper" :class="{ '-right': index % 2 == 1 }">
       <ui-icon name="etoile" class="star -desktop" />
@@ -52,6 +51,10 @@ export default {
     },
   },
   mounted() {
+    // const hBlob = this.$el.querySelector('.category-img').offsetWidth
+    console.log(this.$el.querySelector('.category-img').offsetHeight)
+    // gsap.set('.shop-images', { height: hBlob + 'px' })
+
     this.$refs.frameCat.$refs.corner.forEach((corner) => {
       gsap.to(corner.$refs.vertical, {
         scaleY: 1,

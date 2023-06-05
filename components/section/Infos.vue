@@ -10,8 +10,6 @@
       ref="infosPhoto"
       class="infos-photo"
       :path-name="infosPhoto.responsiveImage.src"
-      :scale="0.52"
-      :scale-mobile="0.25"
     />
     <ui-frame ref="frameInfos" :desktop-corners="[2, 3]" />
   </section>
