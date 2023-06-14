@@ -116,7 +116,7 @@ export default {
             bird,
             introSection,
             [0.5, 0.5],
-            [0.8, 1]
+            [0.75, 1]
           )
         )
 
@@ -125,7 +125,7 @@ export default {
             MotionPathPlugin.getRelativePosition(
               i === 0 ? introSection : catSections[i - 1],
               catSections[i],
-              i === 0 ? [0.8, 1] : [0.5, 1],
+              i === 0 ? [0.75, 1] : [0.5, 1],
               i % 2 === 0 ? [0.25, 0.5] : [0.75, 0.5]
             )
           )

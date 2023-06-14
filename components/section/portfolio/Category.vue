@@ -73,7 +73,7 @@ export default {
     -webkit-writing-mode: vertical-rl;
     white-space: normal;
     margin: calc(90px + 5vh) 0 5vh;
-    @include fluid-type($xs, $xl, 36px, 78px);
+    @include fluid-type($xs, $xl, 36px, 72px);
 
     @include below('md') {
       position: absolute;
