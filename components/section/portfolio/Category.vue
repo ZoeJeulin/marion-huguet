@@ -91,8 +91,8 @@ export default {
 
     &.-right {
       @include below('md') {
-        right: 0;
-        transform: translateX(100px);
+        right: -17px;
+        transform: translateX(100px) rotate(0deg);
       }
     }
   }
