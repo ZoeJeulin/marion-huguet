@@ -60,6 +60,7 @@ export default {
     }),
   },
   mounted() {
+    window.addEventListener('resize', this.resizeInfosContact)
     document.body.style.overflowX = 'hidden'
     if (window.innerWidth > 768) {
       document.querySelector('#main-default').style.padding = 0
@@ -81,10 +82,21 @@ export default {
     })
   },
   beforeDestroy() {
+    window.removeEventListener('resize', this.resizeInfosContact)
     if (this.stInfos) this.stInfos.kill()
     if (window.innerWidth > 768)
       document.querySelector('#main-default').style.padding =
         '160px 40px 40px 40px'
+  },
+  methods: {
+    resizeInfosContact() {
+      clearTimeout(this.resizeDebounce)
+      this.resizeDebounce = setTimeout(() => {
+        if (window.innerWidth > 768) {
+          document.querySelector('#main-default').style.padding = 0
+        }
+      }, 100)
+    },
   },
 }
 </script>

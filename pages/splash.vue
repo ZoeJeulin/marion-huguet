@@ -2,18 +2,8 @@
   <div class="splash">
     <ui-icon class="typo" name="typo" />
     <ui-icon class="logo" name="logo" />
-    <ui-link
-      v-if="isMobile"
-      class="link"
-      label="Tatouages - illustrations"
-      path="home"
-    />
-    <ui-link
-      v-else
-      class="link"
-      label="Tatouages - Illustrations"
-      path="home"
-    />
+    <ui-link v-if="isMobile" class="link" label="Découvrir" path="home" />
+    <ui-link v-else class="link" label="Découvrir" path="home" />
   </div>
 </template>
 
