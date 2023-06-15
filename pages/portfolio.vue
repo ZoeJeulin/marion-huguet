@@ -61,6 +61,15 @@ export default {
             trigger: cat,
             start: 'top top',
             end: 'bottom bottom',
+            toggleClass: {
+              targets:
+                '.ui-side-nav .-' +
+                cat
+                  .querySelector('.category-title')
+                  .innerText.toLowerCase()
+                  .replace(/[\W_]+/g, '-'),
+              className: '-active',
+            },
             pin: cat.querySelector('.category-title'),
           })
         })

@@ -4,7 +4,9 @@
       v-for="section in sections"
       :key="section.id"
       :href="`#${section.title.toLowerCase().replace(/[\W_]+/g, '-')}`"
-      class="nav-link"
+      :class="`nav-link -${section.title
+        .toLowerCase()
+        .replace(/[\W_]+/g, '-')}`"
       @mouseleave="disablePointerEvents"
     >
       <span class="nav-circle" @mouseenter="enablePointerEvents">
@@ -54,6 +56,12 @@ export default {
     display: flex;
     align-items: center;
     pointer-events: none;
+
+    &.-active {
+      .nav-circle svg circle {
+        fill: $white;
+      }
+    }
 
     .nav-circle {
       position: relative;

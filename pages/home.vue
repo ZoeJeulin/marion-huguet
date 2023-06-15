@@ -74,6 +74,7 @@ export default {
       this.$nextTick(() => {
         this.$nextTick(() => {
           this.initBirdAnim()
+          this.initNavHover()
         })
       })
     }
@@ -186,6 +187,20 @@ export default {
           },
           transformOrigin: '50% 50%',
           ease: 'none',
+        })
+      })
+    },
+    initNavHover() {
+      const sections = this.$el.querySelectorAll('.section')
+      sections.forEach((section, index) => {
+        this.stHome = ScrollTrigger.create({
+          trigger: section,
+          start: 'top center',
+          end: 'bottom center',
+          toggleClass: {
+            targets: '.ui-side-nav .nav-link:nth-child(' + index + ')',
+            className: '-active',
+          },
         })
       })
     },
