@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /en
+Disallow: /en/
+Disallow: /error
+Disallow: /form-contact
+Sitemap: https://www.marion-huguet.fr/sitemap.xml

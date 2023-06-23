@@ -88,6 +88,7 @@ export default {
     '@nuxtjs/i18n',
     '@nuxtjs/svg',
     '@nuxtjs/dayjs',
+    '@nuxtjs/sitemap',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -125,6 +126,11 @@ export default {
   dayjs: {
     locales: ['fr'],
     defaultLocale: 'fr',
+  },
+
+  sitemap: {
+    hostname: 'https://www.marion-huguet.fr/',
+    exclude: ['/error', '/en', '/en/**'],
   },
 
   generate: {
